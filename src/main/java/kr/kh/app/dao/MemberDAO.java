@@ -1,5 +1,5 @@
 package kr.kh.app.dao;
 
-public class MemberDAO {
+public interface MemberDAO {
 
 }
