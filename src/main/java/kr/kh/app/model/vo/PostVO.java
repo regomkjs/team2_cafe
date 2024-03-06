@@ -1,5 +1,10 @@
 package kr.kh.app.model.vo;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class PostVO {
  	private int po_num; 
  	private String po_title; 
