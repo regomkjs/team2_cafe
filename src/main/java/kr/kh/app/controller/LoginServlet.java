@@ -16,17 +16,35 @@ import kr.kh.app.service.MemberServiceImp;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private MemberService memberService = new MemberServiceImp();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		LoginDTO loginUser = new LoginDTO(id, pw);
-		MemberVO user = memberService.getMember(loginUser);
-		
-		doGet(request, response);
+		MemberVO user = memberService.getMember(loginUser.getId());
+		if(user == null 
+				|| user.getMe_id() == null
+				|| user.getMe_id().length() == 0) {
+			//로그인 실패 알림 후 메인으로
+			request.setAttribute("msg", "등록되지 않은 회원입니다.");
+			request.setAttribute("url", "login");
+		}
+		else if(!user.getMe_pw().equals(loginUser.getPw())) {
+			request.setAttribute("msg", "비밀번호가 잘못됐습니다.");
+			request.setAttribute("url", "login");
+		}
+		else {
+			//로그인 성공 알림 후 세션에 유저 등록 메인으로
+			request.setAttribute("msg", "로그인 성공");
+			request.getSession().setAttribute("user", user);
+			request.setAttribute("url", "");
+		}
+		//전송
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }

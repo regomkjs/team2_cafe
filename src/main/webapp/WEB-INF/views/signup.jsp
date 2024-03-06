@@ -39,5 +39,10 @@
 	</form>
 </div>
 
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+
+</script>
+
 </body>
 </html>

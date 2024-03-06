@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.MemberDAO;
-import kr.kh.app.model.dto.LoginDTO;
 import kr.kh.app.model.vo.MemberVO;
 
 public class MemberServiceImp implements MemberService {
@@ -43,6 +42,18 @@ public class MemberServiceImp implements MemberService {
 	
 	
 	
+	
+
+	@Override
+	public MemberVO getMember(String id) {
+		if(!checking(id)) {
+			return null;
+		}
+		return memberDao.selectUser(id);
+	}
+	
+	
+	
 	private boolean checking(String str) {
 		if(str == null) {
 			return false;
@@ -52,10 +63,5 @@ public class MemberServiceImp implements MemberService {
 		}
 		return true;
 	}
-
-	@Override
-	public MemberVO getMember(LoginDTO loginUser) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

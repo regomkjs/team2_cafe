@@ -7,4 +7,8 @@
 		insert into member(me_id, me_pw, me_email, me_phone, me_date)
 		values(#{member.me_id}, #{member.me_pw}, #{member.me_email}, #{member.me_phone}, now())
 	</insert>
+	
+	<select id="selectUser" resultType="kr.kh.app.model.vo.MemberVO">
+		select * from member where me_id = #{id}
+	</select>
 </mapper>
