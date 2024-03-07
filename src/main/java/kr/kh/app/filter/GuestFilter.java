@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter({"/login","/signup", "/logout"})
+@WebFilter({"/login","/signup"})
 public class GuestFilter implements Filter {
        
 	private static final long serialVersionUID = 1L;

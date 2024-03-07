@@ -13,25 +13,28 @@
 	.main-box{
 		 height: 1000px;
 	}
-	.side_menu{
-		width: 150px; height: 100%; 
-		background-color: yellow;
+	.main-img-box{
+		width: 100%;
+		height: 250px;
+		background-color: tomato;
+	}
+	.main-content{
+		width: 100%;
+		height: 1000px;
+		background-color: green;
 	}
 </style>
 </head>
 
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-box clearfix">
-	<div class="side_menu float-start">
-		<div>
-			
-		</div>
-	</div>
-	
-	
-	<div class="main-content">
-	
+<div class="main-img-box">
+	중앙에 이미지 배치, 클릭시 메인으로 이동
+</div>
+<div class="main-box d-flex">
+	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+	<div class="main-content flex-grow-1">
+		메인 화면에 보여줄 리스트 구상
 	</div>
 </div>
 	
