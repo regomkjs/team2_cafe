@@ -17,6 +17,7 @@
 	.nav-box{
 		height: 300px;
 		border: 1px solid black;
+		background-color: white;
 	}
 </style>
 
