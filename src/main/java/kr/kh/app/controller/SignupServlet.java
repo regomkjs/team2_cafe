@@ -23,10 +23,11 @@ public class SignupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		String pw2 = request.getParameter("pw2");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		MemberVO member = new MemberVO(id, pw, email, phone);
-		boolean res = memberService.signupMember(member);
+		boolean res = memberService.signupMember(member, pw2);
 		if(res) {
 			//가입 성공 알림 후 로그인으로
 			request.setAttribute("msg",  "ID : "+id + " 가입 성공");

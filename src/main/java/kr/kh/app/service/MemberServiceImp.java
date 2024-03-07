@@ -29,7 +29,7 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean signupMember(MemberVO member) {
+	public boolean signupMember(MemberVO member, String pw2) {
 		if(member == null) {
 			return false;
 		}
@@ -37,6 +37,11 @@ public class MemberServiceImp implements MemberService {
 				|| !checking(member.getMe_pw())) {
 			return false;
 		}
+		
+		if(!member.getMe_pw().equals(pw2)) {
+			return false;
+		}
+		
 		return memberDao.insertMember(member);
 	}
 	
