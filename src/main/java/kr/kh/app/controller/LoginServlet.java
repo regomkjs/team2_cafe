@@ -25,7 +25,9 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		LoginDTO loginUser = new LoginDTO(id, pw);
+		
 		MemberVO user = memberService.getMember(loginUser.getId());
+		
 		if(user == null 
 				|| user.getMe_id() == null
 				|| user.getMe_id().length() == 0) {
@@ -41,6 +43,10 @@ public class LoginServlet extends HttpServlet {
 			//로그인 성공 알림 후 세션에 유저 등록 메인으로
 			request.setAttribute("msg", "로그인 성공");
 			request.getSession().setAttribute("user", user);
+			request.setAttribute("url", "");
+		}
+		if("admin".equals(user.getMe_id())) {
+			request.setAttribute("msg", "관리자입니다.");
 			request.setAttribute("url", "");
 		}
 		//전송
