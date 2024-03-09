@@ -22,5 +22,7 @@ public class MemberVO {
 		this.me_email = email;
 		this.me_phone = phone;
 	}
+
+
 	
 }

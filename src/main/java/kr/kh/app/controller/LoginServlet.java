@@ -19,18 +19,18 @@ public class LoginServlet extends HttpServlet {
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-	}
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		LoginDTO loginUser = new LoginDTO(id, pw);
 		
-		MemberVO user = memberService.getMember(loginUser.getId());
+		MemberVO user = memberService.getMember(loginUser.getID());
 		
-		if(user == null 
-				|| user.getMe_id() == null
-				|| user.getMe_id().length() == 0) {
+		if(	   user == null 
+			|| user.getMe_id() == null
+			|| user.getMe_id().length() == 0) {
 			//로그인 실패 알림 후 메인으로
 			request.setAttribute("msg", "등록되지 않은 회원입니다.");
 			request.setAttribute("url", "login");
@@ -53,4 +53,4 @@ public class LoginServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
-}
+}*/

@@ -20,7 +20,6 @@
 		background-color: white;
 	}
 </style>
-
 </head>
 <body>
 <div class="side_menu">
