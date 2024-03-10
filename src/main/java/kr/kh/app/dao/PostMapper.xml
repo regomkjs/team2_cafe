@@ -3,5 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.PostDAO">
+	<resultMap type="kr.kh.app.model.vo.PostVO" id="postMap">
+		<id property="po_num" column="po_num"/>
+		<result property="po_he_num" column="po_he_num"/>	
+		<result property="po_me_id" column="po_me_id"/>	
+		<result property="po_title" column="po_title"/>
+		<result property="po_content" column="po_content"/>
+		<result property="po_view" column="po_view"/>
+		<result property="po_datetime" column="po_datetime"/>
+		<result property="po_writer" column="po_writer"/>	
+		<collection property="head" ofType="kr.kh.app.model.vo.HeadVO" column="po_he_num"
+			select="selectHead"/>
+	</resultMap>
+	<select id="selectHead" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head where he_num = #{po_he_num}
+	</select>
+	
+	
+	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
+		select * from category
+	</select>
+	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board
+	</select>
+	
+	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post join head on he_num = po_he_num where he_bo_num = #{bo_num}
+	</select>
 	
 </mapper>

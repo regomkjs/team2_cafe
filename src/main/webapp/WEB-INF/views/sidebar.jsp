@@ -48,16 +48,21 @@
 			</div>
 		</div>
 	</div>
-	<c:forEach begin="1" end="3">
+	<c:forEach items="${caList}" var="category">
 		<div class="container">
-			<span style="font-weight: bolder;">카테고리명 <a href="#">게시판추가</a></span>
+			<span style="font-weight: bolder;">${category.ca_name} <a href="#">게시판추가</a></span>
 			<ul>
-				<c:forEach begin="1" end="4">
-					<li>
-						<a href="#">게시판명</a>
-						<span><a href="#">수정</a></span>
-						<span><a href="#">삭제</a></span>
-					</li>
+				<c:forEach items="${boList}" var="board">
+					<c:if test="${category.ca_name == board.bo_ca_name}">
+						<li>
+							<c:url value="/post/list" var="boardUrl">
+								<c:param name="num" value="${board.bo_num}" />
+							</c:url>
+							<a href="${boardUrl}">${board.bo_name}</a>
+							<span><a href="#">수정</a></span>
+							<span><a href="#">삭제</a></span>
+						</li>
+					</c:if>
 				</c:forEach>				
 			</ul>
 		</div>

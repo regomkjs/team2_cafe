@@ -39,7 +39,51 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			
+			<form action="<c:url value="/post/insert"/>" method="post" enctype="multipart/form-data">
+				<div class="mb-3 mt-3">
+					<label for="board">게시판:</label>
+					<select id="board" name="board" class="form-control">
+						<c:forEach items="${boardList}" var="board">
+							<c:if test='${board.bo_name == "공지" && user.me_gr_num == 0}'>
+								<option value="${board.bo_num}" >${board.bo_name}</option>
+							</c:if>
+							<c:if test='${board.bo_name != "공지"}'>
+								<option value="${board.bo_num}" >${board.bo_name}</option>
+							</c:if>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="mb-3 mt-3">
+					<label for="head">말머리:</label>
+					<select id="head" name="head" class="form-control">
+						<c:forEach items="${headList}" var="head">
+							<c:if test='${head.he_bo_num == "공지" && user.me_gr_num == 0}'>
+								<option value="${head.he_num}" >${head.he_name}</option>
+							</c:if>
+							<c:if test='${head.he_name != "공지"}'>
+								<option value="${head.he_num}" >${head.he_name}</option>
+							</c:if>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="mb-3 mt-3">
+					<label for="title">제목:</label>
+			  		<input type="text" class="form-control" id="title" placeholder="제목 입력" name="title">
+				</div>
+				<div class="mb-3">
+			  		<label for="content">내용:</label>
+			  		<div class="mb-3">
+			  			<textarea rows="10" name="content" id="content" class="form-control"></textarea>
+			  		</div>
+				</div>
+				<div class="mb-3 mt-3">
+					<label class="form-label">첨부파일:</label>
+			  		<input type="file" class="form-control" name="file">
+			  		<input type="file" class="form-control" name="file">
+			  		<input type="file" class="form-control" name="file">
+				</div>
+				<button type="submit" class="btn btn-primary col-12">등록</button>
+			</form>
 		</div>
 	</div>
 </div>
