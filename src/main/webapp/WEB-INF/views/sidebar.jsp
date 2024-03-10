@@ -57,7 +57,7 @@
 						<span><a href="#">수정</a></span>
 						<span><a href="#">삭제</a></span>
 					</li>
-				</c:forEach>				
+			</c:forEach>				
 			</ul>
 		</div>
 	</c:forEach>

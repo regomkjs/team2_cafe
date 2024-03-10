@@ -7,12 +7,6 @@
 </head>
 <body>
     <h2>Categories:</h2>
-    <ul>
-        <% for (String category : categories) { %>
-            <li><%= category %></li>
-        <% } %>
-    </ul>
-    
     <form method="post" action="${pageContext.request.contextPath}/category">
         <input type="text" name="category">
         <input type="submit" name="action" value="Add">

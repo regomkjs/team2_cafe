@@ -9,6 +9,9 @@ import kr.kh.app.model.vo.PostVO;
 
 public interface PostDAO {
 
-	ArrayList<CategoryVO> selectCommunityList(@Param("category")PostVO post);
+	ArrayList<CategoryVO> selectCategoryList();
+
+	boolean deleteCategory(@param("num")int num);
+	
 
 }

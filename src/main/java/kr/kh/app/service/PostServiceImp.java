@@ -4,13 +4,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import org.apache.ibatis.io.Resources;
+import javax.annotation.Resources;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.PostVO;
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -24,15 +26,19 @@ public class PostServiceImp implements PostService{
 			SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			session = sessionFactory.openSession(true);
 			postDao = session.getMapper(PostDAO.class);
-		} catch (IOException e) {
+			} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public ArrayList<CategoryVO> getCommunityList() {
-		
-		return postDao.selectCommunityList();
+		return postDao.selectCategoryList();
+	}
+
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
 	}
 	
 }
