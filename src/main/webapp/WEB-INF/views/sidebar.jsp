@@ -54,7 +54,7 @@
 			<ul>
 				<c:forEach begin="1" end="4">
 					<li>
-						<a href="#">게시판명</a>
+						<a href="<c:url value="/board/list"/>">게시판명</a>
 						<span><a href="#">수정</a></span>
 						<span><a href="#">삭제</a></span>
 					</li>
