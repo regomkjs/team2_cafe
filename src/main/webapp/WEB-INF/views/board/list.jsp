@@ -34,10 +34,34 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
 		클릭한 게시판 관련 리스트
+		<div class="container">
+		<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
+		<table class="table table-hover">
+			<thead>
+			    <tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+			    </tr>
+			</thead>
+			<tbody>
+<!-- 게시글 작성 후 수정 필요 
+				<c:forEach items="${boardList}" var="board">		
+					<tr>
+						<td>${board.bo_num}</td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</c:forEach>
+-->
+			</tbody>
+		</table>
+
+		</div>
 	</div>
 </div>
-<div class="container">
-	<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
-</div>
+
 </body>
 </html>

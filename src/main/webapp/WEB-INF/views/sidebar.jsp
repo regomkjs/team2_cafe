@@ -53,7 +53,7 @@
 			<span style="font-weight: bolder;">카테고리명 <a href="#">게시판추가</a></span>
 			<ul>
 				<c:forEach begin="1" end="4">
-					<li>
+					<li >
 						<a href="<c:url value="/board/list"/>">게시판명</a>
 						<span><a href="#">수정</a></span>
 						<span><a href="#">삭제</a></span>
