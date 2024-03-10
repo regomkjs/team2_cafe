@@ -64,7 +64,7 @@ public class AddBoardServlet extends HttpServlet {
 
 			// 서비스에게 게시판 이름 객체를 주면서 등록하라고 시킴
 			boolean res = boardService.insertBoard(board);
-			System.out.println(board);
+			
 			// 메세지 출력이 구현 전 그래서 일단 다 전송
 			if(res) {
 				request.setAttribute("url", "board/list");

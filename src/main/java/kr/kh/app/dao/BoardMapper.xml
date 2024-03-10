@@ -8,7 +8,6 @@
 	</select>
 	<insert id="insertBoard">
 		insert into board(bo_name)
-		values(#{board.bo_num)
+		values(#{board.bo_name})
 	</insert>
-	
 </mapper>

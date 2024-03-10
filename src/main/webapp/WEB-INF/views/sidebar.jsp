@@ -50,7 +50,7 @@
 	</div>
 	<c:forEach begin="1" end="3">
 		<div class="container">
-			<span style="font-weight: bolder;">카테고리명 <a href="<c:url value='/board/add'/>" class="btn btn-outline-primary">게시판추가</a>
+			<span style="font-weight: bolder;">카테고리명 <a href="<c:url value='/board/add'/>" class="btn btn-outline-primary ">게시판추가</a>
 			<ul>
 				<c:forEach begin="1" end="4">
 					<li >
