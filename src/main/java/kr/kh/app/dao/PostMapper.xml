@@ -9,4 +9,14 @@
 	<select id="selectBoardList" resultType="kr.kh.app.model.vo.BoardVO">
 		select * from board
 	</select>
+	<insert id="insertHead">
+		insert into head(he_name, he_bo_num) 
+		values(#{inputHead.he_name}, 1)
+	</insert>
+	<select id="selectHeadList" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head
+	</select>
+	<update id="updateHead">
+		update head set he_num = #{updateHead.he_num} where he_name = #{updateHead.he_name}
+	</update>
 </mapper>

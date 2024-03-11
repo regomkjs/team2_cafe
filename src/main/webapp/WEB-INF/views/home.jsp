@@ -21,11 +21,10 @@
 	.main-content{
 		width: 100%;
 		height: 1000px;
-		background-color: green;
+		background-color: white;
 	}
 </style>
 </head>
-
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="main-img-box">
@@ -34,9 +33,12 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		메인 화면에 보여줄 리스트 구상
+		메인 화면에 보여줄 리스트 구상<br>
+		<button type="button" class="btn btn-primary mb-1 headAddBtn">말머리 관리</button>
 	</div>
 </div>
-	
+<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+</script>
 </body>
 </html>

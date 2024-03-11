@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>sidebar</title>
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -48,16 +48,18 @@
 			</div>
 		</div>
 	</div>
-	<c:forEach begin="1" end="3">
+	<c:forEach items="${categoryList}" var="categoryList">
 		<div class="container">
-			<span style="font-weight: bolder;">카테고리명 <a href="#">게시판추가</a></span>
+			<span style="font-weight: bolder;">${categoryList.ca_name}<a href="#">게시판추가</a></span>
 			<ul>
-				<c:forEach begin="1" end="4">
-					<li>
-						<a href="#">게시판명</a>
-						<span><a href="#">수정</a></span>
-						<span><a href="#">삭제</a></span>
-					</li>
+				<c:forEach items="${boardList}" var="boardList">
+					<c:if test="${categoryList.ca_name == boardList.bo_ca_name}">
+						<li>
+							<a href="<c:url value="/board/list"/>">${boardList.bo_name}</a>
+							<span><a href="#">수정</a></span>
+							<span><a href="#">삭제</a></span>
+						</li>
+					</c:if>
 				</c:forEach>				
 			</ul>
 		</div>

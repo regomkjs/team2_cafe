@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>header</title>
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,12 +26,10 @@
 					<li class="nav-item">
 						<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
 					</li>
-				</c:if>
-				<!--	
+				</c:if>	
 				<li class="nav-item">
 					<a class="nav-link" href='<c:url  value="/board/list"/>'>게시글</a>
 				</li> 
-				-->
 				<c:if test="${user != null}"> 
 					<li class="nav-item">
 						<a class="nav-link" href='<c:url  value="/logout"/>'>로그아웃</a>
