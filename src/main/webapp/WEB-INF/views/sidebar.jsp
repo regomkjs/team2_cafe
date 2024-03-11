@@ -48,7 +48,7 @@
 		</div>
 	</div>
 	<c:forEach begin="1" end="3">
-		<div class="container">
+		<div class="container ">
 			<span style="font-weight: bolder;">카테고리명 <a href="#">게시판추가</a></span>
 			<ul>
 				<c:forEach begin="1" end="4">

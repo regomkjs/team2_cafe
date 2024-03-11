@@ -28,20 +28,20 @@ public class PostServiceImp implements PostService{
 			e.printStackTrace();
 		}
 	}
-
+	//카테고리 불러오기
 	@Override
 	public ArrayList<CategoryVO> getCategoryList() {
 		return postDao.selectCategoryList();
 	}
-
+	//카테고리 삭제
 	@Override
 	public boolean deleteCategory(int num) {
 		return postDao.deleteCategory(num);
 	}
-
+	//카테고리 추가 구현중
 	@Override
 	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
-		return false;
+		return postDao.insertCategory(categoryList);
 	}
 	
 }
