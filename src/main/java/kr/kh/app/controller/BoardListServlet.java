@@ -27,20 +27,20 @@ public class BoardListServlet extends HttpServlet {
 		
 		if(postService.insertHead(head)) {
 			System.out.println("입력 성공");
-			response.sendRedirect(request.getContextPath()+"/");
 		}
 		
+		int selectHead = 0;
+		if(request.getParameter("selectHead")!=null) {
+			selectHead = Integer.parseInt(request.getParameter("selectHead")); //he_num
+		}
 		
-		int selectHead = Integer.parseInt(request.getParameter("selectHead")); //he_num
 		String updateHead = request.getParameter("updateHead");
 		
 		HeadVO updateHeader = new HeadVO(selectHead, updateHead);
 		if(postService.updateHead(updateHeader)) {
 			System.out.println("수정 성공");
-			response.sendRedirect(request.getContextPath()+"/");
 		} else {
 			System.out.println("수정 실패");
-			response.sendRedirect(request.getContextPath()+"/");
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response); //boardList 완성 시 변경
