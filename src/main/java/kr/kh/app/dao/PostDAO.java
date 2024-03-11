@@ -11,7 +11,9 @@ public interface PostDAO {
 
 	ArrayList<CategoryVO> selectCategoryList();
 
-	boolean deleteCategory(@param("num")int num);
+	boolean deleteCategory(@Param("ca")int num);
+
+	boolean insertCategory(@Param("ca") ArrayList<CategoryVO> categoryList);
 	
 
 }

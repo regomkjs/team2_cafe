@@ -3,6 +3,7 @@ package kr.kh.app.service;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -22,9 +23,10 @@ public class MemberServiceImp implements MemberService {
 			SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			session = sessionFactory.openSession(true);
 			memberDao = session.getMapper(MemberDAO.class);
-		} catch (IOException e) {
+			} catch (IOException e) {
 			e.printStackTrace();
-		}
+		
+			}
 	}
 
 	@Override

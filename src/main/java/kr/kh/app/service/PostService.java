@@ -6,8 +6,10 @@ import kr.kh.app.model.vo.CategoryVO;
 
 public interface PostService {
 
-	ArrayList<CategoryVO> getCommunityList();
+	ArrayList<CategoryVO> getCategoryList();
 		
 	boolean deleteCategory(int num);
+
+	boolean insertCategory(ArrayList<CategoryVO> categoryList);
 
 }

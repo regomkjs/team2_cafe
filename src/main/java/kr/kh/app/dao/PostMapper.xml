@@ -6,9 +6,13 @@
 	<select id="selectCategoryList" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category	
 	</select>
-	
 	<delete id="deleteCategory">
 		delete from category where ca_num = #{ca_num}
 	</delete>
+	<update id="insertCategory">
+		update category set
+			ca_name = #{category.ca_name}
+	</update>
+	
 	
 </mapper>
