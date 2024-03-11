@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
 
 public interface PostDAO {
@@ -15,5 +16,7 @@ public interface PostDAO {
 	ArrayList<BoardVO> selectBoard();
 
 	ArrayList<PostVO> selectPostByBoNum(@Param("bo_num")int bo_num);
+
+	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
 
 }

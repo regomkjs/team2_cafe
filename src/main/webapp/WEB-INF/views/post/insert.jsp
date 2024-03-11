@@ -43,27 +43,20 @@
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
-						<c:forEach items="${boardList}" var="board">
+						<c:forEach items="${boList}" var="board">
 							<c:if test='${board.bo_name == "공지" && user.me_gr_num == 0}'>
-								<option value="${board.bo_num}" >${board.bo_name}</option>
+								<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
 							</c:if>
 							<c:if test='${board.bo_name != "공지"}'>
-								<option value="${board.bo_num}" >${board.bo_name}</option>
+								<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
 							</c:if>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
 					<label for="head">말머리:</label>
-					<select id="head" name="head" class="form-control">
-						<c:forEach items="${headList}" var="head">
-							<c:if test='${head.he_bo_num == "공지" && user.me_gr_num == 0}'>
-								<option value="${head.he_num}" >${head.he_name}</option>
-							</c:if>
-							<c:if test='${head.he_name != "공지"}'>
-								<option value="${head.he_num}" >${head.he_name}</option>
-							</c:if>
-						</c:forEach>
+					<select id="head" name="head" class="form-control headselect">
+						
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
@@ -106,5 +99,34 @@
 	});
 </script>
 
+<!-- 보드에 따른 말머리 리스트 출력 -->
+<script type="text/javascript">
+	$(document).on("blur","#board",function(){
+		let bo_num = $(this).val();
+		$.ajax({
+			url : '<c:url value="/post/insert"/>',
+			method : 'post',
+			data : {
+				"bo_num" : bo_num
+			},
+			success : function(data){
+				console.log(data.headList);
+				let str = ""; 
+				for(head of data.headList){
+					if(head.he_bo_num == '${bo_num}'){
+					str += 
+					`
+						<option value="\${head.he_num}">\${head.he_name}</option>			
+					`
+					}
+				}
+				$(".headselect").html(str);
+			},
+			error : function(a,b,c){
+				
+			}
+		});
+	})
+</script>
 </body>
 </html>

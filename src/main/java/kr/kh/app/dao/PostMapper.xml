@@ -31,4 +31,7 @@
 		select * from post join head on he_num = po_he_num where he_bo_num = #{bo_num}
 	</select>
 	
+	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head where he_bo_num = #{bo_num}
+	</select>
 </mapper>

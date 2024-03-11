@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
 
 public class PostServiceImp implements PostService{
@@ -44,6 +45,11 @@ public class PostServiceImp implements PostService{
 	@Override
 	public ArrayList<PostVO> getPostByBoNum(int bo_num) {
 		return postDao.selectPostByBoNum(bo_num);
+	}
+
+	@Override
+	public ArrayList<HeadVO> getHeadListByBoNum(int bo_num) {
+		return postDao.selectHeadListByBoNum(bo_num);
 	}
 	
 }
