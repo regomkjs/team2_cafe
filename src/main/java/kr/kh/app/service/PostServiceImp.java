@@ -51,5 +51,25 @@ public class PostServiceImp implements PostService{
 	public ArrayList<HeadVO> getHeadListByBoNum(int bo_num) {
 		return postDao.selectHeadListByBoNum(bo_num);
 	}
+
+	@Override
+	public boolean insertPost(PostVO post) {
+		if(post == null || !checkString(post.getPo_me_id())
+				|| !checkString(post.getPo_title())
+				|| !checkString(post.getPo_content())
+				|| post.getPo_he_num() <= 0) {
+			return false;
+		}
+		return postDao.insertPost(post);
+	}
+	
+	
+	
+	private boolean checkString(String str) {
+		if(str == null || str.length() == 0) {
+			return false;
+		}
+		return true;
+	}
 	
 }

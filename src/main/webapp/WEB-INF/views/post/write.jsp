@@ -37,26 +37,27 @@
 </div>
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-	<div class="main-content flex-grow-1">
+	<div class="container main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
 			<form action="<c:url value="/post/insert"/>" method="post" enctype="multipart/form-data">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
+						<option class="select-board null-select" value="0">게시판을 선택해주세요</option>
 						<c:forEach items="${boList}" var="board">
-							<c:if test='${board.bo_name == "공지" && user.me_gr_num == 0}'>
-								<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
-							</c:if>
-							<c:if test='${board.bo_name != "공지"}'>
-								<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
-							</c:if>
+								<c:if test='${board.bo_ca_name == "공지" && user.me_gr_num == 0}'>
+									<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+								</c:if>
+								<c:if test='${board.bo_ca_name != "공지"}'>
+									<option class="select-board" value="${board.bo_num}">${board.bo_name}</option>
+								</c:if>
 						</c:forEach>
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
 					<label for="head">말머리:</label>
 					<select id="head" name="head" class="form-control headselect">
-						
+						<option class="select-board null-select">게시판을 선택해주세요</option>
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
@@ -75,7 +76,7 @@
 			  		<input type="file" class="form-control" name="file">
 			  		<input type="file" class="form-control" name="file">
 				</div>
-				<button type="submit" class="btn btn-primary col-12">등록</button>
+				<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
 			</form>
 		</div>
 	</div>
@@ -101,20 +102,19 @@
 
 <!-- 보드에 따른 말머리 리스트 출력 -->
 <script type="text/javascript">
-	$(document).on("blur","#board",function(){
+	$(document).on("change","#board",function(){
+		$(".null-select").remove();
 		let bo_num = $(this).val();
-		alert(bo_num);
 		$.ajax({
-			url : '<c:url value="/post/insert"/>',
+			url : '<c:url value="/post/write"/>',
 			method : 'post',
 			data : {
 				"bo_num" : bo_num
 			},
 			success : function(data){
-				console.log(data.headList);
 				let str = ""; 
 				for(head of data.headList){
-					if(head.he_bo_num == '${bo_num}'){
+					if(head.he_bo_num == data.bo_num){
 					str += 
 					`
 						<option value="\${head.he_num}">\${head.he_name}</option>			
@@ -128,6 +128,53 @@
 			}
 		});
 	})
+</script>
+
+<script type="text/javascript">
+	$(document).on("submit","form", function(){
+		if($("#board").val() == 0 || $("#board").val() == null){
+			alert("게시판을 선택해야합니다.");
+			return false;
+		}
+		
+		if($("#title").val() == '') {
+			alert("제목이 없습니다.");
+			return false;
+		} 
+		if($("#content").val() == '') {
+			alert("내용이 없습니다.");
+			return false;
+		} 
+		let title = $("#title").val();
+		let content = $("#content").val();
+		let head = $("#head").val();
+		$.ajax({
+			url : '<c:url value="/post/insert"/>',
+			method : "post",
+			data : {
+				"title" : title,
+				"content" : content,
+				"head" : head
+			},
+			success : function(data){
+				if(data == "true"){
+					alert("게시글을 등록했습니다.")
+					location.href = "<c:url value='/'/>"
+					return;
+				}
+				else{
+					alert("게시글 등록에 실패했습니다.")
+					location.href = "<c:url value='/'/>"
+					return;
+				}
+			},
+			error : function(a,b,c){
+				
+			}
+			
+		});
+	})
+
 </script>
 </body>
 </html>

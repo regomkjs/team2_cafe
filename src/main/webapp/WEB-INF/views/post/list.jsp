@@ -75,10 +75,12 @@
 					</c:if>
 				</tbody>
 			</table>
-			<c:url value="/post/insert" var="insertUrl"> 
-				<c:param name="num" value="${bo_num}"/>
-			</c:url>
-			<a href="${insertUrl}"><button class="btn btn-primary">게시글 등록</button></a>
+			<c:if test="${bo_num == 1 && user.me_gr_num == 0}">
+				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
+			</c:if>
+			<c:if test="${bo_num != 1 && user != null}">
+				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
+			</c:if>
 		</div>
 	</div>
 </div>

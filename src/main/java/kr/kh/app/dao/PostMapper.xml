@@ -34,4 +34,9 @@
 	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
 		select * from head where he_bo_num = #{bo_num}
 	</select>
+	
+	<insert id="insertPost">
+		insert into post(po_title, po_content, po_writer, po_me_id, po_he_num, po_datetime)
+		values(#{post.po_title}, #{post.po_content}, #{post.po_writer}, #{post.po_me_id}, #{post.po_he_num}, now())
+	</insert>
 </mapper>

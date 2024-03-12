@@ -17,4 +17,6 @@ public interface PostService {
 
 	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);
 
+	boolean insertPost(PostVO post);
+
 }

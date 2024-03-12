@@ -1,53 +1,46 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import kr.kh.app.model.vo.BoardVO;
-import kr.kh.app.model.vo.CategoryVO;
-import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
 @WebServlet("/post/insert")
 public class PostInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private PostService postService = new PostServiceImp();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CategoryVO> caList = postService.getCaList();
-		request.setAttribute("caList", caList);
-		ArrayList<BoardVO> boList = postService.getBoList();
-		request.setAttribute("boList", boList);
-		
-		request.getRequestDispatcher("/WEB-INF/views/post/insert.jsp").forward(request, response);
-	}
-
+    PostService postService = new PostServiceImp();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int bo_num = 0;
+		
+		int po_he_num = 0;
 		try {
-			bo_num = Integer.parseInt(request.getParameter("bo_num"));
+			po_he_num = Integer.parseInt(request.getParameter("head"));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		ArrayList<HeadVO> headList = postService.getHeadListByBoNum(bo_num);
 		
-		JSONObject jobj = new JSONObject();
-		// ObjectMapper om = new ObjectMapper();
+		String po_title = request.getParameter("title");
+		String po_content = request.getParameter("content");
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
-		jobj.put("headList", headList);
-		response.setContentType("application/json; charset=utf-8");
-		response.getWriter().print(jobj);
+		String po_me_id = user.getMe_id();
+		String po_writer;
+		if(user.getMe_nick() == null || user.getMe_nick().length() == 0) {
+			po_writer = user.getMe_id();
+		}else {
+			po_writer = user.getMe_nick();
+		}
+		PostVO post = new PostVO(po_title, po_content, po_writer, po_he_num, po_me_id);
+		boolean res = postService.insertPost(post);
+		response.getWriter().write(""+res);
+		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 
 }

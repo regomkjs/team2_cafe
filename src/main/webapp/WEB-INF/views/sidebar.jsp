@@ -42,6 +42,7 @@
 		    	<p>카페정보</p>
 		    	<br>
 		    	<p>카페관리</p>
+		    	
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
@@ -50,21 +51,44 @@
 	</div>
 	<c:forEach items="${caList}" var="category">
 		<div class="container">
+			<c:if test='${category.ca_name == "공지"}'>
+				<span style="font-weight: bolder;">${category.ca_name} <a href="#">게시판추가</a></span>
+				<ul>
+					<c:forEach items="${boList}" var="board">
+						<c:if test='${board.bo_ca_name == "공지"}'>
+							<li>
+								<c:url value="/post/list" var="boardUrl">
+									<c:param name="num" value="${board.bo_num}" />
+								</c:url>
+								<a href="${boardUrl}">${board.bo_name}</a>
+								<span><a href="#">수정</a></span>
+								<span><a href="#">삭제</a></span>
+							</li>
+						</c:if>
+					</c:forEach>				
+				</ul>
+			</c:if>
+		</div>
+	</c:forEach>
+	<c:forEach items="${caList}" var="category">
+		<div class="container">
+			<c:if test='${category.ca_name != "공지"}'>
 			<span style="font-weight: bolder;">${category.ca_name} <a href="#">게시판추가</a></span>
-			<ul>
-				<c:forEach items="${boList}" var="board">
-					<c:if test="${category.ca_name == board.bo_ca_name}">
-						<li>
-							<c:url value="/post/list" var="boardUrl">
-								<c:param name="num" value="${board.bo_num}" />
-							</c:url>
-							<a href="${boardUrl}">${board.bo_name}</a>
-							<span><a href="#">수정</a></span>
-							<span><a href="#">삭제</a></span>
-						</li>
-					</c:if>
-				</c:forEach>				
-			</ul>
+				<ul>
+					<c:forEach items="${boList}" var="board">
+						<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
+							<li>
+								<c:url value="/post/list" var="boardUrl">
+									<c:param name="num" value="${board.bo_num}" />
+								</c:url>
+								<a href="${boardUrl}">${board.bo_name}</a>
+								<span><a href="#">수정</a></span>
+								<span><a href="#">삭제</a></span>
+							</li>
+						</c:if>
+					</c:forEach>				
+				</ul>
+			</c:if>
 		</div>
 	</c:forEach>
 </div>
