@@ -103,6 +103,7 @@
 <script type="text/javascript">
 	$(document).on("blur","#board",function(){
 		let bo_num = $(this).val();
+		alert(bo_num);
 		$.ajax({
 			url : '<c:url value="/post/insert"/>',
 			method : 'post',
