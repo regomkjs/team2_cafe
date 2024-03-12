@@ -9,7 +9,9 @@
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <style type="text/css">
+
 	.side_menu{
 		width: 300px; height: 100%; 
 		background-color: yellow;
@@ -19,7 +21,26 @@
 		border: 1px solid black;
 		background-color: white;
 	}
-</style>
+</style>	
+	<script type="text/javascript">
+	
+	$("button").click(function(){
+		$.ajax({
+			url : '<c:url value="category/insert"/>',
+			method : 'get',
+			data :{
+				num : 1 
+			},
+			success : function(data){
+				alert(data);
+			},
+			error : function(xhr, status, error){
+			}
+		})
+	});
+</script>
+	
+
 </head>
 <body>
 <div class="side_menu">
@@ -27,7 +48,7 @@
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item col-6">
- 				<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
+		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
  			</li>
  			<c:if test="${user != null}">
 	 			<li class="nav-item col-6">
@@ -47,9 +68,12 @@
 			</div>
 		</div>
 	</div>
-	<c:forEach begin="1" end="3">
-		<div class="container ">
-			<span style="font-weight: bolder;">카테고리명 <a href="#">게시판추가</a></span>
+	
+	<a class = "btn"  href = '<c:url value="category/insert" />'> 관리자 페이지</a>
+
+	<c:forEach  items="${category.ca_name}" var="category">
+		<div class="container">
+			<span style="font-weight: bolder;">카테고리명<a href="#">게시판추가</a></span>
 			<ul>
 				<c:forEach begin="1" end="4">
 					<li>

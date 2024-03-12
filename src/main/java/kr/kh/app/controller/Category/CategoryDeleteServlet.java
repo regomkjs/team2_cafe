@@ -39,6 +39,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 		boolean res = postService.deleteCategory(num);
 		if(res) {
 			request.setAttribute("msg", "카테고리를 삭제했습니다.");
+			
 			//화면에 url로 category를 전송.
 			request.setAttribute("url", "/category");
 			
