@@ -16,7 +16,8 @@ import kr.kh.app.service.MemberServiceImp;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private MemberService memberService = new MemberServiceImp();
+    
+	private MemberService memberService = new MemberServiceImp();
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
@@ -35,11 +36,13 @@ public class LoginServlet extends HttpServlet {
 			//로그인 실패 알림 후 메인으로
 			request.setAttribute("msg", "등록되지 않은 회원입니다.");
 			request.setAttribute("url", "login");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
 		else if(!user.getMe_pw().equals(loginUser.getPw())) {
 			request.setAttribute("msg", "비밀번호가 잘못됐습니다.");
 			request.setAttribute("url", "login");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			return;
 		}
 		else {
@@ -54,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("msg", "관리자입니다.");
 			request.setAttribute("url", "");
 		}
+		
 		//전송
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}

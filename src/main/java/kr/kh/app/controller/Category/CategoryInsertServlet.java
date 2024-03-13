@@ -26,7 +26,7 @@ public class CategoryInsertServlet extends HttpServlet {
 		//카테고리는 관리자만 추가 가능하기 때문에 아래 작업을 진행
 		//로그인한 관리자 정보를 가져옴 => 세션에서 admin 정보를 가져옴
 		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO)session.getAttribute("user");
+		MemberVO user = (MemberVO)session.getAttribute("sujin");
 		
 		//회원정보가 없으면 메인으로 이동
 		if(user == null) {
@@ -35,27 +35,14 @@ public class CategoryInsertServlet extends HttpServlet {
 		}
 		
 		//카테고리 리스트를 가져옴
-		ArrayList<CategoryVO> categoryList = postService.getCategoryList();
+		ArrayList<CategoryVO> categoryList = postService.selectCategory();
 		request.setAttribute("categoryList", categoryList);
 		request.getRequestDispatcher("/WEB-INF/views/category/insert.jsp").forward(request, response);
 		
 		}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//카테고리 리스트를 불러옴
-		
-		
-		/*
-		 * if (categoryList == null) {
-		 * response.sendRedirect(request.getContextPath()+"/category/list"); }
-		 * if(postService.insertCategory(categoryList)) {
-		 * response.sendRedirect(request.getContextPath()+"/category"); }else {
-		 * response.sendRedirect(request.getContextPath()+"/sidebar"); }
-		 * 
-		 * // 추가한 후에 다시 카테고리 페이지로 리다이렉트 response.sendRedirect(request.getContextPath() +
-		 * "/category");
-		 */
-	       
+	
 	}
 
 }

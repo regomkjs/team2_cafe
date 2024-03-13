@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import kr.kh.app.model.vo.CategoryVO;
 
+
 public interface PostService {
 
-	ArrayList<CategoryVO> getCategoryList();
+	ArrayList<CategoryVO> selectCategory();
 		
 	boolean deleteCategory(int num);
 

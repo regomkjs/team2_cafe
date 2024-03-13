@@ -35,7 +35,7 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		if(!checking(member.getMe_id()) 
-				|| !checking(member.getMe_pw())) {
+		  || !checking(member.getMe_pw())) {
 			return false;
 		}
 		return memberDao.insertMember(member);

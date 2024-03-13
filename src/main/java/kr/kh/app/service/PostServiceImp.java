@@ -30,8 +30,8 @@ public class PostServiceImp implements PostService{
 	}
 	//카테고리 불러오기
 	@Override
-	public ArrayList<CategoryVO> getCategoryList() {
-		return postDao.selectCategoryList();
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
 	}
 	//카테고리 삭제
 	@Override

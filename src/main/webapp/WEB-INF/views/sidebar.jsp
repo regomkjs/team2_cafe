@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	
-	<a class = "btn"  href = '<c:url value="category/insert" />'> 관리자 페이지</a>
+	<a class = "btn"  href = '<c:url value="/category/insert" />'> 관리자 페이지</a>
 
 	<c:forEach  items="${category.ca_name}" var="category">
 		<div class="container">
