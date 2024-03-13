@@ -2,12 +2,16 @@ package kr.kh.app.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
@@ -19,31 +23,28 @@ public class BoardListServlet extends HttpServlet {
 	private PostService postService = new PostServiceImp();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ArrayList<CategoryVO> categoryList = postService.getCategoryList();
+		ArrayList<BoardVO> boardList = postService.getBoardList();
+		
+		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("boardList", boardList);
+		
 		ArrayList<HeadVO> headList = postService.getHeadList();
 		request.setAttribute("headList", headList);
 		
+		//말머리 추가
+		
 		String inputHead = request.getParameter("inputHead");
-		HeadVO head = new HeadVO(inputHead);
-		
-		if(postService.insertHead(head)) {
-			System.out.println("입력 성공");
-		}
-		
-		int selectHead = 0;
-		if(request.getParameter("selectHead")!=null) {
-			selectHead = Integer.parseInt(request.getParameter("selectHead")); //he_num
-		}
-		
+		String selectHead = request.getParameter("selectHead"); //he_num
 		String updateHead = request.getParameter("updateHead");
+		String deleteHead = request.getParameter("deleteHead");
 		
-		HeadVO updateHeader = new HeadVO(selectHead, updateHead);
-		if(postService.updateHead(updateHeader)) {
-			System.out.println("수정 성공");
-		} else {
-			System.out.println("수정 실패");
+		if(postService.manageHead(inputHead, selectHead, updateHead, deleteHead)) {
+			response.sendRedirect(request.getContextPath() + "/board/list");
+			return;
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response); //boardList 완성 시 변경
+		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
 
 	}
 
