@@ -17,6 +17,9 @@
 		select * from head
 	</select>
 	<update id="updateHead">
-		update head set he_num = #{updateHead.he_num} where he_name = #{updateHead.he_name}
+		update head set he_name = #{updateHead.he_name} where he_num = #{updateHead.he_num}
 	</update>
+	<delete id="deleteHead">
+		delete from head where he_num = #{deleteHead.he_num}
+	</delete>
 </mapper>

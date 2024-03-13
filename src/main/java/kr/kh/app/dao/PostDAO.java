@@ -20,5 +20,7 @@ public interface PostDAO {
 
 	void updateHead(@Param("updateHead")HeadVO updateHeader);
 
+	void deleteHead(@Param("deleteHead")HeadVO deleteHead);
+
 
 }

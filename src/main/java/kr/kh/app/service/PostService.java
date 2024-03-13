@@ -12,11 +12,10 @@ public interface PostService {
 
 	ArrayList<BoardVO> getBoardList();
 
-	boolean insertHead(HeadVO head);
-
 	ArrayList<HeadVO> getHeadList();
 
-	boolean updateHead(HeadVO updateHeader);
-
-
+	boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead);
+	
+	
+	
 }

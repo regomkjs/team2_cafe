@@ -40,29 +40,39 @@ public class PostServiceImp implements PostService{
 	public ArrayList<BoardVO> getBoardList() {
 		return postDao.selectBoardList();
 	}
-
-	@Override
-	public boolean insertHead(HeadVO inputHead) {
-		if(checkString(inputHead.getHe_name())) {
-			return false;
-		}
-		postDao.insertHead(inputHead);
-		return true;
-	}
-
+	
 	@Override
 	public ArrayList<HeadVO> getHeadList() {
 		return postDao.selectHeadList();
 	}
-
+	
 	@Override
-	public boolean updateHead(HeadVO updateHeader) {
-		if(checkString(updateHeader.getHe_name())) {
-			return false;
+	public boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead) {
+		if(!checkString(inputHead)) {
+			HeadVO insertHeader = new HeadVO(inputHead);
+			postDao.insertHead(insertHeader);
+			return true;
 		}
 		
-		postDao.updateHead(updateHeader);
-		return true;
+		if(!checkString(selectHead)) {
+			if(!checkString(updateHead)) {
+				if(Integer.parseInt(selectHead)!=-1) {
+					HeadVO updateHeader = new HeadVO(Integer.parseInt(selectHead), updateHead);
+					postDao.updateHead(updateHeader);
+					return true;
+				}
+			}
+		}
+		
+		if(!checkString(deleteHead)) {
+			if(Integer.parseInt(deleteHead)!=-2) {
+				HeadVO deleteHeader = new HeadVO(Integer.parseInt(deleteHead));
+				postDao.deleteHead(deleteHeader);
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	private boolean checkString(String str) {
@@ -71,5 +81,4 @@ public class PostServiceImp implements PostService{
 		}
 		return false;
 	}
-	
 }
