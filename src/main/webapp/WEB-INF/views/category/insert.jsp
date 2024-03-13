@@ -33,10 +33,10 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		메인 화면에 보여줄 리스트 구상
+		<c:forEach items="${categoryList}" var="category">
+			${category.ca_name }
+		</c:forEach>
+	</div>
 </div>
-</div>
-	
-
 </body>
 </html>

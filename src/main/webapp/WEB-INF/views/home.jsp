@@ -23,6 +23,7 @@
 		height: 1000px;
 		background-color: green;
 	}
+	
 </style>
 </head>
 
@@ -34,8 +35,9 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		메인 화면에 보여줄 리스트 구상
+	 메인 화면에 보여줄 리스트 구상
 </div>
+
 </div>
 	
 </body>
