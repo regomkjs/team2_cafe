@@ -23,6 +23,7 @@ public class CategoryInsertServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//
 		//카테고리는 관리자만 추가 가능하기 때문에 아래 작업을 진행
 		//로그인한 관리자 정보를 가져옴 => 세션에서 admin 정보를 가져옴
 		//HttpSession session = request.getSession();
