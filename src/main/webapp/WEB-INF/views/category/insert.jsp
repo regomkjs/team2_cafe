@@ -15,20 +15,24 @@
 	.main-img-box{
 		width: 100%;
 		height: 250px;
-		background-color: tomato;
+		background-color: white;
 	}
 	.main-content{
 		width: 100%;
 		height: 1000px;
-		background-color: green;
+		background-color: white;
 	}
+	
 </style>
 </head>
 
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-img-box">
-	중앙에 이미지 배치, 클릭시 메인으로 이동
+
+<div class="container-fluid p-5 bg-dark text-white text-center">
+	<p>고양이 카페 관리자 페이지</p>
+	<p>카테고리추가</p>
+	
 </div>
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
@@ -36,7 +40,10 @@
 		<c:forEach items="${categoryList}" var="category">
 			${category.ca_name }
 		</c:forEach>
+		<img src="https://health.chosun.com/site/data/img_dir/2023/07/17/2023071701753_0.jpg" class="rounded" alt="Cinque Terre">
 	</div>
 </div>
+
+
 </body>
 </html>
