@@ -15,6 +15,8 @@ public interface PostDAO {
 
 	ArrayList<BoardVO> selectBoard();
 
+	ArrayList<HeadVO> selectAllHead();
+
 	ArrayList<PostVO> selectPostByBoNum(@Param("bo_num")int bo_num);
 
 	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
@@ -24,5 +26,6 @@ public interface PostDAO {
 	PostVO selectPostByPoNum(@Param("po_num")int po_num);
 
 	boolean deletePost(@Param("po_num")int num, @Param("me_id")String me_id);
+
 
 }

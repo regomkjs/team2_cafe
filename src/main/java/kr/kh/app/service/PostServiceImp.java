@@ -43,6 +43,12 @@ public class PostServiceImp implements PostService{
 	}
 
 	@Override
+	public ArrayList<HeadVO> getHeList() {
+		return postDao.selectAllHead();
+	}
+
+	
+	@Override
 	public ArrayList<PostVO> getPostByBoNum(int bo_num) {
 		return postDao.selectPostByBoNum(bo_num);
 	}
@@ -83,6 +89,7 @@ public class PostServiceImp implements PostService{
 		return true;
 	}
 
+	
 	
 
 	

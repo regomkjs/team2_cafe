@@ -19,12 +19,15 @@
 		select * from head where he_num = #{po_he_num}
 	</select>
 	
-	
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
 	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
 		select * from board
+	</select>
+	
+	<select id="selectAllHead" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head
 	</select>
 	
 	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">

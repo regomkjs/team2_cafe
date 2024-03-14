@@ -13,6 +13,8 @@ public interface PostService {
 
 	ArrayList<BoardVO> getBoList();
 
+	ArrayList<HeadVO> getHeList();
+
 	ArrayList<PostVO> getPostByBoNum(int bo_num);
 
 	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);

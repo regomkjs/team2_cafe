@@ -15,6 +15,7 @@ public class PostVO {
  	private String po_datetime; 
 	private int po_he_num;
 	private String po_me_id;
+	private int he_num;
 	private String he_name;
 	private String he_bo_num;
 	HeadVO head;
