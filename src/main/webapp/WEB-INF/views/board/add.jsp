@@ -38,6 +38,15 @@
 	<form action="<c:url value="/board/add"/>" method="post">
 		<h5>게시판 추가</h5>
 		<div class="mb-3 mt-3">
+		
+		<select name="categorySelect" class="form-select" placeholder="카테고리를 선택하세요.">
+	   			<c:forEach items="${categoryList}" var="categoryList">
+	   				<option value="${categoryList.ca_name}">${categoryList.ca_name}</option>
+	   			</c:forEach>
+		</select>
+		
+		</div>
+		<div class="mb-3 mt-3">
    			<label for="id">게시판 이름 :</label>
    			<input type="text" class="form-control" id="name" placeholder="새로운 게시판 이름을 입력하세요." name="name">
 		</div>

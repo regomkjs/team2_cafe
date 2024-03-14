@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CategoryVO;
 
 public class BoardServiceImp implements BoardService {
 
@@ -50,5 +51,11 @@ public class BoardServiceImp implements BoardService {
 	        return false;
 	    else
 	        return true;
+	}
+
+	@Override
+	public ArrayList<CategoryVO> getcategoryList() {
+		
+		return boardDao.selectCategoryList();
 	}
 }

@@ -18,7 +18,8 @@ import kr.kh.app.service.BoardServiceImp;
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private BoardService boardService = new BoardServiceImp();
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		// 서비스에게 게시판 리스트를 달라고 요청 : getBoardList();
 		ArrayList<BoardVO> list = boardService.getBoardList();

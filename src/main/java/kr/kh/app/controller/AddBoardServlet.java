@@ -1,6 +1,8 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
+import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.BoardService;
 import kr.kh.app.service.BoardServiceImp;
@@ -25,6 +28,9 @@ public class AddBoardServlet extends HttpServlet {
 		// (임시 : user인 이유 LoginServlet에서 request.getSession().setAttribute("user", user); 에서 user라고 사용했기 때문 => 관리자는 따로 해야하나?)
 		// (임시 : 현재는 모든 회원이 보임)'회원 정보가 없으면 로그인이 필요한 서비스입니다' 라고 출력 후 게시판 리스트로 이동
 		
+		ArrayList<CategoryVO> categoryList = boardService.getcategoryList();
+		request.setAttribute("categoryList", categoryList);
+		
 		if(user==null) {
 			// 그냥 안보이게 하고싶은데 아직 구현 X (일단 다 보이고 넘어가는 상황)
 			request.setAttribute("url", "board/list");
@@ -34,6 +40,8 @@ public class AddBoardServlet extends HttpServlet {
 		else {
 		request.getRequestDispatcher("/WEB-INF/views/board/add.jsp").forward(request, response);
 		}
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

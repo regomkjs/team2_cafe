@@ -10,4 +10,7 @@
 		insert into board(bo_name,bo_ca_name)
 		values(#{board.bo_name}, "")
 	</insert>
+	<select id="selectCategoryList" resultType="kr.kh.app.model.vo.CategoryVO">
+		select * from category
+	</select>
 </mapper>
