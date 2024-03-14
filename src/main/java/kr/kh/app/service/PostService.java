@@ -19,4 +19,8 @@ public interface PostService {
 
 	boolean insertPost(PostVO post);
 
+	PostVO getPostbyPoNum(int po_num);
+
+	boolean deletePost(int num, String me_id);
+
 }

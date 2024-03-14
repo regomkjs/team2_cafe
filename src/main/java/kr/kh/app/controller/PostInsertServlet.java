@@ -40,7 +40,6 @@ public class PostInsertServlet extends HttpServlet {
 		PostVO post = new PostVO(po_title, po_content, po_writer, po_he_num, po_me_id);
 		boolean res = postService.insertPost(post);
 		response.getWriter().write(""+res);
-		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 
 }

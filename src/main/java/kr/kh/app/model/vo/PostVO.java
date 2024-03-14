@@ -18,6 +18,8 @@ public class PostVO {
 	private String he_name;
 	private String he_bo_num;
 	HeadVO head;
+	private int bo_num; 
+	private String bo_name;
 	
 	public PostVO(String po_title, String po_content, String po_writer, int po_he_num, String po_me_id) {
 		this.po_title = po_title;

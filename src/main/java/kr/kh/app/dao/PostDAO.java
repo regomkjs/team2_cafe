@@ -21,4 +21,8 @@ public interface PostDAO {
 
 	boolean insertPost(@Param("post")PostVO post);
 
+	PostVO selectPostByPoNum(@Param("po_num")int po_num);
+
+	boolean deletePost(@Param("po_num")int num, @Param("me_id")String me_id);
+
 }

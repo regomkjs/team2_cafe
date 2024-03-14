@@ -38,8 +38,51 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		<div class="container mt-3 mb-3">
-			
+		<div class="container  mt-3 mb-3">
+			<div class="container mt-3 mb-3">
+				<div class="mb-3 container">
+					<div class="form-control">
+						<div class="mb-3 mt-3 ">
+					  		<div id="board" class="d-flex">
+					  			<div class="col-4" style="font-weight: bold;">${post.bo_name}</div>
+					  			<div class="d-flex justify-content-end ms-auto">
+					  				<c:if test="${post.po_me_id == user.me_id}">
+						  				<c:url var="updateUrl" value="/post/update">
+											<c:param name="num" value="${post.po_num}"/>
+										</c:url>
+						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
+					  				</c:if>
+					  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
+					  					<c:url var="deleteUrl" value="/post/delete">
+											<c:param name="num" value="${post.po_num}"/>
+										</c:url>
+					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
+					  				</c:if>
+					  			</div>
+					  		</div>
+						</div>
+						
+						<div class="mb-2 mt-3 ">
+					  		<div id="title" class="d-flex">
+					  			<div class="col-1">제목 :</div>
+					  			<div style="margin-right: 5px">[${post.he_name}]</div>
+					  			<div class="col-9">${post.po_title}</div>
+					  		</div>
+						</div>
+						<div class="mb-2 mt-2 ">
+					  		<div id="writer" class="d-flex">
+					  			<div class="col-3" style="font-size: small; text-align: center;">작성자 : ${post.po_writer}</div>
+					  			<div class="col-9" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
+					  		</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-3 container">
+			  		<div class="mb-3 form-control" style="min-height: 300px">
+			  			${post.po_content}
+			  		</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

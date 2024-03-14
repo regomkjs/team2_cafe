@@ -63,7 +63,18 @@ public class PostServiceImp implements PostService{
 		return postDao.insertPost(post);
 	}
 	
+	@Override
+	public PostVO getPostbyPoNum(int po_num) {
+		return postDao.selectPostByPoNum(po_num);
+	}
 	
+	@Override
+	public boolean deletePost(int num, String me_id) {
+		if(!checkString(me_id)) {
+			return false;
+		}
+		return postDao.deletePost(num, me_id);
+	}
 	
 	private boolean checkString(String str) {
 		if(str == null || str.length() == 0) {
@@ -71,5 +82,9 @@ public class PostServiceImp implements PostService{
 		}
 		return true;
 	}
+
+	
+
+	
 	
 }

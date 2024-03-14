@@ -39,7 +39,7 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="container main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			<form action="<c:url value="/post/insert"/>" method="post" enctype="multipart/form-data">
+			<form action="<c:url value="/"/>" method="post" enctype="multipart/form-data">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
@@ -160,12 +160,12 @@
 				if(data == "true"){
 					alert("게시글을 등록했습니다.")
 					location.href = "<c:url value='/'/>"
-					return;
+					return true;
 				}
 				else{
 					alert("게시글 등록에 실패했습니다.")
 					location.href = "<c:url value='/'/>"
-					return;
+					return true;
 				}
 			},
 			error : function(a,b,c){
