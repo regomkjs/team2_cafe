@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
 		
 		MemberVO user = memberService.getMember(loginUser.getId());
 		
-		if(	   user == null 
+		if(	  user == null 
 			|| user.getMe_id() == null
 			|| user.getMe_id().length() == 0) {
 			//로그인 실패 알림 후 메인으로

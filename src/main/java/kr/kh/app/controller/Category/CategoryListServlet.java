@@ -16,16 +16,16 @@ import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
 
-@WebServlet("/category/insert")
-public class CategoryInsertServlet extends HttpServlet {
+@WebServlet("/category")
+public class CategoryListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
 	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title = request.getParameter("title");
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//카테고리 리스트를 가져옴
+		ArrayList<CategoryVO> categoryList = postService.selectCategory();
+		request.setAttribute("categoryList", categoryList);
+		request.getRequestDispatcher("/WEB-INF/views/category/list.jsp").forward(request, response);
 		
 	}
 

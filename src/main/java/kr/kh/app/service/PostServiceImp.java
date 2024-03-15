@@ -10,7 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.PostDAO;
+import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.PostVO;
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -42,6 +44,16 @@ public class PostServiceImp implements PostService{
 	@Override
 	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
 		return postDao.insertCategory(categoryList);
+	}
+	//
+	@Override
+	public ArrayList<PostVO> getPoList() {
+		
+		return postDao.selectPost();
+	}
+	@Override
+	public ArrayList<BoardVO> getBoList() {
+		return postDao.selectBoard();
 	}
 	
 }

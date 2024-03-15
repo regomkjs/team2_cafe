@@ -62,7 +62,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 		 * categoryList.add(category); } }
 		response.sendRedirect(request.getContextPath() + "/category");
 		 */
-	
+		
         
 	}
 

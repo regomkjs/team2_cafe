@@ -49,7 +49,7 @@
 		<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item col-6">
 		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
- 			</li>
+ 				</li>
  			<c:if test="${user != null}">
 	 			<li class="nav-item col-6">
 	 				<a class="nav-link" data-bs-toggle="tab" href="#menu1">유저</a>
@@ -60,6 +60,9 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active"><br>
 		    	<p>카페정보</p>
+		    	<span> <a href = '<c:url value="/post/list" />'> 
+		    	이용자수/전체회원수</a></span>
+		    	<br>
 		    	<br>
 		    	<p>카페관리</p>
 		    </div>
@@ -68,7 +71,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<a class="btn"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 
 	<c:forEach  items="${category.ca_name}" var="category">

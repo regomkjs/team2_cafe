@@ -27,7 +27,7 @@ public class MemberServiceImp implements MemberService {
 			e.printStackTrace();
 		
 			}
-	}
+			}
 
 	@Override
 	public boolean signupMember(MemberVO member) {
@@ -41,10 +41,6 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.insertMember(member);
 	}
 	
-	
-	
-	
-
 	@Override
 	public MemberVO getMember(String id) {
 		if(!checking(id)) {
@@ -64,5 +60,14 @@ public class MemberServiceImp implements MemberService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean countMember(MemberVO user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
 	
 }

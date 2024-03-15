@@ -13,6 +13,11 @@
 		update category set
 			ca_name = #{category.ca_name}
 	</update>
-	
+	<select id="selectPost" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post
+	</select>
+	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board
+	</select>
 	
 </mapper>
