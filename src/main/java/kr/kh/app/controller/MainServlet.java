@@ -21,13 +21,14 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> categoryList = postService.getCategoryList();
 		ArrayList<BoardVO> boardList = postService.getBoardList();
+		int allPostNum = postService.getAllPostNum();
 		
+		request.setAttribute("allPostNum", allPostNum);
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("boardList", boardList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
-		
 		
 	}
 }

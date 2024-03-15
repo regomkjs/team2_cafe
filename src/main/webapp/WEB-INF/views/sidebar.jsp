@@ -40,11 +40,14 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active"><br>
 		    	<p>카페정보</p>
-		    	<br>
+		    	<a href="#">${allPostNum}</a> 
 		    	<p>카페관리</p>
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
+		    	<a class="btn bg-primary" href="<c:url value="/my/page"/>">회원정보 수정</a>
+		    	<a class="btn bg-primary mt-1" href="<c:url value="/my/post"/>">내가 쓴 글 보기</a>
+		    	<a class="btn bg-primary mt-1" href="<c:url value="/my/comment"/>">내가 쓴 댓글보기</a>
 			</div>
 		</div>
 	</div>

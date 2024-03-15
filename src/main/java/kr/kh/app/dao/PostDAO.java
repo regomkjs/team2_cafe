@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.PostVO;
 
 public interface PostDAO {
 
@@ -14,13 +15,17 @@ public interface PostDAO {
 
 	ArrayList<BoardVO> selectBoardList();
 
-	void insertHead(@Param("inputHead")HeadVO inputHead);
-
 	ArrayList<HeadVO> selectHeadList();
+	
+	void insertHead(@Param("inputHead")HeadVO inputHead);
 
 	void updateHead(@Param("updateHead")HeadVO updateHeader);
 
 	void deleteHead(@Param("deleteHead")HeadVO deleteHead);
+
+	ArrayList<PostVO> selectMyPostList(@Param("me_id")String me_id);
+
+	int selectAllPostNum();
 
 
 }

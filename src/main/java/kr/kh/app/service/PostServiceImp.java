@@ -13,6 +13,7 @@ import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.PostVO;
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -80,5 +81,19 @@ public class PostServiceImp implements PostService{
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public ArrayList<PostVO> getMyPostList(String me_id) {
+		if(!checkString(me_id)) {
+			return postDao.selectMyPostList(me_id);
+		}
+		return null;
+		
+	}
+
+	@Override
+	public int getAllPostNum() {
+		return postDao.selectAllPostNum();
 	}
 }
