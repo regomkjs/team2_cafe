@@ -31,7 +31,12 @@
 	</select>
 	
 	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
-		select * from post join head on he_num = po_he_num where he_bo_num = #{bo_num}
+		select * 
+		from 
+			post 
+			join head on he_num = po_he_num 
+		where he_bo_num = #{bo_num}
+		order by po_num desc
 	</select>
 	
 	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
