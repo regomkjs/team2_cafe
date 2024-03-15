@@ -82,12 +82,26 @@ public class PostServiceImp implements PostService{
 		return postDao.deletePost(num, me_id);
 	}
 	
+	@Override
+	public boolean updatePost(PostVO post) {
+		if(post == null||
+				!checkString(post.getPo_content()) ||
+				!checkString(post.getPo_title()) ||
+				!checkString(post.getPo_me_id())||
+				!checkString(post.getPo_writer())) {
+			return false;
+		}
+		return postDao.updatePost(post);
+	}
+	
 	private boolean checkString(String str) {
 		if(str == null || str.length() == 0) {
 			return false;
 		}
 		return true;
 	}
+
+	
 
 	
 	

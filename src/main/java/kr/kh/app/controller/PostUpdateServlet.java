@@ -46,8 +46,42 @@ public class PostUpdateServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int he_num;
+		int po_num;
+		try {
+			he_num = Integer.parseInt(request.getParameter("head"));
+			po_num = Integer.parseInt(request.getParameter("poNum"));
+		}
+		catch (Exception e) {
+			he_num = 0;
+			po_num = 0;
+			e.printStackTrace();
+		}
+		String po_title = request.getParameter("title");
+		String po_content = request.getParameter("content");
+		PostVO post = postService.getPostbyPoNum(po_num);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		if(post == null || !post.getPo_me_id().equals(user.getMe_id())) {
+			request.setAttribute("msg", "수정권한이 없습니다.");
+			request.setAttribute("url", "post/detail?num="+po_num);
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}
+		if(user.getMe_nick() != null) {
+			post.setPo_writer(user.getMe_nick());
+		}
+		post.setPo_he_num(he_num);
+		post.setPo_title(po_title);
+		post.setPo_content(po_content);
+		
+		boolean res = postService.updatePost(post);
+		if(res) {
+			request.setAttribute("msg", "게시글이 수정 되었습니다.");
+		}
+		else {
+			request.setAttribute("msg", "게시글 수정에 실패했습니다.");
+		}
+		request.setAttribute("url", "post/detail?num="+po_num);
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 
 }

@@ -25,4 +25,6 @@ public interface PostService {
 
 	boolean deletePost(int num, String me_id);
 
+	boolean updatePost(PostVO post);
+
 }

@@ -39,7 +39,8 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			<form action="<c:url value="/"/>" method="post" enctype="multipart/form-data">
+			<form action="<c:url value="/post/update"/>" method="post">
+				<input type="text" value="${post.po_num}" id="poNum" name="poNum" hidden="">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
