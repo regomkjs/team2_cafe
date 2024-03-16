@@ -71,8 +71,9 @@
 						</div>
 						<div class="mb-2 mt-2 ">
 					  		<div id="writer" class="d-flex">
-					  			<div class="col-3" style="font-size: small; text-align: center;">작성자 : ${post.po_writer}</div>
-					  			<div class="col-9" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
+					  			<div class="col-2" style="font-size: small;">작성자 : ${post.po_writer}</div>
+					  			<div class="col-4" style="font-size: small;">조회수 : ${post.po_view}</div>
+					  			<div class="col-6" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
 					  		</div>
 						</div>
 					</div>

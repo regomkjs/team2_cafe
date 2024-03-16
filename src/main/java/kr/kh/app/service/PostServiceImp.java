@@ -32,6 +32,14 @@ public class PostServiceImp implements PostService{
 		}
 	}
 
+	private boolean checkString(String str) {
+		if(str == null || str.length() == 0) {
+			return false;
+		}
+		return true;
+	}
+
+	
 	@Override
 	public ArrayList<CategoryVO> getCaList() {
 		return postDao.selectCategory();
@@ -94,11 +102,10 @@ public class PostServiceImp implements PostService{
 		return postDao.updatePost(post);
 	}
 	
-	private boolean checkString(String str) {
-		if(str == null || str.length() == 0) {
-			return false;
-		}
-		return true;
+	
+	@Override
+	public void updateView(int num) {
+		postDao.updateView(num);
 	}
 
 	

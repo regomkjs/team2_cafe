@@ -39,7 +39,10 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="container main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			<form action="<c:url value="/"/>" method="post">
+			<c:url value="/post/list" var="url">
+				<c:param name="num" value="${board}"/>
+			</c:url>
+			<form action="${url}" method="post">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
