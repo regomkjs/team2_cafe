@@ -85,8 +85,8 @@
 				</div>
 			</div>
 			
-			<div>
-			<!-- 목록으로 버튼 --> 
+			<div class="form-control">
+			
 			
 			</div>
 		</div>
