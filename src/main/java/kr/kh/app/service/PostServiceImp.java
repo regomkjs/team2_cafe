@@ -12,8 +12,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
+import kr.kh.app.pagination.CommentCriteria;
+import kr.kh.app.pagination.Criteria;
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -106,6 +109,22 @@ public class PostServiceImp implements PostService{
 	@Override
 	public void updateView(int num) {
 		postDao.updateView(num);
+	}
+
+	@Override
+	public ArrayList<CommentVO> getCommentList(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria(1,2);
+		}
+		return postDao.selectCommentList(cri);
+	}
+
+	@Override
+	public int getTotalCountComment(Criteria cri) {
+		if(cri == null) {
+			return 0;
+		}
+		return postDao.selectTotalCountComment(cri);
 	}
 
 	

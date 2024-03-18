@@ -75,4 +75,18 @@
 	<update id="updateView">
 		update post set po_view = po_view + 1 where po_num = #{po_num}
 	</update>
+	
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment
+		where co_po_num = #{cri.poNum}
+		order by co_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotalCountComment" resultType="int">
+		select count(*) from comment
+		where co_po_num = #{cri.poNum}
+	</select>
+	
+	
 </mapper>

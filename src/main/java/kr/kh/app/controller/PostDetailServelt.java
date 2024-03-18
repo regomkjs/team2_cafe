@@ -31,6 +31,7 @@ public class PostDetailServelt extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(num);
 		postService.updateView(num);
 		PostVO post = postService.getPostbyPoNum(num);
 		if(post != null) {
@@ -39,9 +40,5 @@ public class PostDetailServelt extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+	
 }

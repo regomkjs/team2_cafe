@@ -40,59 +40,155 @@
 	<div class="main-content flex-grow-1">
 		<div class="container  mt-3 mb-3">
 			<div class="container mt-3 mb-3">
-				<div class="mb-3 container">
-					<div class="form-control">
-						<div class="mb-3 mt-3 ">
-					  		<div id="board" class="d-flex">
-					  			<div class="col-4" style="font-weight: bold;">${post.bo_name}</div>
-					  			<div class="d-flex justify-content-end ms-auto">
-					  				<c:if test="${post.po_me_id == user.me_id}">
-						  				<c:url var="updateUrl" value="/post/update">
-											<c:param name="num" value="${post.po_num}"/>
-										</c:url>
-						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
-					  				</c:if>
-					  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
-					  					<c:url var="deleteUrl" value="/post/delete">
-											<c:param name="num" value="${post.po_num}"/>
-										</c:url>
-					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
-					  				</c:if>
-					  			</div>
-					  		</div>
-						</div>
-						
-						<div class="mb-2 mt-3 ">
-					  		<div id="title" class="d-flex">
-					  			<div class="col-1">제목 :</div>
-					  			<div style="margin-right: 5px">[${post.he_name}]</div>
-					  			<div class="col-9">${post.po_title}</div>
-					  		</div>
-						</div>
-						<div class="mb-2 mt-2 ">
-					  		<div id="writer" class="d-flex">
-					  			<div class="col-2" style="font-size: small;">작성자 : ${post.po_writer}</div>
-					  			<div class="col-4" style="font-size: small;">조회수 : ${post.po_view}</div>
-					  			<div class="col-6" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
-					  		</div>
-						</div>
+				<div class="form-control">
+					<div class="mb-3 mt-3 ">
+				  		<div id="board" class="d-flex">
+				  			<div class="col-4" style="font-weight: bold;">${post.bo_name}</div>
+				  			<div class="d-flex justify-content-end ms-auto">
+				  				<c:if test="${post.po_me_id == user.me_id}">
+					  				<c:url var="updateUrl" value="/post/update">
+										<c:param name="num" value="${post.po_num}"/>
+									</c:url>
+					  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
+				  				</c:if>
+				  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
+				  					<c:url var="deleteUrl" value="/post/delete">
+										<c:param name="num" value="${post.po_num}"/>
+									</c:url>
+				  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
+				  				</c:if>
+				  			</div>
+				  		</div>
+					</div>
+					
+					<div class="mb-2 mt-3 ">
+				  		<div id="title" class="d-flex">
+				  			<div class="col-1">제목 :</div>
+				  			<div style="margin-right: 5px">[${post.he_name}]</div>
+				  			<div class="col-9">${post.po_title}</div>
+				  		</div>
+					</div>
+					<div class="mb-2 mt-2 ">
+				  		<div id="writer" class="d-flex">
+				  			<div class="col-2" style="font-size: small;">작성자 : ${post.po_writer}</div>
+				  			<div class="col-4" style="font-size: small;">조회수 : ${post.po_view}</div>
+				  			<div class="col-6" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
+				  		</div>
 					</div>
 				</div>
-				<div class="mb-3 container">
-			  		<div class="mb-3 form-control" style="min-height: 300px">
-			  			${post.po_content}
-			  		</div>
-				</div>
+				<hr>
+		  		<div class="mb-3 form-control" style="min-height: 300px">
+		  			${post.po_content}
+		  		</div>
 			</div>
 			
-			<div class="form-control">
-			
-			
+			<div class="mt-3 mb-3 comment-box container">
+				<h4>댓글</h4>
+				<!-- 댓글 리스트를 보여주는 박스 -->
+				<div class="comment-list">
+					
+				</div>
+				<!-- 댓글 페이지네이션 박스 -->
+				<div class="comment-pagination">
+					<ul class="pagination justify-content-center">
+					
+					</ul>
+				</div>
+				<!-- 댓글 입력 박스 -->
+				<div class="comment-input-box">
+					<div class="input-group">
+						<textarea rows="4" class="form-control comment-content"></textarea>
+						<button type="button" class="btn btn-outline-success col-2 btn-comment-insert">등록</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- 댓글 리스트 출력 스크립트 -->
+<script type="text/javascript">
+let cri = {
+	page : 1,
+	poNum : '${post.po_num}'
+}
+getCommentList(cri)
+function getCommentList(cri) {
+	$.ajax({
+		url : '<c:url value="/comment/list"/>',
+		method : "post",
+		data : cri,
+		success : function(data){
+			console.log(data.list);
+			let str = '';
+			
+			for(comment of data.list){
+				let btns = "";
+				if('${user.me_id}' == comment.co_me_id){
+					btns += 
+					`
+					<div class="btn-comment-group">
+						<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.co_num}">수정</button>
+						<button class="btn btn-outline-danger btn-comment-delete" data-num="\${comment.co_num}">삭제</button>
+					</div>
+					`
+				}
+					
+				
+				str +=
+					`
+						<div class="input-group mb-3 box-comment">
+							<div class="col-3">\${comment.co_me_id}</div>
+							<div class="col-6 co_content">\${comment.co_content}</div>
+							\${btns}
+						</div>
+						<hr>
+					`;
+			}
+			$(".comment-list").html(str);
+			//JSON.parse(문자열) : json형태의 문자열을 객체로 변환
+			//JSON.stringify(객체) : 객체를 json형태의 문자열로 변환
+			let pm = JSON.parse(data.pm);
+			console.log(pm);
+			let pmStr = "";
+			//이전 버튼 활성화 여부
+			if(pm.prev){
+				pmStr += `
+				<li class="page-item">
+					<a class="page-link" href="javascript:void(0);" data-page="\${pm.startPage-1}">이전</a>
+				</li>
+				`;
+			}
+			//숫자 페이지
+			for(let i = pm.startPage; i<= pm.endPage; i++){
+				let active = pm.cri.page == i ? "active" : "";
+				pmStr += `
+			    <li class="page-item \${active}">
+					<a class="page-link" href="javascript:void(0);" data-page="\${i}">\${i}</a>
+				</li>
+				`
+			}
+			//다음 버튼 활성화 여부
+			if(pm.next){
+				pmStr += `
+				<li class="page-item">
+					<a class="page-link" href="javascript:void(0);" data-page="\${pm.endPage + 1}">다음</a>
+				</li>
+				`
+			}
+			$(".comment-pagination>ul").html(pmStr);
+		},
+		error : function (a,b,c) {
+			console.error("에러 발생");
+		}
+	});
+}
 
+$(document).on("click", ".comment-pagination .page-link", function () {
+	cri.page = $(this).data("page");
+	getCommentList(cri);
+})
+
+</script>
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">
 	$('[name=content]').summernote({

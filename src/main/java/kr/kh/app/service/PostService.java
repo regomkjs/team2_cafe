@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
+import kr.kh.app.pagination.CommentCriteria;
+import kr.kh.app.pagination.Criteria;
 
 public interface PostService {
 
@@ -28,5 +31,9 @@ public interface PostService {
 	boolean updatePost(PostVO post);
 
 	void updateView(int num);
+
+	ArrayList<CommentVO> getCommentList(Criteria cri);
+
+	int getTotalCountComment(Criteria cri);
 
 }
