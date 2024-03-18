@@ -30,5 +30,6 @@ public interface PostService {
 	void updateView(int num);
 	
 	boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead, int bo_num);
+	
 
 }

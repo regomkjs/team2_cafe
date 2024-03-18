@@ -17,6 +17,7 @@ import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
 @WebServlet("/post/update")
 public class PostUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,6 +46,7 @@ public class PostUpdateServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/post/update.jsp").forward(request, response);
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int he_num;
 		int po_num;

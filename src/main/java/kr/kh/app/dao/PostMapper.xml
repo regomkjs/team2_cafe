@@ -86,4 +86,5 @@
 		delete from head where he_num = #{deleteHead.he_num}
 	</delete>
 	
+	
 </mapper>

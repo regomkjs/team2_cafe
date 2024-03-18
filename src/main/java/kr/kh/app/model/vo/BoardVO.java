@@ -10,4 +10,5 @@ public class BoardVO {
 	private String bo_name; 
 	private String bo_ca_name;
 	
+	
 }

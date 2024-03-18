@@ -16,6 +16,7 @@ import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

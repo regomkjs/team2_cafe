@@ -37,5 +37,6 @@ public interface PostDAO {
 
 	void deleteHead(@Param("deleteHead")HeadVO deleteHeader);
 
+	
 
 }

@@ -23,4 +23,5 @@ public class HeadVO {
 		this.he_num = he_num;
 		this.he_name = he_name;
 	}
+	
 }

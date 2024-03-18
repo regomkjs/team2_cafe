@@ -19,6 +19,7 @@ import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
 @WebServlet("/post/write")
 public class PostWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
