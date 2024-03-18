@@ -9,18 +9,26 @@ import kr.kh.app.model.vo.PostVO;
 
 public interface PostService {
 
-	ArrayList<CategoryVO> getCategoryList();
+	ArrayList<CategoryVO> getCaList();
 
-	ArrayList<BoardVO> getBoardList();
+	ArrayList<BoardVO> getBoList();
 
-	ArrayList<HeadVO> getHeadList();
+	ArrayList<HeadVO> getHeList();
 
-	boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead);
+	ArrayList<PostVO> getPostByBoNum(int bo_num);
 
-	ArrayList<PostVO> getMyPostList(String me_id);
+	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);
 
-	int getAllPostNum();
+	boolean insertPost(PostVO post);
+
+	PostVO getPostbyPoNum(int po_num);
+
+	boolean deletePost(int num, String me_id);
+
+	boolean updatePost(PostVO post);
+
+	void updateView(int num);
 	
-	
-	
+	boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead, int bo_num);
+
 }

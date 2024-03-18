@@ -11,21 +11,31 @@ import kr.kh.app.model.vo.PostVO;
 
 public interface PostDAO {
 
-	ArrayList<CategoryVO> selectCategoryList();
+	ArrayList<CategoryVO> selectCategory();
 
-	ArrayList<BoardVO> selectBoardList();
+	ArrayList<BoardVO> selectBoard();
 
-	ArrayList<HeadVO> selectHeadList();
+	ArrayList<HeadVO> selectAllHead();
+
+	ArrayList<PostVO> selectPostByBoNum(@Param("bo_num")int bo_num);
+
+	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
+
+	boolean insertPost(@Param("post")PostVO post);
+
+	PostVO selectPostByPoNum(@Param("po_num")int po_num);
+
+	boolean deletePost(@Param("po_num")int num, @Param("me_id")String me_id);
+
+	boolean updatePost(@Param("post")PostVO post);
+
+	void updateView(@Param("po_num")int num);
 	
-	void insertHead(@Param("inputHead")HeadVO inputHead);
-
+	void insertHead(@Param("insertHead")HeadVO insertHeader);
+	
 	void updateHead(@Param("updateHead")HeadVO updateHeader);
 
-	void deleteHead(@Param("deleteHead")HeadVO deleteHead);
-
-	ArrayList<PostVO> selectMyPostList(@Param("me_id")String me_id);
-
-	int selectAllPostNum();
+	void deleteHead(@Param("deleteHead")HeadVO deleteHeader);
 
 
 }

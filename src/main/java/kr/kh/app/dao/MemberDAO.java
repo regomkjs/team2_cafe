@@ -10,6 +10,4 @@ public interface MemberDAO {
 
 	MemberVO selectUser(@Param("id")String id);
 
-	void updateMember(@Param("member")MemberVO member);
-
 }

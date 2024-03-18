@@ -2,7 +2,6 @@ package kr.kh.app.service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -30,7 +29,7 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean signupMember(MemberVO member, String pw2) {
+	public boolean signupMember(MemberVO member) {
 		if(member == null) {
 			return false;
 		}
@@ -38,11 +37,6 @@ public class MemberServiceImp implements MemberService {
 				|| !checking(member.getMe_pw())) {
 			return false;
 		}
-		
-		if(!member.getMe_pw().equals(pw2)) {
-			return false;
-		}
-		
 		return memberDao.insertMember(member);
 	}
 	
@@ -67,18 +61,6 @@ public class MemberServiceImp implements MemberService {
 		if(str.length() == 0) {
 			return false;
 		}
-		return true;
-	}
-
-	@Override
-	public boolean updateMember(MemberVO member) {
-		if(!checking(member.getMe_id()) ||
-		   !checking(member.getMe_pw()) ||
-		   !checking(member.getMe_email()) ||
-		   !checking(member.getMe_phone())) {
-			return false;
-		}
-		memberDao.updateMember(member);
 		return true;
 	}
 	

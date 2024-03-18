@@ -32,31 +32,96 @@ public class PostServiceImp implements PostService{
 		}
 	}
 
+	private boolean checkString(String str) {
+		if(str == null || str.length() == 0) {
+			return false;
+		}
+		return true;
+	}
+
+	
 	@Override
-	public ArrayList<CategoryVO> getCategoryList() {
-		return postDao.selectCategoryList();
+	public ArrayList<CategoryVO> getCaList() {
+		return postDao.selectCategory();
 	}
 
 	@Override
-	public ArrayList<BoardVO> getBoardList() {
-		return postDao.selectBoardList();
+	public ArrayList<BoardVO> getBoList() {
+		return postDao.selectBoard();
+	}
+
+	@Override
+	public ArrayList<HeadVO> getHeList() {
+		return postDao.selectAllHead();
+	}
+
+	
+	@Override
+	public ArrayList<PostVO> getPostByBoNum(int bo_num) {
+		return postDao.selectPostByBoNum(bo_num);
+	}
+
+	@Override
+	public ArrayList<HeadVO> getHeadListByBoNum(int bo_num) {
+		return postDao.selectHeadListByBoNum(bo_num);
+	}
+
+	@Override
+	public boolean insertPost(PostVO post) {
+		if(post == null || !checkString(post.getPo_me_id())
+				|| !checkString(post.getPo_title())
+				|| !checkString(post.getPo_content())
+				|| post.getPo_he_num() <= 0) {
+			return false;
+		}
+		return postDao.insertPost(post);
 	}
 	
 	@Override
-	public ArrayList<HeadVO> getHeadList() {
-		return postDao.selectHeadList();
+	public PostVO getPostbyPoNum(int po_num) {
+		return postDao.selectPostByPoNum(po_num);
 	}
 	
 	@Override
-	public boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead) {
-		if(!checkString(inputHead)) {
-			HeadVO insertHeader = new HeadVO(inputHead);
+	public boolean deletePost(int num, String me_id) {
+		if(!checkString(me_id)) {
+			return false;
+		}
+		return postDao.deletePost(num, me_id);
+	}
+	
+	@Override
+	public boolean updatePost(PostVO post) {
+		if(post == null||
+				!checkString(post.getPo_content()) ||
+				!checkString(post.getPo_title()) ||
+				!checkString(post.getPo_me_id())||
+				!checkString(post.getPo_writer())) {
+			return false;
+		}
+		return postDao.updatePost(post);
+	}
+	
+	
+	@Override
+	public void updateView(int num) {
+		postDao.updateView(num);
+	}
+
+	@Override
+	public boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead, int bo_num) {
+		if(bo_num == 0) {
+			return false;
+		}
+		
+		if(checkString(inputHead)) {
+			HeadVO insertHeader = new HeadVO(inputHead, bo_num);
 			postDao.insertHead(insertHeader);
 			return true;
 		}
 		
-		if(!checkString(selectHead)) {
-			if(!checkString(updateHead)) {
+		if(checkString(selectHead)) {
+			if(checkString(updateHead)) {
 				if(Integer.parseInt(selectHead)!=-1) {
 					HeadVO updateHeader = new HeadVO(Integer.parseInt(selectHead), updateHead);
 					postDao.updateHead(updateHeader);
@@ -65,7 +130,7 @@ public class PostServiceImp implements PostService{
 			}
 		}
 		
-		if(!checkString(deleteHead)) {
+		if(checkString(deleteHead)) {
 			if(Integer.parseInt(deleteHead)!=-2) {
 				HeadVO deleteHeader = new HeadVO(Integer.parseInt(deleteHead));
 				postDao.deleteHead(deleteHeader);
@@ -76,24 +141,4 @@ public class PostServiceImp implements PostService{
 		return false;
 	}
 	
-	private boolean checkString(String str) {
-		if(str == null || str.length() == 0) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public ArrayList<PostVO> getMyPostList(String me_id) {
-		if(!checkString(me_id)) {
-			return postDao.selectMyPostList(me_id);
-		}
-		return null;
-		
-	}
-
-	@Override
-	public int getAllPostNum() {
-		return postDao.selectAllPostNum();
-	}
 }

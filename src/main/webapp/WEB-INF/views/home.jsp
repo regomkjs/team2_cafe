@@ -21,23 +21,21 @@
 	.main-content{
 		width: 100%;
 		height: 1000px;
-		background-color: white;
 	}
 </style>
 </head>
+
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="main-img-box">
 	중앙에 이미지 배치, 클릭시 메인으로 이동
 </div>
 <div class="main-box d-flex">
-	<jsp:include page="/WEB-INF/views/sidebar.jsp" flush="false"/>
+	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		메인 화면에 보여줄 리스트 구상<br>
+		메인 화면에 보여줄 리스트 구상
 	</div>
 </div>
-<script src="//code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-</script>
+	
 </body>
 </html>
