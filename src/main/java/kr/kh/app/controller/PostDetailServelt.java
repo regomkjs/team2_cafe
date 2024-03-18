@@ -31,7 +31,6 @@ public class PostDetailServelt extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(num);
 		postService.updateView(num);
 		PostVO post = postService.getPostbyPoNum(num);
 		if(post != null) {

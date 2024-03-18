@@ -33,7 +33,7 @@ public class CommentListServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		CommentCriteria cri = new CommentCriteria(poNum,page, 2);
+		CommentCriteria cri = new CommentCriteria(poNum,page, 10);
 		ArrayList<CommentVO> list = postService.getCommentList(cri);
 		
 		//전체 댓글 수(현재 게시글에 대한)

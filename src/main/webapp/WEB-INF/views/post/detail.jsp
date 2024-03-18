@@ -118,10 +118,12 @@ function getCommentList(cri) {
 		method : "post",
 		data : cri,
 		success : function(data){
-			console.log(data.list);
+			let commentList = data.list;
 			let str = '';
-			
-			for(comment of data.list){
+			if(commentList == null || commentList.length == 0){
+				str = '<div class="container text-center mb-3 mt-3">아직 등록된 댓글이 없습니다.</div>';
+			}
+			for(comment of commentList){
 				let btns = "";
 				if('${user.me_id}' == comment.co_me_id){
 					btns += 
@@ -137,10 +139,11 @@ function getCommentList(cri) {
 				str +=
 					`
 						<div class="input-group mb-3 box-comment">
-							<div class="col-3">\${comment.co_me_id}</div>
-							<div class="col-6 co_content">\${comment.co_content}</div>
+							<div class="col-2"><h5>\${comment.co_me_id}<h5></div>
+							<div class="co_content col-7">\${comment.co_content}</div>
 							\${btns}
 						</div>
+						<a href="javascript:void(0);" class="reply" data-ori="\${comment.co_num}">답글쓰기</a>
 						<hr>
 					`;
 			}
@@ -189,6 +192,138 @@ $(document).on("click", ".comment-pagination .page-link", function () {
 })
 
 </script>
+
+<!-- 댓글 작성 스크립트 -->
+<script type="text/javascript">
+//댓글 등록 버튼 클릭 이벤트를 등록
+$(".btn-comment-insert").click(function () {
+	if('${user.me_id}' == ''){
+		if(confirm("로그인이 필요한 서비스 입니다. 로그인으로 이동하시겠습니까?")){
+			location.href = "<c:url value='/login'/>"
+			return;
+		}
+		//취소 누르면 현재 페이지에서 추천/비추천 동작을 안함
+		else{
+			return;
+		}
+	}
+	
+	let content = $(".comment-content").val();
+	let poNum = '${post.po_num}';
+	
+	$.ajax({
+		url : '<c:url value="/comment/insert"/>',
+		method : "post",
+		data : {
+			"content" : content,
+			"poNum" : poNum
+		},
+		success : function (data) {
+			if(data == "true"){
+				alert("댓글이 등록되었습니다.");
+				cri.page = 1;
+				getCommentList(cri);
+				$(".comment-content").val("");
+			}else{
+				alert("댓글 등록 실패")
+			}
+		},
+		error : function (a,b,c) {
+			console.error("에러 발생");
+		}
+	});		
+});
+</script>
+
+<!-- 댓글 삭제 스크립트 -->
+<script type="text/javascript">
+	$(document).on("click",".btn-comment-delete",function(){
+		let num = $(this).data("num");
+		$.ajax({
+			url : '<c:url value="/comment/delete"/>',
+			method : "post",
+			data : {
+				"num" : num
+			},
+			success : function (data) {
+				if(data == "true"){
+					alert("댓글이 삭제되었습니다.");
+					getCommentList(cri);
+				}
+				else{
+					alert("댓글 삭제에 실패했습니다.");
+				}
+			},
+			error : function (a,b,c) {
+				console.error("에러 발생");
+			}
+		});
+	});
+	
+</script>
+
+<!-- 댓글 수정 스크립트 -->
+<script type="text/javascript">
+	$(document).on("click",".btn-comment-update",function(){
+		initComment()
+		// 현재 댓글 보여주는 창이 textarea태그로 변경
+		// 기존 댓글 창을 감춤
+		$(this).parents(".box-comment").find(".co_content").hide();
+		let comment = $(this).parents(".box-comment").find(".co_content").text();
+		let textarea =
+		`
+		<textarea class="form-control com-input">\${comment}</textarea>
+		`
+		$(this).parents(".box-comment").find(".co_content").after(textarea);
+		// 수정 삭제 버튼 대신 수정 완료 버튼으로 변경
+		$(this).parent().hide();
+		let num = $(this).data("num");
+		let btn = 
+		`
+		<button class="btn btn-outline-success btn-complete" data-num="\${num}" type="button">수정완료</button>
+		`
+		$(this).parent().after(btn);
+	});
+	
+	$(document).on("click",".btn-complete",function(){
+		let num = $(this).data("num");
+		let content = $(".com-input").val();
+		$.ajax({
+			url : '<c:url value="/comment/update"/>',
+			method : "post",
+			data : {
+				"num" : num,
+				"content" : content
+			},
+			success : function (data) {
+				if(data == "true"){
+					alert("댓글을 수정했습니다.");
+					getCommentList(cri);
+				}
+				else{
+					alert("댓글 수정에 실패했습니다.");
+				}
+			},
+			error : function (a, b, c) {
+				console.error("에러 발생")
+			}
+		});
+	});
+	
+	
+	function initComment() {
+		//감추었던 댓글 내용을 보여줌
+		$(".co_content").show();
+		//감추었던 수정 삭제 버튼을 보여줌
+		$(".btn-comment-group").show();
+		//textarea 삭제
+		$(".com-input").remove();
+		//수정 버튼 
+		$(".btn-complete").remove();
+	}
+
+</script>
+
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">
 	$('[name=content]').summernote({

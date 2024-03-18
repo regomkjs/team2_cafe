@@ -75,6 +75,42 @@
 					</c:if>
 				</tbody>
 			</table>
+			<ul class="pagination justify-content-center">
+		    	<c:if test="${pm.prev}">
+					<li class="page-item">
+						<c:url var="prevUrl" value="/post/list">
+							<c:param name="type" value="${pm.cri.type}"/>
+							<c:param name="search" value="${pm.cri.search}"/>
+							<c:param name="page" value="${pm.startPage-1}"/>
+							<c:param name="num" value="${pm.cri.boNum}"/>
+						</c:url>
+						<a class="page-link" href="${prevUrl}">이전</a>
+					</li>
+				</c:if>
+				<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
+					<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
+						<c:url var="pageUrl" value="/post/list">
+							<c:param name="type" value="${pm.cri.type}"/>
+							<c:param name="search" value="${pm.cri.search}"/>
+							<c:param name="page" value="${i}"/>
+							<c:param name="num" value="${pm.cri.boNum}"/>
+						</c:url>
+						<a class="page-link" href="${pageUrl}">${i}</a>
+					</li>
+				</c:forEach>
+				<c:if test="${pm.next}">
+					<li class="page-item">
+						<c:url var="nextUrl" value="/post/list">
+							<c:param name="type" value="${pm.cri.type}"/>
+							<c:param name="search" value="${pm.cri.search}"/>
+							<c:param name="page" value="${pm.endPage+1}"/>
+							<c:param name="num" value="${pm.cri.boNum}"/>
+						</c:url>
+						<a class="page-link" href="${nextUrl}">다음</a>
+					</li>
+				</c:if>
+		  	</ul>
+			
 			<c:if test="${bo_num == 1 && user.me_gr_num == 0}">
 				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
 			</c:if>

@@ -35,8 +35,9 @@
 		from 
 			post 
 			join head on he_num = po_he_num 
-		where he_bo_num = #{bo_num}
+		where he_bo_num = #{cri.boNum}
 		order by po_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
 	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
@@ -79,7 +80,7 @@
 	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
 		select * from comment
 		where co_po_num = #{cri.poNum}
-		order by co_num desc
+		order by co_num
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
@@ -88,5 +89,36 @@
 		where co_po_num = #{cri.poNum}
 	</select>
 	
+	<insert id="insertComment">
+		insert into comment(co_ori_num, co_writer, co_content, co_datetime, co_me_id, co_po_num)
+		values(#{comment.co_ori_num},#{comment.co_writer}, #{comment.co_content}, now(), #{comment.co_me_id}, #{comment.co_po_num})
+	</insert>
 	
+	<select id="selectTotalCountPost" resultType="int">
+		select 
+			count(*) 
+		from 
+			post
+				join 
+			head on he_num = po_he_num 
+		where 
+			he_bo_num = #{cri.boNum}
+	</select>
+	
+	<select id="selectComment" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment where co_num = #{co_num}
+	</select>
+	
+	<delete id="deleteComment">
+		delete from comment where co_num = #{co_num}
+	</delete>
+	
+	<update id="updateComment">
+		update comment
+		set
+			co_content = #{comment.co_content},
+			co_writer = #{comment.co_writer}
+		where
+			co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
+	</update>
 </mapper>
