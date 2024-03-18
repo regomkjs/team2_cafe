@@ -49,21 +49,27 @@
 		<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item col-6">
 		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
- 				</li>
- 			<c:if test="${user != null}">
+					</li>
+				<c:if test="${user != null}">
 	 			<li class="nav-item col-6">
 	 				<a class="nav-link" data-bs-toggle="tab" href="#menu1">유저</a>
 	 			</li>
- 			</c:if>
+				</c:if>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
-			<div id="home" class="container tab-pane active"><br>
+			<div id="home" class="container tab-pane active">
 		    	<p>카페정보</p>
 		    	<span> <a href = '<c:url value="/post/list"/>'
-		    	></a></span>
-		    	<p>${allPostNum}</p>
-		    	<a>${allMemberNum}</a>
+		    	>게시글 리스트</a></span>
+		    	<button type="button" class="btn btn-secondary">전체 게시글 수 
+		    	<span class="badge badge-light">${allPostNum }
+				</button>
+				<br><br>
+				<button type="button" class="btn btn-primary">가입한 회원 수 
+		    	<span class="badge badge badge-light">${allMemberNum}</span>
+				</button>
+		    	<p> ${categoryList}</p>
 		    	<br>
 		    	<p>카페관리</p>
 		    </div>
@@ -73,7 +79,6 @@
 		</div>
 	</div>
 	<a class="btn"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
-
 	<c:forEach  items="${category.ca_name}" var="category">
 		<div class="container">
 			<span style="font-weight: bolder;">카테고리명<a href="#">게시판추가</a></span>

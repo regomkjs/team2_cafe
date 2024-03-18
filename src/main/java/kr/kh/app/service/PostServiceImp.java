@@ -28,7 +28,7 @@ public class PostServiceImp implements PostService{
 			postDao = session.getMapper(PostDAO.class);
 			} catch (IOException e) {
 			e.printStackTrace();
-		}
+			}
 	}
 	//카테고리 불러오기
 	@Override
