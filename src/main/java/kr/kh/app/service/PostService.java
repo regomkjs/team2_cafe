@@ -9,4 +9,10 @@ public interface PostService {
 	ArrayList<CategoryVO> getCategoryList();
 
 	ArrayList<BoardVO> getBoardList();
+
+	ArrayList<CategoryVO> selectCategory();
+
+	boolean deleteCategory(int num);
+	
+	boolean insertCategory(ArrayList<CategoryVO> categoryList);
 }

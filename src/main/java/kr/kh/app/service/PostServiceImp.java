@@ -32,14 +32,27 @@ public class PostServiceImp implements PostService{
 
 	@Override
 	public ArrayList<CategoryVO> getCategoryList() {
-		// TODO Auto-generated method stub
 		return postDao.selectCategoryList();
 	}
 
 	@Override
 	public ArrayList<BoardVO> getBoardList() {
-		// TODO Auto-generated method stub
 		return postDao.selectBoardList();
+	}
+
+	@Override
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
+	}
+
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
+	}
+
+	@Override
+	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
+		return postDao.insertCategory(categoryList);
 	}
 	
 }

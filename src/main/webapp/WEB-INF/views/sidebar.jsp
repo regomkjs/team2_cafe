@@ -56,8 +56,8 @@
 					<c:if test="${categoryList.ca_name == boardList.bo_ca_name}">
 					<li>
 						<a href="<c:url value="/board/list"/>">${boardList.bo_name}</a>
-						<span><a href="#">수정</a></span>
-						<span><a href="#">삭제</a></span>
+						<span><a href="/board/update">게시판 수정</a></span>
+						<span><a href="/board/delete">게시판 삭제</a></span>
 					</li>
 					</c:if>
 				</c:forEach>				

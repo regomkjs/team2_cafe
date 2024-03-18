@@ -30,8 +30,8 @@
 	중앙에 이미지 배치, 클릭시 메인으로 이동
 </div>
 <div class="main-box d-flex">
-<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-<div class="main-content flex-grow-1">
+	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+	<div class="main-content flex-grow-1">
 		클릭한 게시판 관련 리스트
 		<div class="container">
 			<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->

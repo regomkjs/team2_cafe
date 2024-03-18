@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.BoardDAO;
-import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 
@@ -58,4 +57,15 @@ public class BoardServiceImp implements BoardService {
 		
 		return boardDao.selectCategoryList();
 	}
+
+
+	@Override
+	public boolean deleteboard(int num, String bo_name) {
+		if(!checkString(bo_name)) {
+			return false;
+		}
+		return boardDao.deleteboard(num, bo_name);
+	}
+
+
 }
