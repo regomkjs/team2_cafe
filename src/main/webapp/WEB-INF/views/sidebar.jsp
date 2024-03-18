@@ -60,9 +60,10 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active"><br>
 		    	<p>카페정보</p>
-		    	<span> <a href = '<c:url value="/post/list" />'> 
-		    	이용자수/전체회원수</a></span>
-		    	<br>
+		    	<span> <a href = '<c:url value="/post/list"/>'
+		    	></a></span>
+		    	<p>${allPostNum}</p>
+		    	<a>${allMemberNum}</a>
 		    	<br>
 		    	<p>카페관리</p>
 		    </div>

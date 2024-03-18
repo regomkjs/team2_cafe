@@ -17,6 +17,7 @@ import kr.kh.app.service.PostServiceImp;
 @WebServlet("/category/delete")
 public class CategoryDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	private PostService postService = new PostServiceImp();
 	
 	

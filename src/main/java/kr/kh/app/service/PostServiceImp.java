@@ -55,5 +55,10 @@ public class PostServiceImp implements PostService{
 	public ArrayList<BoardVO> getBoList() {
 		return postDao.selectBoard();
 	}
+
+	@Override
+	public int getAllpostNum() {
+		return postDao.selectAllPostNum();
+	}
 	
 }

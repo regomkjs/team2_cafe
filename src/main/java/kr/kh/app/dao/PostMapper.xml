@@ -19,5 +19,8 @@
 	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
 		select * from board
 	</select>
+	<select id="selectAllPostNum" resultType="int">
+		select count(*) from post 
+	</select>
 	
 </mapper>

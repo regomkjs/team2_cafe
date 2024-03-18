@@ -20,7 +20,7 @@ import kr.kh.app.service.PostServiceImp;
 public class CategoryInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
-	
+	//필터로 안쓰고 , 스프링 인터세터 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");

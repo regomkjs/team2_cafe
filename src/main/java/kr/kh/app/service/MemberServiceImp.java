@@ -62,9 +62,16 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
+	public int getAllmemberNum() {
+		return memberDao.selectAllmemberNum();
+	}
+
+	@Override
 	public boolean countMember(MemberVO user) {
-		// TODO Auto-generated method stub
-		return false;
+		if(user == null) {
+			return false;
+		}
+		return memberDao.selectMemberNum(user);
 	}
 
 	

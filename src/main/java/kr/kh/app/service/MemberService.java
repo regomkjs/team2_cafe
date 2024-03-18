@@ -8,6 +8,8 @@ public interface MemberService {
 
 	MemberVO getMember(String id);
 
+	int getAllmemberNum();
+
 	boolean countMember(MemberVO user);
 
 

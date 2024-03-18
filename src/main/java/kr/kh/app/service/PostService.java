@@ -19,4 +19,6 @@ public interface PostService {
 
 	ArrayList<BoardVO> getBoList();
 
+	int getAllpostNum();
+
 }
