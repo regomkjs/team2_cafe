@@ -61,7 +61,7 @@
 									<c:param name="search" value="${post.po_me_id}"/>
 									<c:param name="page" value="1"/>
 								</c:url>
-								<a href="${page}">${post.po_me_id}</a>
+								<a href="${page}">${post.po_writer}</a>
 							</td>
 							<td class="text-center">${post.po_view}</td>
 						</tr>

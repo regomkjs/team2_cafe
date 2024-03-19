@@ -83,7 +83,7 @@
 			</div>
 			
 			<div class="mt-3 mb-3 comment-box container">
-				<h4>댓글</h4>
+				<h4>댓글(<span class="comment-total">2</span>)</h4>
 				<!-- 댓글 리스트를 보여주는 박스 -->
 				<div class="comment-list">
 					
@@ -128,18 +128,25 @@ function getCommentList(cri) {
 				if('${user.me_id}' == comment.co_me_id){
 					btns += 
 					`
-					<div class="btn-comment-group">
-						<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.co_num}">수정</button>
-						<button class="btn btn-outline-danger btn-comment-delete" data-num="\${comment.co_num}">삭제</button>
+					<div class="btn-comment-group col-2">
+						<button class="btn btn-outline-warning btn-comment-update me-2" data-num="\${comment.co_num}">수정</button>
+						<button class="btn btn-outline-danger btn-comment-delete " data-num="\${comment.co_num}">삭제</button>
 					</div>
 					`
 				}
-					
+				else if('${user.me_gr_num}' == '0' && '${user}' != null){
+					btns += 
+					`
+					<div class="btn-comment-group col-2 ">
+						<button class="btn btn-outline-danger btn-comment-delete " data-num="\${comment.co_num}">삭제</button>
+					</div>
+					`
+				}	
 				
 				str +=
 					`
 						<div class="input-group mb-3 box-comment">
-							<div class="col-2"><h5>\${comment.co_me_id}<h5></div>
+							<div class="col-2"><h5>\${comment.co_writer}<h5></div>
 							<div class="co_content col-7">\${comment.co_content}</div>
 							\${btns}
 						</div>
@@ -179,6 +186,7 @@ function getCommentList(cri) {
 				`
 			}
 			$(".comment-pagination>ul").html(pmStr);
+			$('.comment-total').text(pm.totalCount);
 		},
 		error : function (a,b,c) {
 			console.error("에러 발생");
@@ -276,7 +284,7 @@ $(".btn-comment-insert").click(function () {
 		`
 		$(this).parents(".box-comment").find(".co_content").after(textarea);
 		// 수정 삭제 버튼 대신 수정 완료 버튼으로 변경
-		$(this).parent().hide();
+		$(this).parents(".btn-comment-group").hide();
 		let num = $(this).data("num");
 		let btn = 
 		`
