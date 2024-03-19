@@ -29,7 +29,7 @@
 			url : '<c:url value="category/insert"/>',
 			method : 'get',
 			data :{
-				num : 1 
+				num : 2
 			},
 			success : function(data){
 				alert(data);

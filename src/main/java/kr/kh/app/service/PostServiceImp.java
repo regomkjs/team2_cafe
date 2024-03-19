@@ -13,6 +13,7 @@ import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.PostVO;
+import kr.kh.app.pagination.Criteria;
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -59,6 +60,20 @@ public class PostServiceImp implements PostService{
 	@Override
 	public int getAllpostNum() {
 		return postDao.selectAllPostNum();
+	}
+	@Override
+	public ArrayList<PostVO> getPostList(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return postDao.selectPostList(cri);
+	}
+	@Override
+	public int getTotalCount(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return postDao.selectTotalCount(cri);
 	}
 	
 }
