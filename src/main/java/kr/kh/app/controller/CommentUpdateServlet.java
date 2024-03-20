@@ -36,7 +36,7 @@ public class CommentUpdateServlet extends HttpServlet {
 		}else {
 			writer = user.getMe_nick();
 		}
-		CommentVO comment = new CommentVO(0, user.getMe_id(), content, writer);
+		CommentVO comment = new CommentVO(0, user.getMe_id(), content, writer, 0);
 		comment.setCo_num(co_num);
 		boolean res = postService.updateComment(comment);
 		

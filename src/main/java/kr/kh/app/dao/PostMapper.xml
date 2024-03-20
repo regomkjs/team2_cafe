@@ -80,7 +80,7 @@
 	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
 		select * from comment
 		where co_po_num = #{cri.poNum}
-		order by co_num
+		order by co_ori_num asc, co_num asc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	
@@ -120,5 +120,9 @@
 			co_writer = #{comment.co_writer}
 		where
 			co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
+	</update>
+	
+	<update id="renewalComment">
+		update comment set co_ori_num = co_num where co_ori_num = 0
 	</update>
 </mapper>

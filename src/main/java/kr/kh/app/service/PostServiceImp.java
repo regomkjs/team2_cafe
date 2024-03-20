@@ -140,7 +140,12 @@ public class PostServiceImp implements PostService{
 				!checkString(comment.getCo_writer())) {
 			return false;
 		}
-		return postDao.insertComment(comment);
+		
+		boolean res = postDao.insertComment(comment);
+		if(res) {
+			postDao.renewalComment();
+		}
+		return res;
 	}
 
 	@Override

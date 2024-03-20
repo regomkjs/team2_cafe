@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 	.main-box{
-		 height: 1000px;
+		 min-height: 1000px;
 	}
 	.main-img-box{
 		width: 100%;
@@ -24,10 +24,21 @@
 	}
 	.main-content{
 		width: 100%;
-		height: 1000px;
+		margin-bottom: 300px;
 		
 	}
+	.side_menu{
+		width: 300px; min-height: 100%; max-height: 3000px;
+		background-color: yellow;
+	}
+	.nav-box{
+		height: 300px;
+		border: 1px solid black;
+		background-color: white;
+	}
 </style>
+
+
 </head>
 
 <body>
@@ -84,6 +95,7 @@
 			
 			<div class="mt-3 mb-3 comment-box container">
 				<h4>댓글(<span class="comment-total">2</span>)</h4>
+				<br>
 				<!-- 댓글 리스트를 보여주는 박스 -->
 				<div class="comment-list">
 					
@@ -142,17 +154,37 @@ function getCommentList(cri) {
 					</div>
 					`
 				}	
-				
-				str +=
-					`
-						<div class="input-group mb-3 box-comment">
-							<div class="col-2"><h5>\${comment.co_writer}<h5></div>
-							<div class="co_content col-7">\${comment.co_content}</div>
-							\${btns}
-						</div>
-						<a href="javascript:void(0);" class="reply" data-ori="\${comment.co_num}">답글쓰기</a>
+				if(comment.co_num == comment.co_ori_num){
+					str +=
+						`
+						<div class="comment-container">
+							<div class="input-group mb-3 box-comment">
+								<div class="col-2"><h5>\${comment.co_writer}<h5></div>
+								<div class="co_content col-8">\${comment.co_content}</div>
+								\${btns}
+							</div>
+							<span style="font-size: small;" class="me-4">작성일 : \${comment.co_datetime}</span>
+							<a href="javascript:void(0);" class="reply" data-ori="\${comment.co_ori_num}">답글쓰기</a>
+						</div>	
 						<hr>
-					`;
+							
+						`
+				}
+				else{
+					str +=
+						`
+						<div class="comment-container" style="margin-left: 100px;">
+							<div class="input-group mb-3 box-comment" >
+								<div class="col-2"><h5>\${comment.co_writer}<h5></div>
+								<div class="co_content col-8">\${comment.co_content}</div>
+								\${btns}
+							</div>
+							<span style="font-size: small;" class="">\${comment.co_datetime}</span>
+							<hr>
+						</div>	
+						`
+				}
+				
 			}
 			$(".comment-list").html(str);
 			//JSON.parse(문자열) : json형태의 문자열을 객체로 변환
@@ -210,7 +242,6 @@ $(".btn-comment-insert").click(function () {
 			location.href = "<c:url value='/login'/>"
 			return;
 		}
-		//취소 누르면 현재 페이지에서 추천/비추천 동작을 안함
 		else{
 			return;
 		}
@@ -280,7 +311,7 @@ $(".btn-comment-insert").click(function () {
 		let comment = $(this).parents(".box-comment").find(".co_content").text();
 		let textarea =
 		`
-		<textarea class="form-control com-input">\${comment}</textarea>
+		<textarea rows="3" class="form-control com-input">\${comment}</textarea>
 		`
 		$(this).parents(".box-comment").find(".co_content").after(textarea);
 		// 수정 삭제 버튼 대신 수정 완료 버튼으로 변경
@@ -322,15 +353,77 @@ $(".btn-comment-insert").click(function () {
 	function initComment() {
 		//감추었던 댓글 내용을 보여줌
 		$(".co_content").show();
+		$(".reply").show();
 		//감추었던 수정 삭제 버튼을 보여줌
 		$(".btn-comment-group").show();
 		//textarea 삭제
 		$(".com-input").remove();
+		$(".reply-box").remove();
 		//수정 버튼 
 		$(".btn-complete").remove();
 	}
 
 </script>
+
+<!-- 대댓글 작성 스크립트 -->
+<script type="text/javascript">
+	$(document).on("click",".reply",function(){
+		initComment();
+		if('${user.me_id}' == ''){
+			if(confirm("로그인이 필요한 서비스 입니다. 로그인으로 이동하시겠습니까?")){
+				location.href = "<c:url value='/login'/>"
+				return;
+			}
+			else{
+				return;
+			}
+		}
+		
+		let ori = $(this).data("ori");
+		
+		$(this).hide();
+		let textarea = 
+			`
+				<div class="input-group reply-box mt-3 mb-3">
+					<textarea rows="3" class="form-control reply-content"></textarea>
+					<button type="button" class="btn btn-outline-success col-2 btn-reply-insert" data-ori="\${ori}">등록</button>
+				</div>
+			`;
+		$(this).parent().after(textarea);
+	});
+	
+	$(document).on("click",".btn-reply-insert",function(){
+		let ori = $(this).data("ori");
+		let content = $(".reply-content").val();
+		let poNum = '${post.po_num}';
+		
+		$.ajax({
+			url : '<c:url value="/reply/insert"/>',
+			method : "post",
+			data : {
+				"ori" : ori,
+				"content" : content,
+				"poNum" : poNum
+			},
+			success : function (data) {
+				if(data == "true"){
+					alert("댓글이 등록되었습니다.");
+					cri.page = 1;
+					initComment();
+					getCommentList(cri);
+				}else{
+					alert("댓글 등록 실패")
+				}
+			},
+			error : function (a,b,c) {
+				console.error("에러 발생");
+			}
+		});		
+		
+	});
+</script>
+
+
 
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">

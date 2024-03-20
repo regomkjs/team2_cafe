@@ -47,5 +47,7 @@ public interface PostDAO {
 
 	boolean updateComment(@Param("comment")CommentVO comment);
 
+	void renewalComment();
+
 
 }

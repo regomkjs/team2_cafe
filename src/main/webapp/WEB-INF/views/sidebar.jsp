@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	.side_menu{
-		width: 300px; height: 100%; 
+		width: 300px; height: auto;
 		background-color: yellow;
 	}
 	.nav-box{
@@ -50,9 +50,9 @@
 		</div>
 	</div>
 	<c:forEach items="${caList}" var="category">
-		<div class="container">
+		<div class="container mt-3">
 			<c:if test='${category.ca_name == "공지"}'>
-				<span style="font-weight: bolder;">${category.ca_name} <a href="#">게시판추가</a></span>
+				<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a></span>
 				<ul>
 					<c:forEach items="${boList}" var="board">
 						<c:if test='${board.bo_ca_name == "공지"}'>
@@ -61,8 +61,8 @@
 									<c:param name="num" value="${board.bo_num}" />
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
-								<span><a href="#">수정</a></span>
-								<span><a href="#">삭제</a></span>
+								<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
+								<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
 							</li>
 						</c:if>
 					</c:forEach>				
@@ -73,7 +73,7 @@
 	<c:forEach items="${caList}" var="category">
 		<div class="container">
 			<c:if test='${category.ca_name != "공지"}'>
-			<span style="font-weight: bolder;">${category.ca_name} <a href="#">게시판추가</a></span>
+			<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a></span>
 				<ul>
 					<c:forEach items="${boList}" var="board">
 						<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
@@ -82,8 +82,8 @@
 									<c:param name="num" value="${board.bo_num}" />
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
-								<span><a href="#">수정</a></span>
-								<span><a href="#">삭제</a></span>
+								<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
+								<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
 							</li>
 						</c:if>
 					</c:forEach>				
