@@ -3,13 +3,155 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.PostDAO">
+
+	<resultMap type="kr.kh.app.model.vo.PostVO" id="postMap">
+		<id property="po_num" column="po_num"/>
+		<result property="po_he_num" column="po_he_num"/>	
+		<result property="po_me_id" column="po_me_id"/>	
+		<result property="po_title" column="po_title"/>
+		<result property="po_content" column="po_content"/>
+		<result property="po_view" column="po_view"/>
+		<result property="po_datetime" column="po_datetime"/>
+		<result property="po_writer" column="po_writer"/>	
+		<collection property="head" ofType="kr.kh.app.model.vo.HeadVO" column="po_he_num"
+			select="selectHead"/>
+	</resultMap>
+	<select id="selectHead" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head where he_num = #{po_he_num}
+	</select>
 	
+
+	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
+		select * from category
+	</select>
+	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board
+	</select>
+	
+	<select id="selectAllHead" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head
+	</select>
+	
+	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
+		select * 
+		from 
+			post 
+			join head on he_num = po_he_num 
+		where he_bo_num = #{cri.boNum}
+		order by po_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+
+	</select>
+	
+	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
+		select * from head where he_bo_num = #{bo_num}
+	</select>
+	
+	<insert id="insertPost">
+		insert into post(po_title, po_content, po_writer, po_me_id, po_he_num, po_datetime)
+		values(#{post.po_title}, #{post.po_content}, #{post.po_writer}, #{post.po_me_id}, #{post.po_he_num}, now())
+	</insert>
+	
+	<select id="selectPostByPoNum" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post
+		join head on he_num = po_he_num
+		join board on he_bo_num = bo_num
+		where po_num = #{po_num}
+	</select>
+	
+	<delete id="deletePost">
+		delete from post
+		where po_num = #{po_num} and po_me_id = #{me_id}
+	</delete>
+	
+	<update id="updatePost">
+		update 
+			post
+		set
+			po_title = #{post.po_title},
+			po_content = #{post.po_content},
+			po_writer = #{post.po_writer},
+			po_he_num = #{post.po_he_num}
+		where 
+			po_num = #{post.po_num}
+	</update>
+	
+	<update id="updateView">
+		update post set po_view = po_view + 1 where po_num = #{po_num}
+	</update>
+	
+	<select id="selectCommentList" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment
+		where co_po_num = #{cri.poNum}
+		order by co_ori_num asc, co_num asc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	
+	<select id="selectTotalCountComment" resultType="int">
+		select count(*) from comment
+		where co_po_num = #{cri.poNum}
+	</select>
+	
+	<insert id="insertComment">
+		insert into comment(co_ori_num, co_writer, co_content, co_datetime, co_me_id, co_po_num)
+		values(#{comment.co_ori_num},#{comment.co_writer}, #{comment.co_content}, now(), #{comment.co_me_id}, #{comment.co_po_num})
+	</insert>
+	
+	<select id="selectTotalCountPost" resultType="int">
+		select 
+			count(*) 
+		from 
+			post
+				join 
+			head on he_num = po_he_num 
+		where 
+			he_bo_num = #{cri.boNum}
+	</select>
+	
+	<select id="selectComment" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment where co_num = #{co_num}
+	</select>
+	
+	<delete id="deleteComment">
+		delete from comment where co_num = #{co_num}
+	</delete>
+	
+	<update id="updateComment">
+		update comment
+		set
+			co_content = #{comment.co_content},
+			co_writer = #{comment.co_writer}
+		where
+			co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
+	</update>
+	
+	<update id="renewalComment">
+		update comment set co_ori_num = co_num where co_ori_num = 0
+	</update>
+
+	<insert id="insertHead">
+		insert into head(he_name, he_bo_num) value(#{insertHead.he_name}, #{insertHead.he_bo_num})
+	</insert>
+	<update id="updateHead">
+		update head set he_name = #{updateHead.he_name} where he_num = #{updateHead.he_num}
+	</update>
+	<delete id="deleteHead">
+		delete from head where he_num = #{deleteHead.he_num}
+	</delete>
+	<select id="selectAllPostNum" resultType="int">
+		select count(*) from post
+	</select>
+	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post where po_me_id = #{me_id}
+	</select>
+
+
 	<select id="selectCategory"
 		resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
 	<delete id="deleteCategory">
-		delete from category where ca_num = #{ca_num}
+		delete from category where ca_name = #{ca_name}
 	</delete>
 	<update id="insertCategory">
 		update category set
@@ -56,4 +198,5 @@
 			where po_me_id = #{cri.search}
 		</if>
 	</select>
+
 </mapper>

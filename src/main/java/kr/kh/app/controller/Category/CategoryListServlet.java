@@ -22,8 +22,7 @@ public class CategoryListServlet extends HttpServlet {
 	private PostService postService = new PostServiceImp();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
 		//카테고리 리스트를 가져옴
 		ArrayList<CategoryVO> categoryList = postService.selectCategory();
 		request.setAttribute("categoryList", categoryList);
@@ -31,4 +30,6 @@ public class CategoryListServlet extends HttpServlet {
 		
 	}
 
+
 }
+
