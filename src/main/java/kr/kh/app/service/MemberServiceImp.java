@@ -23,10 +23,11 @@ public class MemberServiceImp implements MemberService {
 			SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			session = sessionFactory.openSession(true);
 			memberDao = session.getMapper(MemberDAO.class);
-		} catch (IOException e) {
+			} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
+		
+			}
+			}
 
 	@Override
 	public boolean signupMember(MemberVO member) {
@@ -34,16 +35,12 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		if(!checking(member.getMe_id()) 
-				|| !checking(member.getMe_pw())) {
+		  || !checking(member.getMe_pw())) {
 			return false;
 		}
 		return memberDao.insertMember(member);
 	}
 	
-	
-	
-	
-
 	@Override
 	public MemberVO getMember(String id) {
 		if(!checking(id)) {
@@ -63,5 +60,35 @@ public class MemberServiceImp implements MemberService {
 		}
 		return true;
 	}
+
+	@Override
+
+	public boolean updateMember(MemberVO member) {
+		if(!checking(member.getMe_id()) ||
+		   !checking(member.getMe_pw()) ||
+		   !checking(member.getMe_email()) ||
+		   !checking(member.getMe_phone())) {
+			return false;
+		}
+		memberDao.updateMember(member);
+		return true;
+	}
+	
+
+	public int getAllmemberNum() {
+		return memberDao.selectAllmemberNum();
+	}
+
+	@Override
+	public boolean countMember(MemberVO user) {
+		if(user == null) {
+			return false;
+		}
+		return memberDao.selectMemberNum(user);
+	}
+
+	
+
+
 	
 }

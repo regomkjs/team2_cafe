@@ -13,4 +13,5 @@ public class LoginDTO {
 		this.id = id;
 		this.pw = pw;
 	}
+	
 }

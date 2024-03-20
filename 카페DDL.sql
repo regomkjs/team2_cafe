@@ -49,8 +49,8 @@ CREATE TABLE if not exists `comment` (
 	`co_writer`	varchar(12)	not NULL,
 	`co_content`	text not NULL,
 	`co_datetime`	datetime not NULL,
-	`me_id`	varchar(12)	NOT NULL,
-	`po_num`	int	NOT NULL
+	`co_me_id`	varchar(12)	NOT NULL,
+	`co_po_num`	int	NOT NULL
 );
 
 drop table if exists `member`;
@@ -106,13 +106,13 @@ REFERENCES `post` (
 	`po_num`
 );
 ALTER TABLE `comment` ADD CONSTRAINT `FK_member_TO_comment_1` FOREIGN KEY (
-	`me_id`
+	`co_me_id`
 )
 REFERENCES `member` (
 	`me_id`
 );
 ALTER TABLE `comment` ADD CONSTRAINT `FK_post_TO_comment_1` FOREIGN KEY (
-	`po_num`
+	`co_po_num`
 )
 REFERENCES `post` (
 	`po_num`
