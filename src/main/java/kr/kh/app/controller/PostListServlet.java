@@ -10,12 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
-
 import kr.kh.app.model.vo.CategoryVO;
-
+import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
-import kr.kh.app.pagination.Criteria;
-
 import kr.kh.app.pagination.PageMaker;
 import kr.kh.app.pagination.PostCriteria;
 import kr.kh.app.service.PostService;
@@ -23,7 +20,6 @@ import kr.kh.app.service.PostServiceImp;
 
 
 
-import kr.kh.app.model.vo.HeadVO;
 
 
 
@@ -40,7 +36,6 @@ public class PostListServlet extends HttpServlet {
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
-
 		int bo_num;
 		try {
 			bo_num = Integer.parseInt(request.getParameter("num"));
@@ -49,7 +44,8 @@ public class PostListServlet extends HttpServlet {
 			bo_num = 0;
 		}
 		request.setAttribute("bo_num", bo_num);
-	
+		ArrayList<HeadVO> heList = postService.getHeadListByBoNum(bo_num);
+		request.setAttribute("heList", heList);
 	/*
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -89,6 +85,7 @@ public class PostListServlet extends HttpServlet {
 		request.setAttribute("pm", pm);
 		ArrayList<PostVO> postList = postService.getPostByBoNum(cri);
 		request.setAttribute("postList", postList);
+		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
 }
 	
