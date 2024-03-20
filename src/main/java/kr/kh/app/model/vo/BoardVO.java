@@ -11,9 +11,9 @@ public class BoardVO {
 	private String bo_ca_name;
 	
 
-	public BoardVO(int bo_ca_name, String bo_name) {
+	public BoardVO(String bo_ca_name, String bo_name) {
 		this.bo_ca_name = bo_ca_name;
-		this.bo_name = name;
+		this.bo_name = bo_name;
 	}
 
 }
