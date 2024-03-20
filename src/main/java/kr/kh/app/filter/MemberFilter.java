@@ -22,6 +22,7 @@ public class MemberFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		MemberVO user = (MemberVO) httpServletRequest.getSession().getAttribute("user");
+		
 		if(user == null) {
 			request.setAttribute("msg", "로그인 해야합니다.");
 			request.setAttribute("url", "login");
@@ -43,4 +44,5 @@ public class MemberFilter implements Filter {
 		
 	}
 
+	
 }

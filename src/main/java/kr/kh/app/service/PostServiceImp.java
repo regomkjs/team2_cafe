@@ -12,6 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+
+
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
@@ -19,6 +21,8 @@ import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
 import kr.kh.app.pagination.PostCriteria;
+
+
 
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
@@ -32,9 +36,53 @@ public class PostServiceImp implements PostService{
 			SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			session = sessionFactory.openSession(true);
 			postDao = session.getMapper(PostDAO.class);
-		} catch (IOException e) {
+			} catch (IOException e) {
 			e.printStackTrace();
+			}
+	}
+	//카테고리 불러오기
+	@Override
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
+	}
+	//카테고리 삭제
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
+	}
+	//카테고리 추가 구현중
+	@Override
+	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
+		return postDao.insertCategory(categoryList);
+	}
+	//
+	@Override
+	public ArrayList<PostVO> getPoList() {
+		
+		return postDao.selectPost();
+	}
+	@Override
+	public ArrayList<BoardVO> getBoList() {
+		return postDao.selectBoard();
+	}
+
+	@Override
+	public int getAllpostNum() {
+		return postDao.selectAllPostNum();
+	}
+	@Override
+	public ArrayList<PostVO> getPostList(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
 		}
+		return postDao.selectPostList(cri);
+	}
+	@Override
+	public int getTotalCount(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return postDao.selectTotalCount(cri);
 	}
 
 	private boolean checkString(String str) {
@@ -62,11 +110,13 @@ public class PostServiceImp implements PostService{
 
 	
 	@Override
+
 	public ArrayList<PostVO> getPostByBoNum(Criteria cri) {
 		if(cri == null) {
 			cri = new Criteria(1,2);
 		}
 		return postDao.selectPostByBoNum(cri);
+
 	}
 
 	@Override
@@ -83,6 +133,31 @@ public class PostServiceImp implements PostService{
 			return false;
 		}
 		return postDao.insertPost(post);
+	}
+
+	@Override
+	public ArrayList<CategoryVO> getCategoryList() {
+		return postDao.selectCategoryList();
+	}
+
+	@Override
+	public ArrayList<BoardVO> getBoardList() {
+		return postDao.selectBoardList();
+	}
+
+	@Override
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
+	}
+
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
+	}
+
+	@Override
+	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
+		return postDao.insertCategory(categoryList);
 	}
 	
 	@Override
@@ -117,6 +192,7 @@ public class PostServiceImp implements PostService{
 	}
 
 	@Override
+
 	public ArrayList<CommentVO> getCommentList(Criteria cri) {
 		if(cri == null) {
 			cri = new Criteria(1,2);
@@ -191,6 +267,52 @@ public class PostServiceImp implements PostService{
 
 	
 	
+
+
+	public boolean manageHead(String inputHead, String selectHead, String updateHead, String deleteHead, int bo_num) {
+		if(bo_num == 0) {
+			return false;
+		}
+		
+		if(checkString(inputHead)) {
+			HeadVO insertHeader = new HeadVO(inputHead, bo_num);
+			postDao.insertHead(insertHeader);
+			return true;
+		}
+		
+		if(checkString(selectHead)) {
+			if(checkString(updateHead)) {
+				if(Integer.parseInt(selectHead)!=-1) {
+					HeadVO updateHeader = new HeadVO(Integer.parseInt(selectHead), updateHead);
+					postDao.updateHead(updateHeader);
+					return true;
+				}
+			}
+		}
+		
+		if(checkString(deleteHead)) {
+			if(Integer.parseInt(deleteHead)!=-2) {
+				HeadVO deleteHeader = new HeadVO(Integer.parseInt(deleteHead));
+				postDao.deleteHead(deleteHeader);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public int getAllPostNum() {
+		return postDao.selectAllPostNum();
+	}
+
+	@Override
+	public ArrayList<PostVO> getMyPostList(String me_id) {
+		if(checkString(me_id)) {
+			return postDao.selectMyPost(me_id);
+		}
+		return null;
+	}
 
 	
 	

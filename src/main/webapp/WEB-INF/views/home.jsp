@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Main</title>
-<!-- 부트스트렙5 -->
+<!-- 부트스트랩5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
@@ -21,9 +21,12 @@
 	}
 	.main-content{
 		width: 100%;
+
 		height:1000px;
 		margin-bottom: 300px;
+
 	}
+	
 </style>
 </head>
 
@@ -35,8 +38,9 @@
 <div class="main-box d-flex align-content-stretch">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-		메인 화면에 보여줄 리스트 구상
-	</div>
+	 메인 화면에 보여줄 리스트 구상
+</div>
+
 </div>
 
 	
