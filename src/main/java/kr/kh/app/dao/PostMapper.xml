@@ -85,6 +85,10 @@
 	<delete id="deleteHead">
 		delete from head where he_num = #{deleteHead.he_num}
 	</delete>
-	
-	
+	<select id="selectAllPostNum" resultType="int">
+		select count(*) from post
+	</select>
+	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post where po_me_id = #{me_id}
+	</select>
 </mapper>

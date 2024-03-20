@@ -140,6 +140,19 @@ public class PostServiceImp implements PostService{
 		
 		return false;
 	}
+
+	@Override
+	public int getAllPostNum() {
+		return postDao.selectAllPostNum();
+	}
+
+	@Override
+	public ArrayList<PostVO> getMyPostList(String me_id) {
+		if(checkString(me_id)) {
+			return postDao.selectMyPost(me_id);
+		}
+		return null;
+	}
 	
 	
 }

@@ -28,9 +28,9 @@ public class MyPostServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CategoryVO> categoryList = postService.getCategoryList();
-		ArrayList<BoardVO> boardList = postService.getBoardList();
-		ArrayList<HeadVO> headList = postService.getHeadList();
+		ArrayList<CategoryVO> categoryList = postService.getCaList();
+		ArrayList<BoardVO> boardList = postService.getBoList();
+		ArrayList<HeadVO> headList = postService.getHeList();
 		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");

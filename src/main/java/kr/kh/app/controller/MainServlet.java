@@ -24,6 +24,8 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("caList", caList);
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
+		int allPostNum = postService.getAllPostNum();
+		request.setAttribute("allPostNum", allPostNum);
 		
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}

@@ -26,8 +26,8 @@ public class MyPageServlet extends HttpServlet {
 	private MemberService memberService = new MemberServiceImp();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CategoryVO> categoryList = postService.getCategoryList();
-		ArrayList<BoardVO> boardList = postService.getBoardList();
+		ArrayList<CategoryVO> categoryList = postService.getCaList();
+		ArrayList<BoardVO> boardList = postService.getBoList();
 		
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("boardList", boardList);
@@ -58,10 +58,10 @@ public class MyPageServlet extends HttpServlet {
 		
 		if(memberService.updateMember(member)) {
 			request.setAttribute("msg", "회원정보가 수정되었습니다.");
-			request.setAttribute("url", "my/page");
+			request.setAttribute("url", "/myPage");
 		} else {
 			request.setAttribute("msg", "회원정보 수정에 실패했습니다.");
-			request.setAttribute("url", "my/page");
+			request.setAttribute("url", "/myPage");
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);

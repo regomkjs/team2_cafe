@@ -37,6 +37,9 @@ public interface PostDAO {
 
 	void deleteHead(@Param("deleteHead")HeadVO deleteHeader);
 
-	
+	int selectAllPostNum();
+
+	ArrayList<PostVO> selectMyPost(String me_id);
+
 
 }
