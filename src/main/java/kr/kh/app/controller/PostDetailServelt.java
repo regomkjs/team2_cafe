@@ -11,25 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
-@WebServlet("/")
-public class MainServlet extends HttpServlet {
+@WebServlet("/post/detail")
+public class PostDetailServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private PostService postService = new PostServiceImp();
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
-		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		int num = 0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		postService.updateView(num);
+		PostVO post = postService.getPostbyPoNum(num);
+		if(post != null) {
+			request.setAttribute("post", post);
+		}
+		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
+	
 }
