@@ -24,4 +24,5 @@ public MemberVO(String id, String pw, String email, String phone) {
 
 
 	
+	
 }
