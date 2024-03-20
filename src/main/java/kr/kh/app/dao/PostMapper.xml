@@ -19,6 +19,7 @@
 		select * from head where he_num = #{po_he_num}
 	</select>
 	
+
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
@@ -141,6 +142,60 @@
 	</select>
 	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
 		select * from post where po_me_id = #{me_id}
+	</select>
+
+
+	<select id="selectCategory"
+		resultType="kr.kh.app.model.vo.CategoryVO">
+		select * from category
+	</select>
+	<delete id="deleteCategory">
+		delete from category where ca_num = #{ca_num}
+	</delete>
+	<update id="insertCategory">
+		update category set
+		ca_name = #{category.ca_name}
+	</update>
+	<select id="selectPost" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post
+	</select>
+	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board
+	</select>
+	<select id="selectAllPostNum" resultType="int">
+		select count(*) from
+		post
+	</select>
+	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
+		SELECT *
+		FROM POST
+		<if test='cri.type=="all"'>
+			where po_title like concat('%', #{cri.search},'%')
+			or po_me_id = #{cri.search}
+		</if>
+		<if test='cri.type=="title"'>
+			where po_title like concat('%', #{cri.search},'%')
+		</if>
+		<if test='cri.type=="writer"'>
+			where po_me_id = #{cri.search}
+		</if>
+		ORDER BY PO_NUM DESC
+		LIMIT #{cri.pageStart},#{cri.perPageNum}
+	</select>
+
+	<select id="selectTotalCount" resultType="int">
+		SELECT count(*)
+		FROM POST
+		<if test='cri.type=="all"'>
+			where po_title like concat('%', #{cri.search},'%')
+			or po_me_id = #{cri.search}
+		</if>
+		<if test='cri.type=="title"'>
+			where po_title like concat('%', #{cri.search},'%')
+		</if>
+		<if test='cri.type=="writer"'>
+			where po_me_id = #{cri.search}
+		</if>
 	</select>
 
 </mapper>

@@ -13,9 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter({"/board/write","/board/update","/board/delete", "/logout",
-	"/post/insert"})
-public class MemberFilter implements Filter {
+@WebFilter({"/category/insert",""})
+public class AdminFilter implements Filter {
        
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +25,12 @@ public class MemberFilter implements Filter {
 		if(user == null) {
 			request.setAttribute("msg", "로그인 해야합니다.");
 			request.setAttribute("url", "login");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(httpServletRequest, response);
+			return;
+		}
+		if(user != null && user.getMe_gr_num() != 2) {
+			request.setAttribute("msg", "관리자만 들어갈 수 있는 페이지입니다.");
+			request.setAttribute("url", "");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(httpServletRequest, response);
 			return;
 		}
@@ -44,5 +49,4 @@ public class MemberFilter implements Filter {
 		
 	}
 
-	
 }

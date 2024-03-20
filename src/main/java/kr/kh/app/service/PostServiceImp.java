@@ -13,6 +13,7 @@ import kr.kh.app.dao.PostDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 
+
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
@@ -34,9 +35,53 @@ public class PostServiceImp implements PostService{
 			SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			session = sessionFactory.openSession(true);
 			postDao = session.getMapper(PostDAO.class);
-		} catch (IOException e) {
+			} catch (IOException e) {
 			e.printStackTrace();
+			}
+	}
+	//카테고리 불러오기
+	@Override
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
+	}
+	//카테고리 삭제
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
+	}
+	//카테고리 추가 구현중
+	@Override
+	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
+		return postDao.insertCategory(categoryList);
+	}
+	//
+	@Override
+	public ArrayList<PostVO> getPoList() {
+		
+		return postDao.selectPost();
+	}
+	@Override
+	public ArrayList<BoardVO> getBoList() {
+		return postDao.selectBoard();
+	}
+
+	@Override
+	public int getAllpostNum() {
+		return postDao.selectAllPostNum();
+	}
+	@Override
+	public ArrayList<PostVO> getPostList(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
 		}
+		return postDao.selectPostList(cri);
+	}
+	@Override
+	public int getTotalCount(Criteria cri) {
+		if(cri == null) {
+			cri = new Criteria();
+		}
+		return postDao.selectTotalCount(cri);
 	}
 
 	private boolean checkString(String str) {

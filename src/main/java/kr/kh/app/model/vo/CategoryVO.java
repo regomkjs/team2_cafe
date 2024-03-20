@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class CategoryVO {
+
 	private String ca_name;
 	
 }

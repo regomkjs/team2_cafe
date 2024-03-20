@@ -15,6 +15,7 @@ public class PostVO {
  	private String po_datetime; 
 	private int po_he_num;
 	private String po_me_id;
+
 	private int he_num;
 	private String he_name;
 	private String he_bo_num;
@@ -30,5 +31,13 @@ public class PostVO {
 		this.po_me_id = po_me_id;
 	}
 	
+
+
+	public PostVO(int po_num, String po_title, String po_content, String po_me_id) {
+		this.po_num = po_num;
+		this.po_title = po_title;
+		this.po_content = po_content;
+		this.po_me_id = po_me_id;
+	}
 
 }

@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
-	<form action="<c:url value="signup"/>" method="post">
+	<form action="<c:url value="/signup"/>" method="post">
 		<h1>회원가입</h1>
    		<div class="mb-3 mt-3">
    			<label for="id">아이디:</label>
@@ -41,8 +41,33 @@
 
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">
+		let flag = false;
+		$("#idCheck").click(function(){
+			let id = $("[name=id]").val();
+			fetch(`<c:url value="/id/check"/>?id=\${id}`)
+			.then(response=>response.text())
+			.then(data => {
+				if(data == "true"){
+					alert("사용 가능한 아이디입니다.");
+					flag = true;
+				}else{
+					alert("이미 사용 중인 아이디입니다.");
+				}
+			})
+			.catch(error => console.error("Error : ", error));
+		});
+		$("[name=id]").change(function(){
+			flag = false;
+		});
+		$("form").submit(function(){
+			^[a-zA-Z][a-zA-Z0-9_]{3,15}$
+			
+			if(!flag){
+				alert("아이디 중복 확인을 하세요.");
+				return false;
+			}
+		});
 
 </script>
-
 </body>
 </html>

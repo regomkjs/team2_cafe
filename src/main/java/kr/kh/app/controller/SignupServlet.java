@@ -17,6 +17,7 @@ import kr.kh.app.service.MemberServiceImp;
 public class SignupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/views/signup.jsp").forward(request, response);
 	}
@@ -28,9 +29,10 @@ public class SignupServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		MemberVO member = new MemberVO(id, pw, email, phone);
 		boolean res = memberService.signupMember(member);
+		
 		if(res) {
 			//가입 성공 알림 후 로그인으로
-			request.setAttribute("msg",  "ID : "+id + " 가입 성공");
+			request.setAttribute("msg",  "ID : "+ id + "가입 성공");
 			request.setAttribute("url", "login");
 		}
 		else {

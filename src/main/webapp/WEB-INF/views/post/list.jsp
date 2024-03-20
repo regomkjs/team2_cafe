@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>게시글 리스트</title>
+
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -33,6 +35,7 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
+
 		<div class="container ">
 			<table class="table table-hover mt-3">
 		 		<thead class="text-center">
@@ -79,6 +82,43 @@
 			</table>
 
 			<ul class="pagination justify-content-center">
+	<!--
+		<div class ="container">
+	<table class="table">
+	 <thead>
+	     <tr>
+	       <th>번호</th>
+	       <th>게시글 제목</th>
+	       <th>게시판</th>
+	       <th>작성자</th>
+	       <th>조회수</th>
+	     </tr>
+	  </thead>
+	  <tbody>
+	   	<c:forEach items="${postlist}" var="po">
+		<tr>
+			<td>${po.po_num }</td>
+			<td>${po.po_title }</td>
+			<td>
+				<c:url var="url" value="/post/list">
+					<c:param name="num" value="${board.bo_num}" />
+				</c:url>
+					<a href="${url }">${boList}</a></td>
+			<td>${po.po_writer}</td>
+			<td>${po.po_view}</td>
+		</tr>
+	</c:forEach>
+	<c:if test="${poList.size() == 0 }">
+		<tr>
+			<th colspan="5">
+				<h3 class="text-center">등록된 게시글이 없습니다.</h3>
+			</th>
+		</tr>
+	</c:if>
+	</tbody>
+  	</table>
+  		<ul class="pagination justify-content-center">
+-->
 		    	<c:if test="${pm.prev}">
 					<li class="page-item">
 						<c:url var="prevUrl" value="/post/list">
@@ -113,6 +153,7 @@
 					</li>
 				</c:if>
 		  	</ul>
+
 			
 
 			<c:if test="${bo_num == 1 && user.me_gr_num == 0}">
@@ -191,6 +232,7 @@
 		}
 	})
 </script>
+
 
 </body>
 </html>

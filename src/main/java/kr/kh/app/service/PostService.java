@@ -14,7 +14,9 @@ import kr.kh.app.pagination.Criteria;
 import kr.kh.app.pagination.PostCriteria;
 
 
+
 public interface PostService {
+
 
 	ArrayList<CategoryVO> getCaList();
 
@@ -56,5 +58,21 @@ public interface PostService {
 	ArrayList<PostVO> getMyPostList(String me_id);
 	
 
+
+	ArrayList<CategoryVO> selectCategory();
+		
+	boolean deleteCategory(int num);
+
+	boolean insertCategory(ArrayList<CategoryVO> categoryList);
+
+	ArrayList<PostVO> getPoList();
+
+	ArrayList<BoardVO> getBoList();
+
+	int getAllpostNum();
+
+	int getTotalCount(Criteria cri);
+
+	ArrayList<PostVO> getPostList(Criteria cri);
 
 }

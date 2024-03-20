@@ -7,10 +7,10 @@
 		insert into member(me_id, me_pw, me_email, me_phone, me_date)
 		values(#{member.me_id}, #{member.me_pw}, #{member.me_email}, #{member.me_phone}, now())
 	</insert>
-	
 	<select id="selectUser" resultType="kr.kh.app.model.vo.MemberVO">
 		select * from member where me_id = #{id}
 	</select>
+
 	<update id="updateMember">
 		update member 
 			set
@@ -19,4 +19,14 @@
 				me_phone = #{member.me_phone}
 		where me_id = #{member.me_id}
 	</update>
+
+	<select id="selectAllmemberNum" resultType="int">
+		select count(*) from member
+	</select>
+	<select id="selectMemberNum" resultType="int">
+		select count(*) from member
+	</select>
+	
+	
+
 </mapper>
