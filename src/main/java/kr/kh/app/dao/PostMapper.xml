@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.PostDAO">
+
 	<resultMap type="kr.kh.app.model.vo.PostVO" id="postMap">
 		<id property="po_num" column="po_num"/>
 		<result property="po_he_num" column="po_he_num"/>	
@@ -150,7 +151,7 @@
 		select * from category
 	</select>
 	<delete id="deleteCategory">
-		delete from category where ca_num = #{ca_num}
+		delete from category where ca_name = #{ca_name}
 	</delete>
 	<update id="insertCategory">
 		update category set

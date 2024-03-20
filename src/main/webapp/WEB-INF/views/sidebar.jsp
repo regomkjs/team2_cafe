@@ -81,7 +81,6 @@
 			</div>
 		</div>
 	</div>
-
 	<c:forEach items="${caList}" var="category">
 
 		<div class="container mt-3">
@@ -107,7 +106,7 @@
 	<c:forEach items="${caList}" var="category">
 		<div class="container">
 			<c:if test='${category.ca_name != "공지"}'>
-			<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a></span>
+			<span style="font-weight: bolder;">${category.ca_name} <a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a></span>
 
 				<ul>
 					<c:forEach items="${boList}" var="board">
@@ -118,8 +117,8 @@
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
 
-								<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
-								<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
+								<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
+								<span class="badge bg-success float-end me-2"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
 
 							</li>
 						</c:if>
@@ -129,6 +128,7 @@
 
 	<a class="btn"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 	
+
 		</div>
 	</c:forEach>
 </div>

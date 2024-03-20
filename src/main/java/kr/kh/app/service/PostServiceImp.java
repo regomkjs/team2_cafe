@@ -23,6 +23,7 @@ import kr.kh.app.pagination.Criteria;
 import kr.kh.app.pagination.PostCriteria;
 
 
+
 public class PostServiceImp implements PostService{
 	private PostDAO postDao;
 	private InputStream inputStream;
@@ -132,6 +133,31 @@ public class PostServiceImp implements PostService{
 			return false;
 		}
 		return postDao.insertPost(post);
+	}
+
+	@Override
+	public ArrayList<CategoryVO> getCategoryList() {
+		return postDao.selectCategoryList();
+	}
+
+	@Override
+	public ArrayList<BoardVO> getBoardList() {
+		return postDao.selectBoardList();
+	}
+
+	@Override
+	public ArrayList<CategoryVO> selectCategory() {
+		return postDao.selectCategory();
+	}
+
+	@Override
+	public boolean deleteCategory(int num) {
+		return postDao.deleteCategory(num);
+	}
+
+	@Override
+	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
+		return postDao.insertCategory(categoryList);
 	}
 	
 	@Override

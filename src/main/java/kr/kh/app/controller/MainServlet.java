@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 
@@ -24,6 +25,7 @@ import kr.kh.app.service.PostServiceImp;
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	private PostService postService = new PostServiceImp();
     private MemberService memberService = new MemberServiceImp();
