@@ -21,7 +21,7 @@
 	.main-content{
 		width: 100%;
 		height: 1000px;
-		background-color: green;
+		background-color: white;
 	}
 	
 </style>
@@ -35,7 +35,7 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-	 메인 화면에 보여줄 리스트 구상
+	 <img src="/team2_cafe/images/test01.jpg" alt="images">
 </div>
 
 </div>
