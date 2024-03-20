@@ -3,6 +3,8 @@ package kr.kh.app.service;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale.Category;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -65,6 +67,12 @@ public class BoardServiceImp implements BoardService {
 			return false;
 		}
 		return boardDao.deleteboard(num, bo_name);
+	}
+
+	@Override
+	public List<Category> getAllCategory() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

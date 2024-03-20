@@ -22,13 +22,11 @@ public interface PostDAO {
 
 	ArrayList<CategoryVO> selectCategory();
 
-
 	ArrayList<BoardVO> selectBoard();
 
 	ArrayList<HeadVO> selectAllHead();
 
 	ArrayList<PostVO> selectPostByBoNum(@Param("cri")Criteria cri);
-
 
 	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
 
@@ -68,28 +66,16 @@ public interface PostDAO {
 
 	ArrayList<PostVO> selectMyPost(String me_id);
 
-
-
 	boolean deleteCategory(@Param("ca")int num);
 
 	boolean insertCategory(@Param("ca") ArrayList<CategoryVO> categoryList);
 
 	ArrayList<PostVO> selectPost();
 
-	ArrayList<BoardVO> selectBoard();
-
-	int selectAllPostNum();
-
 	ArrayList<PostVO> selectPostList(@Param("cri") Criteria cri);
 
 	int selectTotalCount(@Param("cri") Criteria cri);
 	
-	
-	
-
-
-
-
 	ArrayList<CategoryVO> selectCategoryList();
 
 	ArrayList<BoardVO> selectBoardList();

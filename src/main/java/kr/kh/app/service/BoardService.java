@@ -1,6 +1,8 @@
 package kr.kh.app.service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale.Category;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -16,5 +18,7 @@ public interface BoardService {
 	ArrayList<CategoryVO> getcategoryList();
 
 	boolean deleteboard(int num, String bo_name);
+
+	List<Category> getAllCategory();
 
 }
