@@ -25,10 +25,6 @@ import kr.kh.app.service.PostServiceImp;
 
 import kr.kh.app.model.vo.HeadVO;
 
-
-
-
-
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +33,7 @@ public class PostListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
+	
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
@@ -121,9 +118,9 @@ public class PostListServlet extends HttpServlet {
 //		
 //	
 //		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
-//	}
+//		}
 //
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		int num = 0;
 //		try {
 //			num = Integer.parseInt(request.getParameter("board"));
@@ -133,7 +130,7 @@ public class PostListServlet extends HttpServlet {
 //		request.setAttribute("msg", "");
 //		request.setAttribute("url", "post/list?num="+num);
 //		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-//	}
+//		}
 //	
 //	*/
 //	

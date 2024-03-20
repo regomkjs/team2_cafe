@@ -60,12 +60,6 @@ public interface PostService {
 	
 
 
-	ArrayList<CategoryVO> selectCategory();
-		
-	boolean deleteCategory(int num);
-
-	boolean insertCategory(ArrayList<CategoryVO> categoryList);
-
 	ArrayList<PostVO> getPoList();
 
 	

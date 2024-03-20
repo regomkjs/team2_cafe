@@ -66,10 +66,6 @@ public interface PostDAO {
 
 	ArrayList<PostVO> selectMyPost(String me_id);
 
-	boolean deleteCategory(@Param("ca")int num);
-
-	boolean insertCategory(@Param("ca") ArrayList<CategoryVO> categoryList);
-
 	ArrayList<PostVO> selectPost();
 
 	ArrayList<PostVO> selectPostList(@Param("cri") Criteria cri);

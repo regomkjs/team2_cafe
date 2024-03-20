@@ -37,6 +37,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 			num =0;
 		}
 		//서비스에게 회원정보와 카테고리 정보를 주면서 삭제하라고 시킨 후 삭제 여부를 알려달라고 요청
+		/*
 		boolean res = postService.deleteCategory(num);
 		if(res) {
 			request.setAttribute("msg", "카테고리를 삭제했습니다.");
@@ -52,6 +53,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 			//화면에 url 전송
 			request.setAttribute("url", "/sidebar");
 		}
+		*/
 		//message.jsp 화면을 전송
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		

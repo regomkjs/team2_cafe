@@ -431,8 +431,6 @@ $(".btn-comment-insert").click(function () {
 </script>
 
 
-
-
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">
 	$('[name=content]').summernote({

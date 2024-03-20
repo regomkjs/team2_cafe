@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.app.dao.CategoryDAO">
+	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
+		select * from category
+	</select>
+	
+	<!-- 
+	<delete id="deleteCategory">
+		delete from category where ca_name = #{ca_name}
+	</delete>
+	<update id="insertCategory">
+		update category set
+		ca_name = #{category.ca_name}
+	</update>
+	 -->
+</mapper>
+
+	

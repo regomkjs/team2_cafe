@@ -19,8 +19,6 @@
 	<select id="selectHead" resultType="kr.kh.app.model.vo.HeadVO">
 		select * from head where he_num = #{po_he_num}
 	</select>
-	
-
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
@@ -144,21 +142,11 @@
 	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
 		select * from post where po_me_id = #{me_id}
 	</select>
-
-
 	
-	<delete id="deleteCategory">
-		delete from category where ca_name = #{ca_name}
-	</delete>
-	<update id="insertCategory">
-		update category set
-		ca_name = #{category.ca_name}
-	</update>
 	<select id="selectPost" resultType="kr.kh.app.model.vo.PostVO">
 		select * from post
 	</select>
-	
-	
+		
 	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
 		SELECT *
 		FROM POST

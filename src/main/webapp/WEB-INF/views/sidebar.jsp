@@ -68,9 +68,10 @@
 				<button type="button" class="btn btn-primary">가입한 회원 수 
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
-		    	<p> ${categoryList}</p>
-		    	<br>
+		    	
+		    	<br><br>
 		    	<p>카페관리</p>
+		    	
 		    	
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>

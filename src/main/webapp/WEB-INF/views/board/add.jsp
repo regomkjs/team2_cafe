@@ -30,10 +30,11 @@
 <div class="main-img-box">
 	중앙에 이미지 배치, 클릭시 메인으로 이동
 </div>
+
 <div class="main-box d-flex">
 <jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 <div class="main-content flex-grow-1">
-	게시판 추가에 관련된 정보 출력
+<!-- 게시판 추가에 관련된 정보 출력 -->
 <div class="container">
 	<form action="<c:url value="/board/add"/>" method="post">
 		<h5>게시판 추가</h5>
