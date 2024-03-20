@@ -18,9 +18,7 @@ import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
-import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
-import kr.kh.app.pagination.PostCriteria;
 
 
 
@@ -98,10 +96,7 @@ public class PostServiceImp implements PostService{
 		return postDao.selectCategory();
 	}
 
-	@Override
-	public ArrayList<BoardVO> getBoList() {
-		return postDao.selectBoard();
-	}
+	
 
 	@Override
 	public ArrayList<HeadVO> getHeList() {
@@ -145,21 +140,7 @@ public class PostServiceImp implements PostService{
 		return postDao.selectBoardList();
 	}
 
-	@Override
-	public ArrayList<CategoryVO> selectCategory() {
-		return postDao.selectCategory();
-	}
 
-	@Override
-	public boolean deleteCategory(int num) {
-		return postDao.deleteCategory(num);
-	}
-
-	@Override
-	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
-		return postDao.insertCategory(categoryList);
-	}
-	
 	@Override
 	public PostVO getPostbyPoNum(int po_num) {
 		return postDao.selectPostByPoNum(po_num);
@@ -224,13 +205,7 @@ public class PostServiceImp implements PostService{
 		return res;
 	}
 
-	@Override
-	public int getTotalCount(Criteria cri) {
-		if(cri == null) {
-			return 0;
-		}
-		return postDao.selectTotalCountPost(cri);
-	}
+	
 
 	@Override
 	public boolean deleteComment(int num, MemberVO user) {

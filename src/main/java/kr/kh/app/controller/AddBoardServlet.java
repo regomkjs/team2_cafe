@@ -65,10 +65,10 @@ public class AddBoardServlet extends HttpServlet {
 			String name1 = user.getMe_id();
 			
 			// 게시판 번호는 1번으로 저장
-			int bo_num = 1;
-			
+			String bo_ca_name = "";
+			String bo_name = "";
 			// 게시판 이름을 이용하여 게시판 객체를 생성 (BoardVO에서 확인 필요)
-			BoardVO board = new BoardVO(bo_num, name1);
+			BoardVO board = new BoardVO(bo_ca_name, bo_name);
 
 			// 서비스에게 게시판 이름 객체를 주면서 등록하라고 시킴
 			boolean res = boardService.insertBoard(board);
