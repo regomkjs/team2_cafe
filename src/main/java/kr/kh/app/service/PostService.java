@@ -68,11 +68,11 @@ public interface PostService {
 
 	ArrayList<PostVO> getPoList();
 
-	ArrayList<BoardVO> getBoList();
+	
 
 	int getAllpostNum();
 
-	int getTotalCount(Criteria cri);
+	
 
 	ArrayList<PostVO> getPostList(Criteria cri);
 
