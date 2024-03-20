@@ -23,4 +23,5 @@
     	<mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
     	<mapper resource="kr/kh/app/dao/PostMapper.xml"/>
   	</mappers>
+  	
 </configuration>

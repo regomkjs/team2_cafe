@@ -8,4 +8,7 @@ public interface MemberService {
 
 	MemberVO getMember(String id);
 
+	boolean updateMember(MemberVO member);
+
+	
 }

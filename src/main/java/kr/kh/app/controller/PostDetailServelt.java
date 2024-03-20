@@ -15,6 +15,7 @@ import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
 @WebServlet("/post/detail")
 public class PostDetailServelt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,5 +40,5 @@ public class PostDetailServelt extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/post/detail.jsp").forward(request, response);
 	}
 
-	
+
 }

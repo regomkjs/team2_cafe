@@ -40,16 +40,20 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active"><br>
 		    	<p>카페정보</p>
-		    	<br>
+		    	<p>${allPostNum}</p>
 		    	<p>카페관리</p>
 		    	
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
+		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/page"/>">회원정보 수정</a>
+		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/post"/>">내가 쓴 글 보기</a>
+		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/comment"/>">내가 쓴 댓글보기</a>
 			</div>
 		</div>
 	</div>
 	<c:forEach items="${caList}" var="category">
+
 		<div class="container mt-3">
 			<c:if test='${category.ca_name == "공지"}'>
 				<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a></span>
@@ -74,6 +78,7 @@
 		<div class="container">
 			<c:if test='${category.ca_name != "공지"}'>
 			<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a></span>
+
 				<ul>
 					<c:forEach items="${boList}" var="board">
 						<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
@@ -82,8 +87,10 @@
 									<c:param name="num" value="${board.bo_num}" />
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
+
 								<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
 								<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
+
 							</li>
 						</c:if>
 					</c:forEach>				

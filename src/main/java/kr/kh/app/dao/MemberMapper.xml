@@ -11,4 +11,12 @@
 	<select id="selectUser" resultType="kr.kh.app.model.vo.MemberVO">
 		select * from member where me_id = #{id}
 	</select>
+	<update id="updateMember">
+		update member 
+			set
+				me_pw = #{member.me_pw},
+				me_email = #{member.me_email},
+				me_phone = #{member.me_phone}
+		where me_id = #{member.me_id}
+	</update>
 </mapper>

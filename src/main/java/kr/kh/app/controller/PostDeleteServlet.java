@@ -11,6 +11,7 @@ import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
 @WebServlet("/post/delete")
 public class PostDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

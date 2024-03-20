@@ -22,4 +22,5 @@ public class MemberVO {
 		this.me_phone = phone;
 	}
 	
+	
 }

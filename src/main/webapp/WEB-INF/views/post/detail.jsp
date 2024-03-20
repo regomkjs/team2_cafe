@@ -15,7 +15,9 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 	.main-box{
+
 		 min-height: 1000px;
+
 	}
 	.main-img-box{
 		width: 100%;
@@ -24,6 +26,7 @@
 	}
 	.main-content{
 		width: 100%;
+
 		margin-bottom: 300px;
 		
 	}
@@ -39,6 +42,7 @@
 </style>
 
 
+
 </head>
 
 <body>
@@ -51,6 +55,7 @@
 	<div class="main-content flex-grow-1">
 		<div class="container  mt-3 mb-3">
 			<div class="container mt-3 mb-3">
+
 				<div class="form-control">
 					<div class="mb-3 mt-3 ">
 				  		<div id="board" class="d-flex">
@@ -113,10 +118,12 @@
 						<button type="button" class="btn btn-outline-success col-2 btn-comment-insert">등록</button>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
 </div>
+
 <!-- 댓글 리스트 출력 스크립트 -->
 <script type="text/javascript">
 let cri = {
@@ -422,6 +429,7 @@ $(".btn-comment-insert").click(function () {
 		
 	});
 </script>
+
 
 
 

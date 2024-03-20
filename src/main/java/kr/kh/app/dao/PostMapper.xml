@@ -38,6 +38,7 @@
 		where he_bo_num = #{cri.boNum}
 		order by po_num desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
+
 	</select>
 	
 	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
@@ -125,4 +126,21 @@
 	<update id="renewalComment">
 		update comment set co_ori_num = co_num where co_ori_num = 0
 	</update>
+
+	<insert id="insertHead">
+		insert into head(he_name, he_bo_num) value(#{insertHead.he_name}, #{insertHead.he_bo_num})
+	</insert>
+	<update id="updateHead">
+		update head set he_name = #{updateHead.he_name} where he_num = #{updateHead.he_num}
+	</update>
+	<delete id="deleteHead">
+		delete from head where he_num = #{deleteHead.he_num}
+	</delete>
+	<select id="selectAllPostNum" resultType="int">
+		select count(*) from post
+	</select>
+	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
+		select * from post where po_me_id = #{me_id}
+	</select>
+
 </mapper>

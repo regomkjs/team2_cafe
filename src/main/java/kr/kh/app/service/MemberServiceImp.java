@@ -63,5 +63,18 @@ public class MemberServiceImp implements MemberService {
 		}
 		return true;
 	}
+
+	@Override
+	public boolean updateMember(MemberVO member) {
+		if(!checking(member.getMe_id()) ||
+		   !checking(member.getMe_pw()) ||
+		   !checking(member.getMe_email()) ||
+		   !checking(member.getMe_phone())) {
+			return false;
+		}
+		memberDao.updateMember(member);
+		return true;
+	}
+	
 	
 }

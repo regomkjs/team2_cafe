@@ -61,7 +61,9 @@
 									<c:param name="search" value="${post.po_me_id}"/>
 									<c:param name="page" value="1"/>
 								</c:url>
+
 								<a href="${page}">${post.po_writer}</a>
+
 							</td>
 							<td class="text-center">${post.po_view}</td>
 						</tr>
@@ -75,6 +77,7 @@
 					</c:if>
 				</tbody>
 			</table>
+
 			<ul class="pagination justify-content-center">
 		    	<c:if test="${pm.prev}">
 					<li class="page-item">
@@ -111,15 +114,83 @@
 				</c:if>
 		  	</ul>
 			
+
 			<c:if test="${bo_num == 1 && user.me_gr_num == 0}">
 				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
 			</c:if>
 			<c:if test="${bo_num != 1 && user != null}">
 				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
 			</c:if>
+
+			<c:if test="${user.me_gr_num == 0}"> <!-- 관리자 등급 번호는 0 -->
+				<button type="button" class="btn btn-primary mb-1 headAddBtn">말머리 추가</button>
+				<button type="button" class="btn btn-primary mb-1 headSetBtn">말머리 수정</button>
+				<button type="button" class="btn btn-primary mb-1 headDelBtn">말머리 삭제</button>
+				
+				<form action="<c:url value="/post/list"/>" enctype="multipart/form-data">
+					<input type="hidden" name="num" value="${bo_num}">
+					<div class="d-none input-group mb-3 w-50 inputHead">
+			  			<input type="text" class="head-input form-control" placeholder="추가할 말머리 입력" aria-describedby="btn1" name="inputHead">
+			  			<button class="btn btn-outline-secondary">등록</button>
+					</div>
+
+					<div class="d-none input-group mb-3 w-50 updateHead">
+						<select name="selectHead" class="form-select">
+							<option value="-1">수정할 말머리 선택</option>
+							<c:forEach items="${heList}" var="heList">
+								<option value="${heList.he_num}">${heList.he_name}</option>
+							</c:forEach>
+						</select>
+						<input type="text" class="form-control" placeholder="수정할 말머리 입력" name="updateHead">
+						<button class="btn btn-outline-warning">수정</button>
+					</div>
+
+					<div class="d-none input-group mb-3 w-50 deleteHead">
+						<select name="deleteHead" class="form-select">
+							<option value="-2">삭제할 말머리 선택</option>
+							<c:forEach items="${heList}" var="heList">
+								<option value="${heList.he_num}">${heList.he_name}</option>
+							</c:forEach>
+						</select>
+						<button class="btn btn-outline-warning">삭제</button>
+					</div>
+					
+				</form>
+				
+			</c:if>
 		</div>
 	</div>
 </div>
-	
+<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	$(".headAddBtn").click(function(){
+		if($(".inputHead").hasClass("d-none")===true) {
+			$(".inputHead").removeClass("d-none");
+			$(".updateHead").addClass("d-none");
+			$(".deleteHead").addClass("d-none");
+		} else {
+			$(".inputHead").addClass("d-none");
+		}
+	})
+	$(".headSetBtn").click(function(){
+		if($(".updateHead").hasClass("d-none")===true) {
+			$(".updateHead").removeClass("d-none");
+			$(".inputHead").addClass("d-none");
+			$(".deleteHead").addClass("d-none");
+		} else {
+			$(".updateHead").addClass("d-none");
+		}
+	})
+	$(".headDelBtn").click(function(){
+		if($(".deleteHead").hasClass("d-none")===true) {
+			$(".deleteHead").removeClass("d-none");
+			$(".inputHead").addClass("d-none");
+			$(".updateHead").addClass("d-none");
+		} else {
+			$(".deleteHead").addClass("d-none");
+		}
+	})
+</script>
+
 </body>
 </html>

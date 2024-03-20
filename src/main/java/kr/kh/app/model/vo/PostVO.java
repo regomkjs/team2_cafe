@@ -30,4 +30,5 @@ public class PostVO {
 		this.po_me_id = po_me_id;
 	}
 	
+
 }

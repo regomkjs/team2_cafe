@@ -21,8 +21,10 @@
 	}
 	.main-content{
 		width: 100%;
+
 		height:1000px;
 		margin-bottom: 300px;
+
 	}
 </style>
 </head>

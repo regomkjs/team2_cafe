@@ -12,6 +12,8 @@ import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
+
+
 @WebServlet("/post/insert")
 public class PostInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
