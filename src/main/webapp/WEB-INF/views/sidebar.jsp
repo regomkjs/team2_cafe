@@ -62,16 +62,14 @@
 		    	<p>카페정보</p>
 
 		    	<a href='<c:url value="/post/list"/>' class="btn btn-secondary">전체 게시글 수 
-		    	<span class="badge badge-light">${allPostNum }
+		    	<span class="badge badge-light">${allPostNum}</span>
 				</a>
 				<br><br>
 				<button type="button" class="btn btn-primary">가입한 회원 수 
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
-		    	<p> ${categoryList}</p>
-		    	<br>
 		    	<p>카페관리</p>
-		    	
+		    	<a class="btn btn-outline-primary"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
@@ -85,7 +83,7 @@
 
 		<div class="container mt-3">
 			<c:if test='${category.ca_name == "공지"}'>
-				<span style="font-weight: bolder;">${category.ca_name} <a href="#" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a></span>
+				<span style="font-weight: bolder;">${category.ca_name} <a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a></span>
 				<ul>
 					<c:forEach items="${boList}" var="board">
 						<c:if test='${board.bo_ca_name == "공지"}'>
@@ -125,10 +123,6 @@
 					</c:forEach>				
 				</ul>
 			</c:if>
-
-	<a class="btn"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
-	
-
 		</div>
 	</c:forEach>
 </div>
