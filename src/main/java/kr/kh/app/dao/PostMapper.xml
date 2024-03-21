@@ -152,16 +152,6 @@
 		select * from post
 	</select>
 	
-	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
-		select * 
-		from 
-			post 
-			join head on he_num = po_he_num 
-		where he_bo_num = #{cri.boNum}
-		order by po_num desc
-		limit #{cri.pageStart}, #{cri.perPageNum}
-	</select>
-	
 	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
 		SELECT *
 		FROM POST

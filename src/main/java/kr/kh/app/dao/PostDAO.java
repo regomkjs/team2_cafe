@@ -26,8 +26,6 @@ public interface PostDAO {
 
 	ArrayList<HeadVO> selectAllHead();
 
-	ArrayList<PostVO> selectPostByBoNum(@Param("cri")Criteria cri);
-
 	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
 
 	boolean insertPost(@Param("post")PostVO post);
