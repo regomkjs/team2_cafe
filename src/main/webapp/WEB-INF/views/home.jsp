@@ -12,7 +12,7 @@
 <style type="text/css">
 	
 	.main-box{
-		
+		height: 1000px;	
 	}
 	.main-img-box{
 		width: 100%;
@@ -21,7 +21,8 @@
 	}
 	.main-content{
 		width: 100%;
-
+		height: 1000px;
+	}
 
 	
 </style>

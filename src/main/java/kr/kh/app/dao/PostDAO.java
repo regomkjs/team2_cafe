@@ -26,8 +26,6 @@ public interface PostDAO {
 
 	ArrayList<HeadVO> selectAllHead();
 
-	ArrayList<PostVO> selectPostByBoNum(@Param("cri")Criteria cri);
-
 	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
 
 	boolean insertPost(@Param("post")PostVO post);
@@ -45,8 +43,6 @@ public interface PostDAO {
 	int selectTotalCountComment(@Param("cri")Criteria cri);
 
 	boolean insertComment(@Param("comment")CommentVO comment);
-
-	int selectTotalCountPost(@Param("cri")Criteria cri);
 
 	CommentVO selectComment(@Param("co_num")int num);
 
