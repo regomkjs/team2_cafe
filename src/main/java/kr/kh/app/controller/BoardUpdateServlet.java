@@ -18,7 +18,7 @@ import kr.kh.app.service.PostServiceImp;
 
 
 @WebServlet("/board/update")
-public class UpdateBoardServlet extends HttpServlet {
+public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private PostService postService = new PostServiceImp();
@@ -47,5 +47,24 @@ public class UpdateBoardServlet extends HttpServlet {
         //response.sendRedirect(request.getContextPath() + "/category/list"); // 수정 후 카테고리 목록 페이지로 이동
         request.getRequestDispatcher("/WEB-INF/views/board/update.jsp").forward(request, response);
 	}
+	
+			//화면에서 보낸 댓글 내용과 댓글 번호를 가져옴
+//			int num = 0;
+//			try {
+//				num = Integer.parseInt(request.getParameter("num"));
+//			}catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			String bo_name = request.getParameter("bo_name");
+//			
+//			//회원 정보를 가져옴
+//			MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+//			//댓글 객체를 댓글 번호, 내용, 작성자를 이용하여 생성
+//			CommentVO comment = new CommentVO(0, content, user.getMe_id());
+//			comment.setCm_num(num);
+//			//댓글을 수정하라고 시키고 결과를 boolean으로 받아옴
+//			boolean res = boardService.updateComment(comment);
+//			response.getWriter().write(res?"ok":"");
+//		}
 
 }

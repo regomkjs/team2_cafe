@@ -25,7 +25,7 @@ public class BoardListServlet extends HttpServlet {
 		ArrayList<BoardVO> list = boardService.getBoardList();
 		
 		// 화면에 게시판 리스트를 전송 : 화면에서 사용할 이름 - boardList
-		request.setAttribute("boardList",list);
+		request.setAttribute("boardList", list);
 		request.getRequestDispatcher("/WEB-INF/views/board/list.jsp").forward(request, response);
 	}
 }

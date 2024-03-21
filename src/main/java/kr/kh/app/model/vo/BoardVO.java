@@ -15,5 +15,4 @@ public class BoardVO {
 		this.bo_ca_name = bo_ca_name;
 		this.bo_name = bo_name;
 	}
-
 }
