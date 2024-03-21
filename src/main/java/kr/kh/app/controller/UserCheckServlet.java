@@ -19,51 +19,36 @@ import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
 
-@WebServlet("/my/page")
-public class MyPageServlet extends HttpServlet {
+@WebServlet("/user/check")
+public class UserCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
-	private MemberService memberService = new MemberServiceImp();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		
-		request.setAttribute("categoryList", categoryList);
-		request.setAttribute("boardList", boardList);
+		request.setAttribute("caList", categoryList);
+		request.setAttribute("boList", boardList);
 		
 		
-		request.getRequestDispatcher("/WEB-INF/views/my/page.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/user/check.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		request.setAttribute("user", user);
-		
-		String pw = request.getParameter("pw");
-		String pw2 = request.getParameter("pw2");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		
-		if(!pw.equals(pw2)) {
+		String pw = request.getParameter("pwCheck");
+		if(!user.getMe_pw().equals(pw)) {
 			request.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
-			request.setAttribute("url", "myPage");
-			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-		}
-		
-		MemberVO member = new MemberVO(user.getMe_id(), pw, email, phone);
-		
-		if(memberService.updateMember(member)) {
-			request.setAttribute("msg", "회원정보가 수정되었습니다.");
-			request.setAttribute("url", "/myPage");
+			request.setAttribute("url", "");
 		} else {
-			request.setAttribute("msg", "회원정보 수정에 실패했습니다.");
-			request.setAttribute("url", "/myPage");
+			response.sendRedirect(request.getContextPath()+"/user/page");
+			return;
 		}
-		
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		
 	}

@@ -288,6 +288,13 @@ public class PostServiceImp implements PostService{
 		}
 		return null;
 	}
+	@Override
+	public ArrayList<CommentVO> getMyCommentList(String me_id) {
+		if(checkString(me_id)) {
+			return postDao.selectMyComment(me_id);
+		}
+		return null;
+	}
 
 	
 	

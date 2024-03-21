@@ -20,6 +20,12 @@ public interface MemberDAO {
 
 	boolean selectMemberNum(@Param("member") MemberVO user);
 
+	int selectMyPostNum(@Param("me_id")String me_id);
+
+	int selectMyCommentNum(@Param("me_id")String me_id);
+
+	String selectGrade(@Param("me_id")String me_id);
+
 	
 
 }

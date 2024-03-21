@@ -18,12 +18,12 @@ import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
 
-@WebServlet("/my/post")
-public class MyPostServlet extends HttpServlet {
+@WebServlet("/user/post")
+public class UserPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
 	
-    public MyPostServlet() {
+    public UserPostServlet() {
     	
     }
     
@@ -31,22 +31,21 @@ public class MyPostServlet extends HttpServlet {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		ArrayList<HeadVO> headList = postService.getHeList();
-		
-		HttpSession session = request.getSession();
-		MemberVO user = (MemberVO)session.getAttribute("user");
-		
-		ArrayList<PostVO> myPostList = postService.getMyPostList(user.getMe_id());
-//		if(myPostList == null) {
-//			request.setAttribute("msg", "작성된 게시글이 없습니다.");
-//			request.setAttribute("url", "/");
-//			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-//		}
+		String userID=null;
+		if(request.getParameter("user")!=null) {
+			userID = request.getParameter("user");
+		} else {
+			HttpSession session = request.getSession();
+			MemberVO user = (MemberVO)session.getAttribute("user");
+			userID = user.getMe_id();
+		}
+		ArrayList<PostVO> myPostList = postService.getMyPostList(userID);
 		request.setAttribute("headList", headList);
 		request.setAttribute("postList", myPostList);
-		request.setAttribute("categoryList", categoryList);
-		request.setAttribute("boardList", boardList);
+		request.setAttribute("caList", categoryList);
+		request.setAttribute("boList", boardList);
 		
-		request.getRequestDispatcher("/WEB-INF/views/my/post.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/user/post.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 	}
 	

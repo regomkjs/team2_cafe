@@ -87,6 +87,30 @@ public class MemberServiceImp implements MemberService {
 		return memberDao.selectMemberNum(user);
 	}
 
+	@Override
+	public int getMyPostNum(String me_id) {
+		if(checking(me_id)){
+			return memberDao.selectMyPostNum(me_id);
+		}
+		return 0;
+	}
+
+	@Override
+	public int getMyCommentNum(String me_id) {
+		if(checking(me_id)) {
+			return memberDao.selectMyCommentNum(me_id);
+		}
+		return 0;
+	}
+
+	@Override
+	public String getMyGrade(String me_id) {
+		if(checking(me_id)) {
+			return memberDao.selectGrade(me_id);
+		}
+		return null;
+	}
+
 	
 
 

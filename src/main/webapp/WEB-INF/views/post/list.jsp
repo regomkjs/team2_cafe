@@ -64,9 +64,13 @@
 									<c:param name="search" value="${post.po_me_id}"/>
 									<c:param name="page" value="1"/>
 								</c:url>
-
-								<a href="${page}">${post.po_writer}</a>
-
+								<a href="
+									<c:url value="/user/post">
+										<c:param name="user" value="${post.po_me_id}"/>
+									</c:url>
+									"><!-- href 끝 -->
+									${post.po_writer}
+								</a>
 							</td>
 							<td class="text-center">${post.po_view}</td>
 						</tr>
@@ -80,45 +84,7 @@
 					</c:if>
 				</tbody>
 			</table>
-
 			<ul class="pagination justify-content-center">
-	<!--
-		<div class ="container">
-	<table class="table">
-	 <thead>
-	     <tr>
-	       <th>번호</th>
-	       <th>게시글 제목</th>
-	       <th>게시판</th>
-	       <th>작성자</th>
-	       <th>조회수</th>
-	     </tr>
-	  </thead>
-	  <tbody>
-	   	<c:forEach items="${postlist}" var="po">
-		<tr>
-			<td>${po.po_num }</td>
-			<td>${po.po_title }</td>
-			<td>
-				<c:url var="url" value="/post/list">
-					<c:param name="num" value="${board.bo_num}" />
-				</c:url>
-					<a href="${url }">${boList}</a></td>
-			<td>${po.po_writer}</td>
-			<td>${po.po_view}</td>
-		</tr>
-	</c:forEach>
-	<c:if test="${poList.size() == 0 }">
-		<tr>
-			<th colspan="5">
-				<h3 class="text-center">등록된 게시글이 없습니다.</h3>
-			</th>
-		</tr>
-	</c:if>
-	</tbody>
-  	</table>
-  		<ul class="pagination justify-content-center">
--->
 		    	<c:if test="${pm.prev}">
 					<li class="page-item">
 						<c:url var="prevUrl" value="/post/list">
@@ -168,7 +134,7 @@
 				<button type="button" class="btn btn-primary mb-1 headSetBtn">말머리 수정</button>
 				<button type="button" class="btn btn-primary mb-1 headDelBtn">말머리 삭제</button>
 				
-				<form action="<c:url value="/post/list"/>" enctype="multipart/form-data">
+				<form action="<c:url value="/headmanager"/>" enctype="multipart/form-data">
 					<input type="hidden" name="num" value="${bo_num}">
 					<div class="d-none input-group mb-3 w-50 inputHead">
 			  			<input type="text" class="head-input form-control" placeholder="추가할 말머리 입력" aria-describedby="btn1" name="inputHead">

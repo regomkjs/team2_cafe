@@ -8,14 +8,17 @@ public interface MemberService {
 
 	MemberVO getMember(String id);
 
-
 	boolean updateMember(MemberVO member);
-
-	
 
 	int getAllmemberNum();
 
 	boolean countMember(MemberVO user);
+
+	int getMyPostNum(String me_id);
+
+	int getMyCommentNum(String me_id);
+
+	String getMyGrade(String me_id);
 
 
 

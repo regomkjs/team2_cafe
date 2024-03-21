@@ -1,18 +1,13 @@
 package kr.kh.app.service;
 
 import java.util.ArrayList;
-
-
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
-
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
-import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
-import kr.kh.app.pagination.PostCriteria;
 
 
 
@@ -26,7 +21,6 @@ public interface PostService {
 	ArrayList<HeadVO> getHeList();
 
 	ArrayList<PostVO> getPostByBoNum(Criteria cri);
-
 
 	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);
 
@@ -57,8 +51,6 @@ public interface PostService {
 	int getAllPostNum();
 
 	ArrayList<PostVO> getMyPostList(String me_id);
-	
-
 
 	ArrayList<CategoryVO> selectCategory();
 		
@@ -68,21 +60,14 @@ public interface PostService {
 
 	ArrayList<PostVO> getPoList();
 
-	
-
 	int getAllpostNum();
 
-	
-
 	ArrayList<PostVO> getPostList(Criteria cri);
-
 
 	ArrayList<CategoryVO> getCategoryList();
 
 	ArrayList<BoardVO> getBoardList();
 
-	
-
-	
+	ArrayList<CommentVO> getMyCommentList(String me_id);
 
 }

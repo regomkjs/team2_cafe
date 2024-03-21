@@ -80,6 +80,8 @@ public interface PostDAO {
 
 	ArrayList<BoardVO> selectBoardList();
 
+	ArrayList<CommentVO> selectMyComment(@Param("me_id")String me_id);
+
 	
 
 	
