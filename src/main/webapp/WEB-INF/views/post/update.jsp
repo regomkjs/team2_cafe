@@ -81,9 +81,7 @@
 				</div>
 				<div class="mb-3">
 			  		<label for="content">내용:</label>
-			  		<div class="mb-3">
-			  			<textarea rows="10" name="content" id="content" class="form-control">${post.po_content}</textarea>
-			  		</div>
+		  			<textarea rows="10" name="content" id="content" class="form-control">${post.po_content}</textarea>
 				</div>
 				<div class="mb-3 mt-3">
 					<label class="form-label">첨부파일:</label>

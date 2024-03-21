@@ -60,8 +60,10 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
 		    	<p>카페정보</p>
-
-		    	<a href='<c:url value="/post/list"/>' class="btn btn-secondary">전체 게시글 수 
+				<c:url value="/post/list" var="allPostUrl">
+					<c:param name="page" value="1"/>
+				</c:url>
+		    	<a href='${allPostUrl}' class="btn btn-secondary">전체 게시글 수 
 		    	<span class="badge badge-light">${allPostNum}</span>
 				</a>
 				<br><br>

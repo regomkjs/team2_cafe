@@ -16,31 +16,21 @@
 		<collection property="head" ofType="kr.kh.app.model.vo.HeadVO" column="po_he_num"
 			select="selectHead"/>
 	</resultMap>
+	
 	<select id="selectHead" resultType="kr.kh.app.model.vo.HeadVO">
 		select * from head where he_num = #{po_he_num}
 	</select>
 	
-
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
+	
 	<select id="selectBoard" resultType="kr.kh.app.model.vo.BoardVO">
 		select * from board
 	</select>
 	
 	<select id="selectAllHead" resultType="kr.kh.app.model.vo.HeadVO">
 		select * from head
-	</select>
-	
-	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
-		select * 
-		from 
-			post 
-			join head on he_num = po_he_num 
-		where he_bo_num = #{cri.boNum}
-		order by po_num desc
-		limit #{cri.pageStart}, #{cri.perPageNum}
-
 	</select>
 	
 	<select id="selectHeadListByBoNum" resultType="kr.kh.app.model.vo.HeadVO">
@@ -132,45 +122,80 @@
 	<insert id="insertHead">
 		insert into head(he_name, he_bo_num) value(#{insertHead.he_name}, #{insertHead.he_bo_num})
 	</insert>
+	
 	<update id="updateHead">
 		update head set he_name = #{updateHead.he_name} where he_num = #{updateHead.he_num}
 	</update>
+	
 	<delete id="deleteHead">
 		delete from head where he_num = #{deleteHead.he_num}
 	</delete>
+	
 	<select id="selectAllPostNum" resultType="int">
 		select count(*) from post
 	</select>
+	
 	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
 		select * from post where po_me_id = #{me_id}
 	</select>
-
-
 	
 	<delete id="deleteCategory">
 		delete from category where ca_name = #{ca_name}
 	</delete>
+	
 	<update id="insertCategory">
 		update category set
 		ca_name = #{category.ca_name}
 	</update>
+	
 	<select id="selectPost" resultType="kr.kh.app.model.vo.PostVO">
 		select * from post
 	</select>
 	
+	<select id="selectPostByBoNum" resultType="kr.kh.app.model.vo.PostVO">
+		select * 
+		from 
+			post 
+			join head on he_num = po_he_num 
+		where he_bo_num = #{cri.boNum}
+		order by po_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
 	
 	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
 		SELECT *
 		FROM POST
-		<if test='cri.type=="all"'>
-			where po_title like concat('%', #{cri.search},'%')
-			or po_me_id = #{cri.search}
+		join head on he_num = po_he_num 
+		<!-- 전체 게시글 중 검색 -->
+		<if test='cri.boNum == 0'>
+			<if test='cri.type==""'>
+				where po_title like concat('%', #{cri.search},'%')
+				or po_content like concat('%', #{cri.search},'%')
+			</if>
+			<if test='cri.type=="title"'>
+				where po_title like concat('%', #{cri.search},'%')
+				or po_content like concat('%', #{cri.search},'%')
+			</if>
+			<if test='cri.type=="writer"'>
+				where po_writer like concat('%', #{cri.search},'%')
+			</if>
 		</if>
-		<if test='cri.type=="title"'>
-			where po_title like concat('%', #{cri.search},'%')
-		</if>
-		<if test='cri.type=="writer"'>
-			where po_me_id = #{cri.search}
+		<!-- 보드를 특정후 검색 -->
+		<if test="cri.boNum != 0">
+			<if test='cri.type==""'>
+				where 
+				(po_title like concat('%', #{cri.search},'%') or po_content like concat('%', #{cri.search},'%')) 
+				and he_bo_num = #{cri.boNum}
+			</if>
+			<if test='cri.type=="title"'>
+				where 
+				(po_title like concat('%', #{cri.search},'%') or po_content like concat('%', #{cri.search},'%')) 
+				and he_bo_num = #{cri.boNum}
+			</if>
+			<if test='cri.type=="writer"'>
+				where po_writer like concat('%', #{cri.search},'%') 
+				and he_bo_num = #{cri.boNum}
+			</if>
 		</if>
 		ORDER BY PO_NUM DESC
 		LIMIT #{cri.pageStart},#{cri.perPageNum}
@@ -179,15 +204,37 @@
 	<select id="selectTotalCount" resultType="int">
 		SELECT count(*)
 		FROM POST
-		<if test='cri.type=="all"'>
-			where po_title like concat('%', #{cri.search},'%')
-			or po_me_id = #{cri.search}
+		join head on he_num = po_he_num 
+		<!-- 전체 게시글 중 검색 -->
+		<if test='cri.boNum == 0'>
+			<if test='cri.type==""'>
+				where po_title like concat('%', #{cri.search},'%')
+				or po_content like concat('%', #{cri.search},'%')
+			</if>
+			<if test='cri.type=="title"'>
+				where po_title like concat('%', #{cri.search},'%')
+				or po_content like concat('%', #{cri.search},'%')
+			</if>
+			<if test='cri.type=="writer"'>
+				where po_writer like concat('%', #{cri.search},'%')
+			</if>
 		</if>
-		<if test='cri.type=="title"'>
-			where po_title like concat('%', #{cri.search},'%')
-		</if>
-		<if test='cri.type=="writer"'>
-			where po_me_id = #{cri.search}
+		<!-- 보드를 특정후 검색 -->
+		<if test="cri.boNum != 0">
+			<if test='cri.type==""'>
+				where 
+				(po_title like concat('%', #{cri.search},'%') or po_content like concat('%', #{cri.search},'%')) 
+				and he_bo_num = #{cri.boNum}
+			</if>
+			<if test='cri.type=="title"'>
+				where 
+				(po_title like concat('%', #{cri.search},'%') or po_content like concat('%', #{cri.search},'%')) 
+				and he_bo_num = #{cri.boNum}
+			</if>
+			<if test='cri.type=="writer"'>
+				where po_writer like concat('%', #{cri.search},'%') 
+				and he_bo_num = #{cri.boNum}
+			</if>
 		</if>
 	</select>
 

@@ -80,7 +80,7 @@ public class PostServiceImp implements PostService{
 		if(cri == null) {
 			cri = new Criteria();
 		}
-		return postDao.selectTotalCountPost(cri);
+		return postDao.selectTotalCount(cri);
 	}
 
 	private boolean checkString(String str) {
