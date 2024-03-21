@@ -25,8 +25,6 @@ public interface PostService {
 
 	ArrayList<HeadVO> getHeList();
 
-	ArrayList<PostVO> getPostByBoNum(Criteria cri);
-
 
 	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);
 

@@ -104,15 +104,7 @@ public class PostServiceImp implements PostService{
 	}
 
 	
-	@Override
-
-	public ArrayList<PostVO> getPostByBoNum(Criteria cri) {
-		if(cri == null) {
-			cri = new Criteria(1,2);
-		}
-		return postDao.selectPostByBoNum(cri);
-
-	}
+	
 
 	@Override
 	public ArrayList<HeadVO> getHeadListByBoNum(int bo_num) {

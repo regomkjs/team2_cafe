@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter({"/category/insert",""})
+@WebFilter({"/category/insert"})
 public class AdminFilter implements Filter {
        
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class AdminFilter implements Filter {
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(httpServletRequest, response);
 			return;
 		}
-		if(user != null && user.getMe_gr_num() != 2) {
+		if(user != null && user.getMe_gr_num() != 0) {
 			request.setAttribute("msg", "관리자만 들어갈 수 있는 페이지입니다.");
 			request.setAttribute("url", "");
 			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(httpServletRequest, response);

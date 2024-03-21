@@ -35,8 +35,18 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-
 		<div class="container ">
+			<form action="<c:url value="/post/list"/>" method="get" class="mt-3">
+				<input name="num" value="${bo_num}" type="hidden">
+				<div class="input-group">
+					<select name="type">
+						<option value="title" <c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목+내용</option>
+						<option value="writer" <c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
+					</select>
+					<input type="text" name="search" value="${pm.cri.search}">
+					<button class="btn btn-outline-primary">검색</button>		
+				</div>
+			</form>
 			<table class="table table-hover mt-3">
 		 		<thead class="text-center">
 					<tr>
