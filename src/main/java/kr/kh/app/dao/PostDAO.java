@@ -44,8 +44,6 @@ public interface PostDAO {
 
 	boolean insertComment(@Param("comment")CommentVO comment);
 
-	int selectTotalCountPost(@Param("cri")Criteria cri);
-
 	CommentVO selectComment(@Param("co_num")int num);
 
 	boolean deleteComment(@Param("co_num")int num);

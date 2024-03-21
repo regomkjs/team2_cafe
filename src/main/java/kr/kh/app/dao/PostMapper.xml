@@ -87,17 +87,6 @@
 		values(#{comment.co_ori_num},#{comment.co_writer}, #{comment.co_content}, now(), #{comment.co_me_id}, #{comment.co_po_num})
 	</insert>
 	
-	<select id="selectTotalCountPost" resultType="int">
-		select 
-			count(*) 
-		from 
-			post
-				join 
-			head on he_num = po_he_num 
-		where 
-			he_bo_num = #{cri.boNum}
-	</select>
-	
 	<select id="selectComment" resultType="kr.kh.app.model.vo.CommentVO">
 		select * from comment where co_num = #{co_num}
 	</select>
