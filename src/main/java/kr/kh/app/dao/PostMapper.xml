@@ -43,10 +43,18 @@
 	</insert>
 	
 	<select id="selectPostByPoNum" resultType="kr.kh.app.model.vo.PostVO">
-		select * from post
-		join head on he_num = po_he_num
-		join board on he_bo_num = bo_num
+		select *, 
+			SUM(CASE WHEN li_state = 1 THEN 1 ELSE 0 END) AS po_totalLike
+		from 
+			post
+				join 
+			head on he_num = po_he_num
+				join 
+			board on he_bo_num = bo_num
+				left join 
+			`like` on li_po_num = po_num 
 		where po_num = #{po_num}
+		group by po_num
 	</select>
 	
 	<delete id="deletePost">
@@ -142,9 +150,15 @@
 	</select>
 	
 	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
-		SELECT *
-		FROM POST
-		join head on he_num = po_he_num 
+		SELECT 
+			post.*, head.*,
+			SUM(CASE WHEN li_state = 1 THEN 1 ELSE 0 END) AS po_totalLike
+		FROM 
+			POST
+				join 
+			head on he_num = po_he_num 
+				left join 
+			`like` on li_po_num = po_num 
 		<!-- 전체 게시글 중 검색 -->
 		<if test='cri.boNum == 0'>
 			<if test='cri.type==""'>
@@ -176,6 +190,7 @@
 				and he_bo_num = #{cri.boNum}
 			</if>
 		</if>
+		group by po_num
 		ORDER BY PO_NUM DESC
 		LIMIT #{cri.pageStart},#{cri.perPageNum}
 	</select>
@@ -217,4 +232,27 @@
 		</if>
 	</select>
 
+	<select id="selectLike" resultType="kr.kh.app.model.vo.LikeVO">
+		select * from `like` where li_me_id = #{li.li_me_id} and li_po_num = #{li.li_po_num}
+	</select>
+
+	<insert id="insertLike">
+		insert into `like`(li_me_id, li_po_num)
+		values(#{li.li_me_id}, #{li.li_po_num})
+	</insert>
+	
+	<delete id="deleteLike">
+		delete from `like`
+		where li_num = #{li.li_num}
+	</delete>
+	
+	<select id="selectTotalCountLike" resultType="int">
+		select count(*) from `like`
+		where li_po_num = #{po_num}
+	</select>
+	
+	<select id="selectUserLike" resultType="kr.kh.app.model.vo.LikeVO" >
+		select * from `like`
+		where li_me_id = #{me_id} and li_po_num = #{po_num}
+	</select>
 </mapper>

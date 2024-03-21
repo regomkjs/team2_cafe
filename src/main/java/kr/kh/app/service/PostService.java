@@ -18,13 +18,11 @@ import kr.kh.app.pagination.PostCriteria;
 
 public interface PostService {
 
-
 	ArrayList<CategoryVO> getCaList();
 
 	ArrayList<BoardVO> getBoList();
 
 	ArrayList<HeadVO> getHeList();
-
 
 	ArrayList<HeadVO> getHeadListByBoNum(int bo_num);
 
@@ -56,8 +54,6 @@ public interface PostService {
 
 	ArrayList<PostVO> getMyPostList(String me_id);
 	
-
-
 	ArrayList<CategoryVO> selectCategory();
 		
 	boolean deleteCategory(int num);
@@ -66,21 +62,18 @@ public interface PostService {
 
 	ArrayList<PostVO> getPoList();
 
-	
-
 	int getAllpostNum();
 
-	
-
 	ArrayList<PostVO> getPostList(Criteria cri);
-
 
 	ArrayList<CategoryVO> getCategoryList();
 
 	ArrayList<BoardVO> getBoardList();
 
-	
+	int like(MemberVO user, int po_num);
 
-	
+	int getTotalCountLike(int po_num);
+
+	boolean getUserLike(MemberVO user, int po_num); 
 
 }

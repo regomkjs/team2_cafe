@@ -16,6 +16,7 @@ import kr.kh.app.model.vo.CategoryVO;
 
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.LikeVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.Criteria;
@@ -279,6 +280,37 @@ public class PostServiceImp implements PostService{
 			return postDao.selectMyPost(me_id);
 		}
 		return null;
+	}
+	@Override
+	public int like(MemberVO user, int po_num) {
+		if(user == null) {
+			return -1;
+		}
+		LikeVO like = new LikeVO(user.getMe_id(), po_num);
+		LikeVO dbLike = postDao.selectLike(like);
+		if(dbLike == null) {
+			postDao.insertLike(like);
+			return 1;
+		}
+		else {
+			postDao.deleteLike(dbLike);
+			return 0;
+		}
+	}
+	@Override
+	public int getTotalCountLike(int po_num) {
+		return postDao.selectTotalCountLike(po_num);
+	}
+	@Override
+	public boolean getUserLike(MemberVO user, int po_num) {
+		if(user == null) {
+			return false;
+		}
+		LikeVO like = postDao.selectUserLike(user.getMe_id(),po_num);
+		if(like == null) {
+			return false;
+		}
+		return true;
 	}
 
 	

@@ -96,6 +96,7 @@
 		  		<div class="mb-3 form-control" style="min-height: 300px">
 		  			${post.po_content}
 		  		</div>
+		  		<button type="button" class="me-2 btn btn-outline-primary btn-like">좋아요</button>[<span class="text-like">${post.po_totalLike}</span>]
 			</div>
 			
 			<div class="mt-3 mb-3 comment-box container">
@@ -430,8 +431,76 @@ $(".btn-comment-insert").click(function () {
 	});
 </script>
 
+<!-- 좋아요 구현 스크립트 -->
+<script type="text/javascript">
+$(".btn-like").on("click", function(){
+	let po_num = ${post.po_num};
+	$.ajax({
+		url : '<c:url value="/post/like"/>',
+		method : "post",
+		data : {
+			"po_num" : po_num,
+		},
+		success : function (data) {
+			alert("추천 : " + data)
+			switch (data) {
+			case "1":
+				alert("게시글 추천");
+				break;
+			case "0":
+				alert("추천을 취소했습니다.");
+				break;
+			case "-1":
+				alert("에러 발생")
+				break;
+			}
+			getLike();
+		},
+		error : function (a,b,c) {
+			console.error("에러 발생");
+		}
+	});
+	
+});
 
+function getLike() {
+	let po_num = ${post.po_num};
+	$.ajax({
+		url : '<c:url value="/post/countlike"/>',
+		method : "post",
+		data : {
+			"po_num" : po_num,
+		},
+		success : function (data) {
+			console.log(data.result);
+			console.log(data.totalCountLike);
+			displayLike(data.result);
+			displayUpdateLike(data.totalCountLike);
+		},
+		error : function (a,b,c) {
+			console.error("에러 발생");
+		}
+	});
+}
 
+function displayUpdateLike(totalCountLike) {
+	$(".text-like").text(totalCountLike);
+}
+
+function displayLike(result) {
+	$('.btn-like').addClass("btn-outline-primary");
+	$('.btn-like').removeClass("btn-primary");
+	if(result){
+		$('.btn-like').addClass("btn-primary");
+		$('.btn-like').removeClass("btn-outline-primary");
+	}else{
+		$('.btn-like').addClass("btn-outline-primary");
+		$('.btn-like').removeClass("btn-primary");
+	}
+	
+}
+getLike();
+</script>
 
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">

@@ -54,7 +54,8 @@
 						<th class="col-2">말머리</th>
 						<th class="col-5">제목</th>
 						<th class="col-2">작성자</th>
-						<th >조회수</th>
+						<th>조회수</th>
+						<th>좋아요</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -79,6 +80,7 @@
 
 							</td>
 							<td class="text-center">${post.po_view}</td>
+							<td class="text-center">${post.po_totalLike}</td>
 						</tr>
 					</c:forEach>
 					<c:if test="${postList.size() == 0}">
@@ -167,10 +169,16 @@
 			
 
 			<c:if test="${bo_num == 1 && user.me_gr_num == 0}">
-				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
+				<c:url value="/post/write" var="writeUrl">
+					<c:param name="num" value="${bo_num}"/>
+				</c:url>
+				<a href='${writeUrl}'><button class="btn btn-primary">게시글 등록</button></a>
 			</c:if>
 			<c:if test="${bo_num != 1 && user != null}">
-				<a href='<c:url value="/post/write" />'><button class="btn btn-primary">게시글 등록</button></a>
+				<c:url value="/post/write" var="writeUrl">
+					<c:param name="num" value="${bo_num}"/>
+				</c:url>
+				<a href='${writeUrl}'><button class="btn btn-primary">게시글 등록</button></a>
 			</c:if>
 
 			<c:if test="${user.me_gr_num == 0}"> <!-- 관리자 등급 번호는 0 -->

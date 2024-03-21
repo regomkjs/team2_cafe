@@ -11,6 +11,7 @@ import kr.kh.app.model.vo.CategoryVO;
 
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.LikeVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.Criteria;
 
@@ -75,6 +76,17 @@ public interface PostDAO {
 	ArrayList<CategoryVO> selectCategoryList();
 
 	ArrayList<BoardVO> selectBoardList();
+
+	LikeVO selectLike(@Param("li")LikeVO like);
+
+	void insertLike(@Param("li")LikeVO like);
+
+	void deleteLike(@Param("li")LikeVO dbLike);
+
+	int selectTotalCountLike(@Param("po_num")int po_num);
+
+	LikeVO selectUserLike(@Param("me_id")String me_id, @Param("po_num")int po_num);
+
 
 	
 

@@ -29,7 +29,17 @@ public class PostWriteServlet extends HttpServlet {
 		request.setAttribute("caList", caList);
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
-		
+		String prevUrl = request.getHeader("Referer");
+		int num;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			num = 0;
+		}
+		ArrayList<HeadVO> heList = postService.getHeadListByBoNum(num);
+		request.setAttribute("heList", heList);
+		request.setAttribute("num", num);
+		request.setAttribute("prevUrl", prevUrl);
 		request.getRequestDispatcher("/WEB-INF/views/post/write.jsp").forward(request, response);
 	}
 
