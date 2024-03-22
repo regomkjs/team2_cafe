@@ -87,8 +87,8 @@
 								<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> ${post.po_title} <span class="ms-2">(${post.po_co_count})</span></a>
 							</td>
 							<td class="text-center">
-								<c:url value="/user/post">
-									<c:param name="userUrl" value="${post.po_me_id}"/>
+								<c:url var="userUrl" value="/user/post">
+									<c:param name="user" value="${post.po_me_id}"/>
 								</c:url>
 								<a href="${userUrl}">${post.po_writer}</a>
 							</td>
