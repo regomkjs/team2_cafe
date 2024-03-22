@@ -207,7 +207,8 @@ public class PostServiceImp implements PostService{
 		}
 		CommentVO comment = postDao.selectComment(num);
 		if(comment == null
-				||!comment.getCo_me_id().equals(user.getMe_id())) {
+				||!(comment.getCo_me_id().equals(user.getMe_id())
+						|| user.getMe_gr_num() == 0)) {
 			return false;
 		}
 		return postDao.deleteComment(num);

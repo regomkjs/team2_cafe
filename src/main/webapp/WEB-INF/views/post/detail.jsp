@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>게시글 상세</title>
 <!-- 부트스트렙5, 썸머노트, j query -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
@@ -198,7 +198,6 @@ function getCommentList(cri) {
 			//JSON.parse(문자열) : json형태의 문자열을 객체로 변환
 			//JSON.stringify(객체) : 객체를 json형태의 문자열로 변환
 			let pm = JSON.parse(data.pm);
-			console.log(pm);
 			let pmStr = "";
 			//이전 버튼 활성화 여부
 			if(pm.prev){
@@ -284,7 +283,19 @@ $(".btn-comment-insert").click(function () {
 
 <!-- 댓글 삭제 스크립트 -->
 <script type="text/javascript">
+	
+	
 	$(document).on("click",".btn-comment-delete",function(){
+		if('${user.me_id}' == ''){
+			if(confirm("로그인이 필요한 서비스 입니다. 로그인으로 이동하시겠습니까?")){
+				location.href = "<c:url value='/login'/>"
+				return;
+			}
+			else{
+				return;
+			}
+		}
+		
 		let num = $(this).data("num");
 		$.ajax({
 			url : '<c:url value="/comment/delete"/>',
@@ -434,6 +445,15 @@ $(".btn-comment-insert").click(function () {
 <!-- 좋아요 구현 스크립트 -->
 <script type="text/javascript">
 $(".btn-like").on("click", function(){
+	if('${user.me_id}' == ''){
+		if(confirm("로그인이 필요한 서비스 입니다. 로그인으로 이동하시겠습니까?")){
+			location.href = "<c:url value='/login'/>"
+			return;
+		}
+		else{
+			return;
+		}
+	}
 	let po_num = ${post.po_num};
 	$.ajax({
 		url : '<c:url value="/post/like"/>',
@@ -442,10 +462,9 @@ $(".btn-like").on("click", function(){
 			"po_num" : po_num,
 		},
 		success : function (data) {
-			alert("추천 : " + data)
 			switch (data) {
 			case "1":
-				alert("게시글 추천");
+				alert("게시글을 추천했습니다.");
 				break;
 			case "0":
 				alert("추천을 취소했습니다.");
@@ -457,7 +476,7 @@ $(".btn-like").on("click", function(){
 			getLike();
 		},
 		error : function (a,b,c) {
-			console.error("에러 발생");
+			console.error("에러 발생2");
 		}
 	});
 	
@@ -472,13 +491,11 @@ function getLike() {
 			"po_num" : po_num,
 		},
 		success : function (data) {
-			console.log(data.result);
-			console.log(data.totalCountLike);
 			displayLike(data.result);
 			displayUpdateLike(data.totalCountLike);
 		},
 		error : function (a,b,c) {
-			console.error("에러 발생");
+			console.error("에러 발생1");
 		}
 	});
 }
@@ -504,19 +521,19 @@ getLike();
 
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">
-	$('[name=content]').summernote({
-	    placeholder: '내용',
-	    tabsize: 2,
-	    height: 400,
-	    toolbar: [
-		      ['style', ['style']],
-		      ['font', ['bold', 'underline', 'clear']],
-		      ['color', ['color']],
-		      ['para', ['ul', 'ol', 'paragraph']],
-		      ['table', ['table']],
-		      ['insert', ['link', 'picture', 'video']],
-		      ['view', ['fullscreen', 'codeview', 'help']]
-		    ]
+$('#content').summernote({
+    placeholder: '내용',
+    tabsize: 2,
+    height: 400,
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['color', ['color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['picture']],
+      ['view', ['fullscreen', 'codeview', 'help']]
+    ]
 	});
 </script>
 

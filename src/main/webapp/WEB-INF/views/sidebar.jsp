@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 
 	.side_menu{
@@ -81,8 +84,9 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<c:forEach items="${caList}" var="category">
-
 		<div class="container mt-3">
 			<c:if test='${category.ca_name == "공지"}'>
 				<span style="font-weight: bolder;">${category.ca_name} <a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a></span>
@@ -128,5 +132,7 @@
 		</div>
 	</c:forEach>
 </div>
+
+
 </body>
 </html>

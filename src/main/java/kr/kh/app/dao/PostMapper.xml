@@ -100,7 +100,7 @@
 	</select>
 	
 	<delete id="deleteComment">
-		delete from comment where co_num = #{co_num}
+		delete from comment where co_num = #{co_num} or co_ori_num = #{co_num}
 	</delete>
 	
 	<update id="updateComment">
@@ -151,14 +151,18 @@
 	
 	<select id="selectPostList" resultType="kr.kh.app.model.vo.PostVO">
 		SELECT 
-			post.*, head.*,
+			post.*, head.*, board.*, count(co_num) as po_co_count,
 			SUM(CASE WHEN li_state = 1 THEN 1 ELSE 0 END) AS po_totalLike
 		FROM 
 			POST
 				join 
 			head on he_num = po_he_num 
+				join 
+			board on bo_num = he_bo_num 
 				left join 
 			`like` on li_po_num = po_num 
+				left join 
+			comment on co_po_num = po_num 
 		<!-- 전체 게시글 중 검색 -->
 		<if test='cri.boNum == 0'>
 			<if test='cri.type==""'>

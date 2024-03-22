@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +12,13 @@
 <title>게시글 리스트</title>
 
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <style type="text/css">
 	.main-box{
 		 height: 1000px;
@@ -51,23 +59,24 @@
 		 		<thead class="text-center">
 					<tr>
 						<th class="col-1">번호</th>
-						<th class="col-2">말머리</th>
-						<th class="col-5">제목</th>
+						<th class="col-2">게시판</th>
+						<th class="col-4">제목</th>
 						<th class="col-2">작성자</th>
 						<th>조회수</th>
 						<th>좋아요</th>
+						<th class="col-1">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${postList}" var="post">
 						<tr>
 							<td class="text-center">${post.po_num}</td>
-							<td class="text-center">${post.he_name}</td>
+							<td class="text-center">${post.bo_name}</td>
 							<td>
 								<c:url var="url" value="/post/detail">
 									<c:param name="num" value="${post.po_num}"/>
 								</c:url>
-								<a href="${url}">${post.po_title}</a>
+								<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> ${post.po_title} <span class="ms-2">(${post.po_co_count})</span></a>
 							</td>
 							<td class="text-center">
 								<c:url var="page" value="/post/list">
@@ -75,12 +84,26 @@
 									<c:param name="search" value="${post.po_me_id}"/>
 									<c:param name="page" value="1"/>
 								</c:url>
-
 								<a href="${page}">${post.po_writer}</a>
-
 							</td>
 							<td class="text-center">${post.po_view}</td>
 							<td class="text-center">${post.po_totalLike}</td>
+							<td class="text-center time-text">
+								<c:set var="now" value="<%=new java.util.Date()%>" />
+								<c:set var="today">
+									<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
+								</c:set>
+								<c:set var="postdate" value="${post.po_datetime}"/>
+								<c:choose>
+									<c:when test="${fn:substring(postdate,0,10) == today}">
+										${fn:substring(postdate,11,16)}
+									</c:when>
+									<c:otherwise>
+										${fn:substring(postdate,0,10)}
+									</c:otherwise>
+								</c:choose>
+								
+							</td>
 						</tr>
 					</c:forEach>
 					<c:if test="${postList.size() == 0}">
@@ -220,7 +243,10 @@
 		</div>
 	</div>
 </div>
-<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+
+
+
+
 <script type="text/javascript">
 	$(".headAddBtn").click(function(){
 		if($(".inputHead").hasClass("d-none")===true) {
