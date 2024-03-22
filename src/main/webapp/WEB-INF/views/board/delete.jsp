@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>게시판 리스트</title>
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	.main-box{
 		height: 1000px;
@@ -29,24 +29,16 @@
 <div class="main-img-box">
 	중앙에 이미지 배치, 클릭시 메인으로 이동
 </div>
-
 <div class="main-box d-flex">
 <jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 <div class="main-content flex-grow-1">
-
-<!-- 게시판 추가에 관련된 정보 출력 -->
-<div class="container">
-	<form action="<c:url value="/board/add"/>" method="post">
-		<h5>게시판 추가</h5>
-
-		<span style="font-weight: bolder;">${categoryName}</span>
+		클릭한 게시판 관련 리스트
 		<div class="container">
-
+			<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
 			<table class="table table-hover">
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>카테고리 이름</th>
 						<th>게시판 이름</th>
 					</tr>
 				</thead>
@@ -54,28 +46,13 @@
 					<c:forEach items="${boardList}" var="board">		
 						<tr>
 							<td>${board.bo_num}</td>
-							<td>${board.bo_ca_name}</td>
 							<td>${board.bo_name}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			
-       		<div class="container">
-		<form action="<c:url value="/board/add"/>" method="get" class="mt-3">
-
-		<div class="mb-3 mt-3">
-			<label for="newboarname" class="form-label">새 게시판 : </label>
-			<input type="text" class="form-control" id="newboarname" placeholder="새로운 게시판을 입력하세요." name="newboarname">
-		</div>
-		<button class="btn btn-outline-primary col-12">등록</button>
-		</form>
-			</div>
 		</div>
 	</div>
 </div>
-
-
-
 </body>
 </html>

@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.MemberVO;
 
 public class BoardServiceImp implements BoardService {
 
@@ -74,6 +75,8 @@ public class BoardServiceImp implements BoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 }

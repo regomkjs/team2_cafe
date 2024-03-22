@@ -21,9 +21,18 @@
 	}
 	.nav-box{
 		height: 300px;
+		max-width: 300px; /* 최대 너비 */
+   		min-width: 300px; /* 최소 너비 */
 		border: 1px solid black;
 		background-color: white;
 	}
+	
+	.container .mt-3 {
+    max-width: 300px; /* 최대 너비 */
+    min-width: 300px; /* 최소 너비 */
+   
+	}
+	
 </style>	
 	<script type="text/javascript">
 	
@@ -106,10 +115,12 @@
 									<c:param name="num" value="${board.bo_num}" />
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
+
 								<c:if test="${user != null && user.me_gr_num == 0}">
 									<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
 									<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
 								</c:if>
+
 							</li>
 						</c:if>
 					</c:forEach>				
@@ -118,12 +129,14 @@
 		</div>
 	</c:forEach>
 	<c:forEach items="${caList}" var="category">
-		<div class="container">
+		<div class="container mt-3">
 			<c:if test='${category.ca_name != "공지"}'>
+
 			<span style="font-weight: bolder;">${category.ca_name} 
 				<c:if test="${user != null && user.me_gr_num == 0}">
 					<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a>
 				</c:if>
+
 			</span>
 
 				<ul>
