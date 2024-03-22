@@ -80,6 +80,13 @@ public class PostListServlet extends HttpServlet {
 		request.setAttribute("postList", postList);
 		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int num = Integer.parseInt(request.getParameter("board"));
+		request.setAttribute("msg", "");
+		request.setAttribute("url", "post/list?num="+num);
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+	}
 }
 	
 

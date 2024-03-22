@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>게시글 작성</title>
 <!-- 부트스트렙5, 썸머노트, j query -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
@@ -39,20 +39,29 @@
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="container main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			<c:url value="/post/list" var="url">
-				<c:param name="num" value="${board}"/>
+			<c:url value="/post/list" var="writeUrl">
+				<c:param name="num" value="${num}" />
 			</c:url>
-			<form action="${url}" method="post">
+			<form action='<c:url value="/post/list"/>' method="post">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
-						<option class="select-board null-select" value="0">게시판을 선택해주세요</option>
 						<c:forEach items="${boList}" var="board">
 								<c:if test='${board.bo_ca_name == "공지" && user.me_gr_num == 0}'>
-									<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									<c:if test="${num == board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+									</c:if>
+									<c:if test="${num != board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									</c:if>
 								</c:if>
 								<c:if test='${board.bo_ca_name != "공지"}'>
-									<option class="select-board" value="${board.bo_num}">${board.bo_name}</option>
+									<c:if test="${num == board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+									</c:if>
+									<c:if test="${num != board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									</c:if>
 								</c:if>
 						</c:forEach>
 					</select>
@@ -60,7 +69,9 @@
 				<div class="mb-3 mt-3">
 					<label for="head">말머리:</label>
 					<select id="head" name="head" class="form-control headselect">
-						<option class="select-board null-select">게시판을 선택해주세요</option>
+						<c:forEach items="${heList}" var="he">
+							<option class="select-board null-select" value="${he.he_num}">${he.he_name}</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
@@ -172,7 +183,7 @@
 			}
 			
 		});
-	});
+	})
 
 </script>
 </body>

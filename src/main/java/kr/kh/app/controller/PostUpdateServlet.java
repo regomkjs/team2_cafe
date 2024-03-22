@@ -14,6 +14,8 @@ import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
+import kr.kh.app.service.MemberService;
+import kr.kh.app.service.MemberServiceImp;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
@@ -22,6 +24,7 @@ import kr.kh.app.service.PostServiceImp;
 public class PostUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
+	private MemberService memberService = new MemberServiceImp();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
@@ -29,6 +32,15 @@ public class PostUpdateServlet extends HttpServlet {
 		request.setAttribute("boList", boList);
 		ArrayList<HeadVO> heList = postService.getHeList();
 		request.setAttribute("heList", heList);
+		
+		//전체 게시판 수를 가져옴
+		int allPostNum = postService.getAllpostNum();
+		request.setAttribute("allPostNum", allPostNum);
+		//전체 멤버 수를 가져옴
+		int allMemberNum = memberService.getAllmemberNum();
+		request.setAttribute("allMemberNum", allMemberNum);
+
+		
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
