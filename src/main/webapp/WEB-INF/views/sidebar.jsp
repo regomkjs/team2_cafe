@@ -74,10 +74,10 @@
 				<button type="button" class="btn btn-primary">가입한 회원 수 
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
-
 				<c:if test="${user != null && user.me_gr_num == 0}">
 		    		<a class="btn btn-outline-primary mt-3"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 				</c:if>
+
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>

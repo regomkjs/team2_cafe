@@ -30,6 +30,7 @@ public class PostListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
+	
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		

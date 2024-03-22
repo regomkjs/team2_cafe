@@ -482,6 +482,7 @@ $(".btn-like").on("click", function(){
 	
 });
 
+
 function getLike() {
 	let po_num = ${post.po_num};
 	$.ajax({

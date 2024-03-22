@@ -20,7 +20,7 @@
 	<select id="selectHead" resultType="kr.kh.app.model.vo.HeadVO">
 		select * from head where he_num = #{po_he_num}
 	</select>
-	
+
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
@@ -136,6 +136,7 @@
 		select * from post where po_me_id = #{me_id}
 	</select>
 	
+
 	<delete id="deleteCategory">
 		delete from category where ca_name = #{ca_name}
 	</delete>

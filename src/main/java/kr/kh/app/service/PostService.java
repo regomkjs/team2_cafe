@@ -49,12 +49,6 @@ public interface PostService {
 
 	ArrayList<PostVO> getMyPostList(String me_id);
 
-	ArrayList<CategoryVO> selectCategory();
-		
-	boolean deleteCategory(int num);
-
-	boolean insertCategory(ArrayList<CategoryVO> categoryList);
-
 	ArrayList<PostVO> getPoList();
 
 	int getAllpostNum();

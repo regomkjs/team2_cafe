@@ -23,6 +23,7 @@
     	<mapper resource="kr/kh/app/dao/MemberMapper.xml"/>
     	<mapper resource="kr/kh/app/dao/PostMapper.xml"/>
     	<mapper resource="kr/kh/app/dao/BoardMapper.xml"/>
+    	<mapper resource="kr/kh/app/dao/CategoryMapper.xml"/>
   	</mappers>
   	
 </configuration>
