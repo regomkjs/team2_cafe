@@ -20,16 +20,23 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
 <style type="text/css">
+	.container {
+    max-width: 1200px; /* 최대 너비 */
+    min-width: 1024px; /* 최소 너비 */
+    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+	
 	.main-box{
-		 height: 1000px;
+		height: 1000px;	
 	}
 	.main-img-box{
 		width: 100%;
 		height: 200px;
 		background-color: white;
+		text-align: center;
 	}
 	.main-content{
-		width: 50%;
+		width: 100%;
 		height: 1000px;
 	}
 </style>
@@ -80,13 +87,10 @@
 								<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> ${post.po_title} <span class="ms-2">(${post.po_co_count})</span></a>
 							</td>
 							<td class="text-center">
-								<a href="
-									<c:url value="/user/post">
-										<c:param name="user" value="${post.po_me_id}"/>
-									</c:url>
-									"><!-- href 끝 -->
-									${post.po_writer}
-								</a>
+								<c:url value="/user/post">
+									<c:param name="userUrl" value="${post.po_me_id}"/>
+								</c:url>
+								<a href="${userUrl}">${post.po_writer}</a>
 							</td>
 							<td class="text-center">${post.po_view}</td>
 							<td class="text-center">${post.po_totalLike}</td>
