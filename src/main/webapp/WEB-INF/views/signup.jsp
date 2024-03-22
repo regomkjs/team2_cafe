@@ -9,7 +9,39 @@
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<style type="text/css">
+.body{
+  text-align: center;
+  margin: 0;
+  justify-content: center;
+  transform:translate;
+  align-items: center;
+  display: flex;
+  height: 100vh;
+}
+.login-box{
+	width:500px;
+	margin:0 auto;
+	padding: 50px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom:20px;
+}
+.login-box h2{
+	text-align:center;
+	color: #03c75a;
+	font-size: 30px;
+	font-weight:bold;
+	margin-bottom: 20px;
+
+
+}
+
+
+</style>
 </head>
+
+
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
@@ -17,7 +49,7 @@
 		<br>		
 		<h5><b>환영합니다.</b></h5>
 		<h4><b>Cat cafe입니다.</b></h4>
-   		<div class="mb-3 mt-3">
+   		<div class="login-box">
    			<label for="id">아이디:</label>
    			<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="id">
 		</div>
