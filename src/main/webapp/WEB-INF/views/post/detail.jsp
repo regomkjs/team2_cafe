@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 	
-	.container {
+	.master-container {
 	    max-width: 1200px; /* 최대 너비 */
 	    min-width: 1024px; /* 최소 너비 */
 	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
@@ -54,86 +54,86 @@
 </head>
 
 <body>
-<jsp:include page="/WEB-INF/views/home.jsp"/>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-img-box">
-	중앙에 이미지 배치, 클릭시 메인으로 이동
-</div>
-<div class="main-box d-flex">
-	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-	<div class="main-content flex-grow-1">
-		<div class="container  mt-3 mb-3">
-			<div class="container mt-3 mb-3">
-
-				<div class="form-control">
-					<div class="mb-3 mt-3 ">
-				  		<div id="board" class="d-flex">
-				  			<div class="col-4" style="font-weight: bold;">${post.bo_name}</div>
-				  			<div class="d-flex justify-content-end ms-auto">
-				  				<c:if test="${post.po_me_id == user.me_id}">
-					  				<c:url var="updateUrl" value="/post/update">
-										<c:param name="num" value="${post.po_num}"/>
-									</c:url>
-					  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
-				  				</c:if>
-				  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
-				  					<c:url var="deleteUrl" value="/post/delete">
-										<c:param name="num" value="${post.po_num}"/>
-									</c:url>
-				  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
-				  				</c:if>
-				  			</div>
-				  		</div>
+<div class="container master-container">
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
+	<div class="main-img-box">
+		중앙에 이미지 배치, 클릭시 메인으로 이동
+	</div>
+	<div class="main-box d-flex">
+		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+		<div class="main-content flex-grow-1">
+			<div class="container  mt-3 mb-3">
+				<div class="container mt-3 mb-3">
+	
+					<div class="form-control">
+						<div class="mb-3 mt-3 ">
+					  		<div id="board" class="d-flex">
+					  			<div class="col-4" style="font-weight: bold;">${post.bo_name}</div>
+					  			<div class="d-flex justify-content-end ms-auto">
+					  				<c:if test="${post.po_me_id == user.me_id}">
+						  				<c:url var="updateUrl" value="/post/update">
+											<c:param name="num" value="${post.po_num}"/>
+										</c:url>
+						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
+					  				</c:if>
+					  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
+					  					<c:url var="deleteUrl" value="/post/delete">
+											<c:param name="num" value="${post.po_num}"/>
+										</c:url>
+					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
+					  				</c:if>
+					  			</div>
+					  		</div>
+						</div>
+						
+						<div class="mb-2 mt-3 ">
+					  		<div id="title" class="d-flex">
+					  			<div class="col-1">제목 :</div>
+					  			<div style="margin-right: 5px">[${post.he_name}]</div>
+					  			<div class="col-9">${post.po_title}</div>
+					  		</div>
+						</div>
+						<div class="mb-2 mt-2 ">
+					  		<div id="writer" class="d-flex">
+					  			<div class="col-2" style="font-size: small;">작성자 : ${post.po_writer}</div>
+					  			<div class="col-4" style="font-size: small;">조회수 : ${post.po_view}</div>
+					  			<div class="col-6" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
+					  		</div>
+						</div>
 					</div>
-					
-					<div class="mb-2 mt-3 ">
-				  		<div id="title" class="d-flex">
-				  			<div class="col-1">제목 :</div>
-				  			<div style="margin-right: 5px">[${post.he_name}]</div>
-				  			<div class="col-9">${post.po_title}</div>
-				  		</div>
+					<hr>
+			  		<div class="mb-3 form-control" style="min-height: 300px">
+			  			${post.po_content}
+			  		</div>
+			  		<button type="button" class="me-2 btn btn-outline-primary btn-like">좋아요</button>[<span class="text-like">${post.po_totalLike}</span>]
+				</div>
+				
+				<div class="mt-3 mb-3 comment-box container">
+					<h4>댓글(<span class="comment-total">2</span>)</h4>
+					<br>
+					<!-- 댓글 리스트를 보여주는 박스 -->
+					<div class="comment-list">
+						
 					</div>
-					<div class="mb-2 mt-2 ">
-				  		<div id="writer" class="d-flex">
-				  			<div class="col-2" style="font-size: small;">작성자 : ${post.po_writer}</div>
-				  			<div class="col-4" style="font-size: small;">조회수 : ${post.po_view}</div>
-				  			<div class="col-6" style="font-size: small; text-align: center;">작성일 : ${post.po_datetime}</div>
-				  		</div>
+					<!-- 댓글 페이지네이션 박스 -->
+					<div class="comment-pagination">
+						<ul class="pagination justify-content-center">
+						
+						</ul>
 					</div>
-				</div>
-				<hr>
-		  		<div class="mb-3 form-control" style="min-height: 300px">
-		  			${post.po_content}
-		  		</div>
-		  		<button type="button" class="me-2 btn btn-outline-primary btn-like">좋아요</button>[<span class="text-like">${post.po_totalLike}</span>]
-			</div>
-			
-			<div class="mt-3 mb-3 comment-box container">
-				<h4>댓글(<span class="comment-total">2</span>)</h4>
-				<br>
-				<!-- 댓글 리스트를 보여주는 박스 -->
-				<div class="comment-list">
-					
-				</div>
-				<!-- 댓글 페이지네이션 박스 -->
-				<div class="comment-pagination">
-					<ul class="pagination justify-content-center">
-					
-					</ul>
-				</div>
-				<!-- 댓글 입력 박스 -->
-				<div class="comment-input-box">
-					<div class="input-group">
-						<textarea rows="4" class="form-control comment-content"></textarea>
-						<button type="button" class="btn btn-outline-success col-2 btn-comment-insert">등록</button>
+					<!-- 댓글 입력 박스 -->
+					<div class="comment-input-box">
+						<div class="input-group">
+							<textarea rows="4" class="form-control comment-content"></textarea>
+							<button type="button" class="btn btn-outline-success col-2 btn-comment-insert">등록</button>
+						</div>
 					</div>
+	
 				</div>
-
 			</div>
 		</div>
 	</div>
 </div>
-
 <!-- 댓글 리스트 출력 스크립트 -->
 <script type="text/javascript">
 let cri = {

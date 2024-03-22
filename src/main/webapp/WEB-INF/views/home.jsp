@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 	
-	.container {
+	.master-container {
     max-width: 1200px; /* 최대 너비 */
     min-width: 1024px; /* 최소 너비 */
     margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
@@ -57,13 +57,15 @@
 		float: left;
 		margin-left: 5px;
 		margin-right: 5px;
+		max-width: 200px; 
+    	min-width: 200px; 
 	}
 	
 </style>
 </head>
 
 <body>
-<div class="container">
+<div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
     <div class="main-img-box">
         <a href="<c:url value='/'/>"> 
@@ -105,7 +107,7 @@
             </div>
             <!-- 사진이 게시글의 사진으로 나오도록 할 수 있을지 -->
             <!-- 씨:포이치 items="${poList}" var="post -->
-            <div class="smallPicPost-list">
+            <div class="smallPicPost-list d-flex justify-content-around">
 	            <a href="#" class="smallPicPost mt-3">
 				  <img src="/team2_Shingyeongjae/images/cat_img_11.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				  <h5>게시글 이름 나오도록</h5>

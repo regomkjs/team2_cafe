@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-	.container {
+	.header {
     max-width: 1200px; /* 최대 너비 */
     min-width: 1024px; /* 최소 너비 */
     margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
@@ -25,7 +25,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container header">
 	<nav class="navbar navbar-expand-sm white">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="<c:url value="/"/>">메인</a>

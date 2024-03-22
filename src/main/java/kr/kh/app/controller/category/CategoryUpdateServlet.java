@@ -1,4 +1,4 @@
-package kr.kh.app.controller.Category;
+package kr.kh.app.controller.category;
 
 import java.io.IOException;
 

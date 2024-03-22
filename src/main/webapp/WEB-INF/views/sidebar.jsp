@@ -16,22 +16,18 @@
 <style type="text/css">
 
 	.side_menu{
-		width: 300px; height: auto;
+		width: 250px; height: auto;
 		background-color: yellow;
 	}
 	.nav-box{
 		height: 300px;
-		max-width: 300px; /* 최대 너비 */
-   		min-width: 300px; /* 최소 너비 */
+		max-width: 250px; /* 최대 너비 */
+   		min-width: 250px; /* 최소 너비 */
 		border: 1px solid black;
 		background-color: white;
 	}
 	
-	.container .mt-3 {
-    max-width: 300px; /* 최대 너비 */
-    min-width: 300px; /* 최소 너비 */
-   
-	}
+	
 	
 </style>	
 	<script type="text/javascript">
