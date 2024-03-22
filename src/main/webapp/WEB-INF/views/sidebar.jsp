@@ -69,10 +69,18 @@
 				</button>
 		    	<p> ${categoryList}</p>
 		    	<br>
-		    	<a class="btn"  href ='<c:url value="/category/insert"/>'>관리자 페이지</a>
+		    	<a class="btn"  href ='<c:url value="/admin/page"/>'>관리자 페이지</a>
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
+		    	<c:choose>
+		    		<c:when test="${userInfo.me_nick==null}">
+		    			<b>${userInfo.me_id} 님</b><br>
+		    		</c:when>
+		    		<c:otherwise>
+		    			<b>${userInfo.me_nick}(${userInfo.me_id}) 님</b><br>
+		    		</c:otherwise>
+		    	</c:choose>
 		    	<b>등급 : ${grade}</b><br>
 		    	<a class="btn btn-danger mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a><br>
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>

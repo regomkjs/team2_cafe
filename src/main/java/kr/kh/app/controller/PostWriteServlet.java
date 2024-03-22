@@ -2,17 +2,12 @@ package kr.kh.app.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONObject;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
@@ -51,6 +46,6 @@ public class PostWriteServlet extends HttpServlet {
 		jobj.put("headList", headList);
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jobj);
+		
 	}
-
 }

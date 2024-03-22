@@ -24,14 +24,13 @@ public class UserPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
 	private MemberService memberService = new MemberServiceImp();
-    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
-		
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/page.jsp").forward(request, response);
 		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
@@ -42,13 +41,7 @@ public class UserPageServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		request.setAttribute("user", user);
 		
-		if(!(request.getParameter("passwordInfo").equals(user.getMe_pw()))) {
-			request.setAttribute("msg", "비밀번호가 맞지 않습니다.");
-			request.setAttribute("url", "/");
-			return;
-		}
 		
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");

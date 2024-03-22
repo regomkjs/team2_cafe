@@ -35,7 +35,6 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-
 		<div class="container ">
 			<table class="table table-hover mt-3">
 		 		<thead class="text-center">
