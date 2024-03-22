@@ -7,13 +7,20 @@
 <meta charset="UTF-8">
 <title>게시글 상세</title>
 <!-- 부트스트렙5, 썸머노트, j query -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
+	
+	.container {
+	    max-width: 1200px; /* 최대 너비 */
+	    min-width: 1024px; /* 최소 너비 */
+	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+	
 	.main-box{
 
 		 min-height: 1000px;
@@ -35,6 +42,7 @@
 		background-color: yellow;
 	}
 	.nav-box{
+		width: 300px;
 		height: 300px;
 		border: 1px solid black;
 		background-color: white;
@@ -46,6 +54,7 @@
 </head>
 
 <body>
+<jsp:include page="/WEB-INF/views/home.jsp"/>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="main-img-box">
 	중앙에 이미지 배치, 클릭시 메인으로 이동

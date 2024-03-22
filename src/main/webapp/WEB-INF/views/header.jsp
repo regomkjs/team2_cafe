@@ -8,41 +8,49 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+	.container {
+    max-width: 1200px; /* 최대 너비 */
+    min-width: 1024px; /* 최소 너비 */
+    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+	
 </style>
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="<c:url value="/"/>">메인</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav ">
-				<c:if test="${user == null}">
+<div class="container">
+	<nav class="navbar navbar-expand-sm white">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="<c:url value="/"/>">메인</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav ">
+					<c:if test="${user == null}">
+						<li class="nav-item">
+							<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
+						</li>
+					</c:if>
+					<!--	
 					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
-					</li>
-				</c:if>
-				<!--	
-				<li class="nav-item">
-					<a class="nav-link" href='<c:url  value="/board/list"/>'>게시글</a>
-				</li> 
-				-->
-				<c:if test="${user != null}"> 
-					<li class="nav-item">
-						<a class="nav-link" href='<c:url  value="/logout"/>'>로그아웃</a>
+						<a class="nav-link" href='<c:url  value="/board/list"/>'>게시글</a>
 					</li> 
-				</c:if>
-			</ul>	
+					-->
+					<c:if test="${user != null}"> 
+						<li class="nav-item">
+							<a class="nav-link" href='<c:url  value="/logout"/>'>로그아웃</a>
+						</li> 
+					</c:if>
+				</ul>	
+			</div>
 		</div>
-	</div>
-</nav>	
+	</nav>	
+</div>
 </body>
 </html>

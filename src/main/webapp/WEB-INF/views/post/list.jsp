@@ -9,19 +9,19 @@
 <title>게시글 리스트</title>
 
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	.main-box{
 		 height: 1000px;
 	}
 	.main-img-box{
 		width: 100%;
-		height: 250px;
-		background-color: tomato;
+		height: 200px;
+		background-color: white;
 	}
 	.main-content{
-		width: 100%;
+		width: 50%;
 		height: 1000px;
 	}
 </style>
@@ -31,6 +31,7 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="main-img-box">
 	중앙에 이미지 배치, 클릭시 메인으로 이동
+    <img src="/team2_Shingyeongjae/images/error.png" alt="images">
 </div>
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
