@@ -101,7 +101,7 @@
 								</c:url>
 								<a href="${boardUrl}">${board.bo_name}</a>
 								<span class="badge bg-danger float-end"><a href="<c:url value='/board/delete'/>" style="color: white; text-decoration: none;">삭제</a></span>
-								<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
+								<span class="badge bg-success float-end me-2"><a href="/board/update" style="color: white; text-decoration: none;">수정</a></span>
 							</li>
 						</c:if>
 					</c:forEach>				

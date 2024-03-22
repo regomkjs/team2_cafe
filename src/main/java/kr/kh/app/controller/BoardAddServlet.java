@@ -40,13 +40,18 @@ public class BoardAddServlet extends HttpServlet {
 		
 		ArrayList<BoardVO> boardList = new ArrayList();
 		
-		ArrayList<BoardVO> selectboardList = boardService.getBoardList();
-		for (BoardVO board : selectboardList) {
-			if (!categoryName.equals(board.getBo_ca_name())) {
-				continue;
-			}
-			
-			boardList.add(board);
+		ArrayList<BoardVO> selectoardList = boardService.getBoardList();
+		
+		// categoryName이 null이 아닌 경우에만 게시판 리스트를 가져오고 처리
+		if (categoryName != null) {
+		    ArrayList<BoardVO> selectBoardList = boardService.getBoardList();
+		    for (BoardVO board : selectBoardList) {
+		        if (!categoryName.equals(board.getBo_ca_name())) {
+		            continue;
+		        }
+		        
+		        boardList.add(board);
+		    }
 		}
 		
 		request.setAttribute("boardList", boardList);
@@ -57,7 +62,7 @@ public class BoardAddServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		// 화면에서 보낸 게시판 이름 가져옴
-		String name = request.getParameter("name");
+		 String newBoardName = request.getParameter("newboardname");
 
 		// 세션에서 회원 정보를 가져옴 (관리자로 수정해야 함)
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
@@ -71,14 +76,10 @@ public class BoardAddServlet extends HttpServlet {
 		
 		// 회원 관리자 정보가 있으면
 		
-			// 작성자에 회원 아이디를 저장 (name1? 수정 필요)
-			String name1 = user.getMe_id();
-			
-			// 게시판 번호는 1번으로 저장
-			String bo_ca_name = request.getParameter("bo_ca_name");
-			String bo_name = "";
+		
 			// 게시판 이름을 이용하여 게시판 객체를 생성 (BoardVO에서 확인 필요)
-			BoardVO board = new BoardVO(bo_ca_name, bo_name);
+			BoardVO board = new BoardVO(); 
+			board.setBo_name(newBoardName); // 새로운 게시판 이름 설정
 
 			// 서비스에게 게시판 이름 객체를 주면서 등록하라고 시킴
 			boolean res = boardService.insertBoard(board);

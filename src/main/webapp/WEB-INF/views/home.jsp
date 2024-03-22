@@ -36,7 +36,7 @@
 <div class="main-box d-flex align-content-stretch">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="main-content flex-grow-1">
-	 <img src="/team2_cafe/images/test01.jpg" alt="images">
+	 <img src="/team2_Shingyeongjae/images/test01.jpg" alt="images">
 </div>
 
 </div>
