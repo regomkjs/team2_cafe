@@ -87,6 +87,7 @@ public interface PostDAO {
 
 	LikeVO selectUserLike(@Param("me_id")String me_id, @Param("po_num")int po_num);
 
+	ArrayList<CommentVO> selectMyComment(@Param("me_id")String me_id);
 
 	
 

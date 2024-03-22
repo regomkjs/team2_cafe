@@ -312,6 +312,13 @@ public class PostServiceImp implements PostService{
 			return false;
 		}
 		return true;
+
+	public ArrayList<CommentVO> getMyCommentList(String me_id) {
+		if(checkString(me_id)) {
+			return postDao.selectMyComment(me_id);
+		}
+		return null;
+
 	}
 
 	

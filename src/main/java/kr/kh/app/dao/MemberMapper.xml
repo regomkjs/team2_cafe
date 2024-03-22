@@ -26,7 +26,16 @@
 	<select id="selectMemberNum" resultType="int">
 		select count(*) from member
 	</select>
-	
-	
-
+	<select id="selectMyPostNum" resultType="int">
+		select count(*) from post where po_me_id = #{me_id}
+	</select>	
+	<select id="selectMyCommentNum" resultType="int">
+		select count(*) from comment where co_me_id = #{me_id}
+	</select>
+	<select id="selectGrade" resultType="string">
+		select gr_name
+		from grade
+		join member on me_gr_num = gr_num
+		where me_id = #{me_id}
+	</select>
 </mapper>

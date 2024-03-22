@@ -63,25 +63,28 @@
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
 		    	<p>카페정보</p>
+
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
 				</c:url>
 		    	<a href='${allPostUrl}' class="btn btn-secondary">전체 게시글 수 
-		    	<span class="badge badge-light">${allPostNum}</span>
+		    		<span class="badge badge-light">${allPostNum}</span>
 				</a>
 				<br><br>
 				<button type="button" class="btn btn-primary">가입한 회원 수 
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
+
 				<c:if test="${user != null && user.me_gr_num == 0}">
 		    		<a class="btn btn-outline-primary mt-3"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 				</c:if>
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
-		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/page"/>">회원정보 수정</a>
-		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/post"/>">내가 쓴 글 보기</a>
-		    	<a class="btn mt-1 bg-secondary" href="<c:url value="/my/comment"/>">내가 쓴 댓글보기</a>
+		    	<b>등급 : ${grade}</b><br>
+		    	<a class="btn btn-danger mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a><br>
+		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
+		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
 			</div>
 		</div>
 	</div>

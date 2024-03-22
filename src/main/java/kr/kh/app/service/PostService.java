@@ -1,18 +1,13 @@
 package kr.kh.app.service;
 
 import java.util.ArrayList;
-
-
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
-
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
-import kr.kh.app.pagination.CommentCriteria;
 import kr.kh.app.pagination.Criteria;
-import kr.kh.app.pagination.PostCriteria;
 
 
 
@@ -53,7 +48,7 @@ public interface PostService {
 	int getAllPostNum();
 
 	ArrayList<PostVO> getMyPostList(String me_id);
-	
+
 	ArrayList<CategoryVO> selectCategory();
 		
 	boolean deleteCategory(int num);
@@ -75,5 +70,8 @@ public interface PostService {
 	int getTotalCountLike(int po_num);
 
 	boolean getUserLike(MemberVO user, int po_num); 
+
+	ArrayList<CommentVO> getMyCommentList(String me_id);
+
 
 }

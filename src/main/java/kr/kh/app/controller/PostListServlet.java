@@ -20,13 +20,6 @@ import kr.kh.app.service.MemberServiceImp;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
-
-
-
-
-
-
-
 @WebServlet("/post/list")
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -78,6 +71,7 @@ public class PostListServlet extends HttpServlet {
 		request.setAttribute("pm", pm);
 		ArrayList<PostVO> postList = postService.getPostList(cri);
 		request.setAttribute("postList", postList);
+		
 		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
 	}
 	
@@ -88,6 +82,5 @@ public class PostListServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 }
-	
 
 

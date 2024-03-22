@@ -235,6 +235,10 @@
 			</if>
 		</if>
 	</select>
+	
+	<select id="selectMyComment" resultType="kr.kh.app.model.vo.CommentVO">
+		select * from comment where co_me_id = #{me_id}
+	</select>
 
 	<select id="selectLike" resultType="kr.kh.app.model.vo.LikeVO">
 		select * from `like` where li_me_id = #{li.li_me_id} and li_po_num = #{li.li_po_num}

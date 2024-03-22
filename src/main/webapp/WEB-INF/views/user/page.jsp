@@ -33,7 +33,7 @@
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp" flush="false"/>
 	<div class="container">
-	<form action="<c:url value="/myPage"/>" method="post">
+	<form action="<c:url value="/user/page"/>" method="post">
 		<h1>${user.me_id}님 회원정보 수정</h1>
    		<div class="mb-3 mt-3">
    			<label for="id">아이디:</label>
