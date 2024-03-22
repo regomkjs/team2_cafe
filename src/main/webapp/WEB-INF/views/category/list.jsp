@@ -41,7 +41,9 @@
                   <option value="${community.c_num}" <c:if test="${board.bo_co_num != null}">selected</c:if>>
                     ${category.ca_name }
                   </option>
+               
                </c:forEach>
+               
             </select>
             <button type="button" class="btn btn-outline-danger float-end ml-3">삭제</button>
             <button type="button" class="btn btn-outline-success float-end ml-3">수정</button>

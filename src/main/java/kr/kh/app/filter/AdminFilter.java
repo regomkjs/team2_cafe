@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter({"/category/insert",""})
+@WebFilter({"/category/insert"})
 public class AdminFilter implements Filter {
        
 	private static final long serialVersionUID = 1L;

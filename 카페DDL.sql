@@ -75,6 +75,20 @@ CREATE TABLE if not exists `used_nick` (
 	`un_nick`	varchar(12)	primary key,
 	`un_me_id`	varchar(12)	NOT NULL
 );
+
+drop table if exists `like`;
+CREATE TABLE if not exists `like` (
+	`li_num`	int auto_increment primary key,
+	`li_me_id`	varchar(12)	NOT NULL,
+    `li_po_num`	int	NOT NULL,
+    `li_state`	int default 1 NOT NULL,
+	KEY `FK_member_TO_like_1` (`li_me_id`),
+	KEY `FK_post_TO_like_1` (`li_po_num`),
+	CONSTRAINT `FK_member_TO_like_1` FOREIGN KEY (`li_me_id`) REFERENCES `member` (`me_id`),
+	CONSTRAINT `FK_post_TO_like_1` FOREIGN KEY (`li_po_num`) REFERENCES `post` (`po_num`)
+);
+
+
 ALTER TABLE `board` ADD CONSTRAINT `FK_category_TO_board_1` FOREIGN KEY (
 	`bo_ca_name`
 )

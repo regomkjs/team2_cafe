@@ -7,10 +7,10 @@
 <meta charset="UTF-8">
 <title>게시글 수정</title>
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
@@ -81,9 +81,7 @@
 				</div>
 				<div class="mb-3">
 			  		<label for="content">내용:</label>
-			  		<div class="mb-3">
-			  			<textarea rows="10" name="content" id="content" class="form-control">${post.po_content}</textarea>
-			  		</div>
+		  			<textarea rows="10" name="content" id="content" class="form-control">${post.po_content}</textarea>
 				</div>
 				<div class="mb-3 mt-3">
 					<label class="form-label">첨부파일:</label>

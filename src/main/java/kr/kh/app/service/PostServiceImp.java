@@ -16,6 +16,7 @@ import kr.kh.app.model.vo.CategoryVO;
 
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.LikeVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.Criteria;
@@ -38,22 +39,7 @@ public class PostServiceImp implements PostService{
 			e.printStackTrace();
 			}
 	}
-	//카테고리 불러오기
-	@Override
-	public ArrayList<CategoryVO> selectCategory() {
-		return postDao.selectCategory();
-	}
-	//카테고리 삭제
-	@Override
-	public boolean deleteCategory(int num) {
-		return postDao.deleteCategory(num);
-	}
-	//카테고리 추가 구현중
-	@Override
-	public boolean insertCategory(ArrayList<CategoryVO> categoryList) {
-		return postDao.insertCategory(categoryList);
-	}
-	//
+	
 	@Override
 	public ArrayList<PostVO> getPoList() {
 		
@@ -80,7 +66,7 @@ public class PostServiceImp implements PostService{
 		if(cri == null) {
 			cri = new Criteria();
 		}
-		return postDao.selectTotalCountPost(cri);
+		return postDao.selectTotalCount(cri);
 	}
 
 	private boolean checkString(String str) {
@@ -104,15 +90,7 @@ public class PostServiceImp implements PostService{
 	}
 
 	
-	@Override
-
-	public ArrayList<PostVO> getPostByBoNum(Criteria cri) {
-		if(cri == null) {
-			cri = new Criteria(1,2);
-		}
-		return postDao.selectPostByBoNum(cri);
-
-	}
+	
 
 	@Override
 	public ArrayList<HeadVO> getHeadListByBoNum(int bo_num) {
@@ -214,7 +192,8 @@ public class PostServiceImp implements PostService{
 		}
 		CommentVO comment = postDao.selectComment(num);
 		if(comment == null
-				||!comment.getCo_me_id().equals(user.getMe_id())) {
+				||!(comment.getCo_me_id().equals(user.getMe_id())
+						|| user.getMe_gr_num() == 0)) {
 			return false;
 		}
 		return postDao.deleteComment(num);
@@ -289,13 +268,44 @@ public class PostServiceImp implements PostService{
 		return null;
 	}
 	@Override
+	public int like(MemberVO user, int po_num) {
+		if(user == null) {
+			return -1;
+		}
+		LikeVO like = new LikeVO(user.getMe_id(), po_num);
+		LikeVO dbLike = postDao.selectLike(like);
+		if(dbLike == null) {
+			postDao.insertLike(like);
+			return 1;
+		}
+		else {
+			postDao.deleteLike(dbLike);
+			return 0;
+		}
+	}
+	@Override
+	public int getTotalCountLike(int po_num) {
+		return postDao.selectTotalCountLike(po_num);
+	}
+	@Override
+	public boolean getUserLike(MemberVO user, int po_num) {
+		if(user == null) {
+			return false;
+		}
+		LikeVO like = postDao.selectUserLike(user.getMe_id(),po_num);
+		if(like == null) {
+			return false;
+		}
+		return true;
+	}
+	
 	public ArrayList<CommentVO> getMyCommentList(String me_id) {
 		if(checkString(me_id)) {
 			return postDao.selectMyComment(me_id);
 		}
 		return null;
+
 	}
 
-	
 	
 }

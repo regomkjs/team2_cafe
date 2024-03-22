@@ -11,7 +11,7 @@ public class Criteria {
 	private int perPageNum = 10;//한 페이지에서 컨텐츠 개수 : 기본값 10
 	
 	private String search = "";//검색어 - 기본값 - 빈문자열=> 전체 검색
-	private String type = "all";//검색 타입 : 기본값 전체검색
+	private String type = "";//검색 타입 : 기본값 전체검색
 	
 	public Criteria(int page) {
 		this.page = page;

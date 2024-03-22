@@ -11,6 +11,7 @@ import kr.kh.app.model.vo.CategoryVO;
 
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.LikeVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.Criteria;
 
@@ -25,8 +26,6 @@ public interface PostDAO {
 	ArrayList<BoardVO> selectBoard();
 
 	ArrayList<HeadVO> selectAllHead();
-
-	ArrayList<PostVO> selectPostByBoNum(@Param("cri")Criteria cri);
 
 	ArrayList<HeadVO> selectHeadListByBoNum(@Param("bo_num")int bo_num);
 
@@ -46,8 +45,6 @@ public interface PostDAO {
 
 	boolean insertComment(@Param("comment")CommentVO comment);
 
-	int selectTotalCountPost(@Param("cri")Criteria cri);
-
 	CommentVO selectComment(@Param("co_num")int num);
 
 	boolean deleteComment(@Param("co_num")int num);
@@ -66,10 +63,6 @@ public interface PostDAO {
 
 	ArrayList<PostVO> selectMyPost(String me_id);
 
-	boolean deleteCategory(@Param("ca")int num);
-
-	boolean insertCategory(@Param("ca") ArrayList<CategoryVO> categoryList);
-
 	ArrayList<PostVO> selectPost();
 
 	ArrayList<PostVO> selectPostList(@Param("cri") Criteria cri);
@@ -79,6 +72,16 @@ public interface PostDAO {
 	ArrayList<CategoryVO> selectCategoryList();
 
 	ArrayList<BoardVO> selectBoardList();
+
+	LikeVO selectLike(@Param("li")LikeVO like);
+
+	void insertLike(@Param("li")LikeVO like);
+
+	void deleteLike(@Param("li")LikeVO dbLike);
+
+	int selectTotalCountLike(@Param("po_num")int po_num);
+
+	LikeVO selectUserLike(@Param("me_id")String me_id, @Param("po_num")int po_num);
 
 	ArrayList<CommentVO> selectMyComment(@Param("me_id")String me_id);
 

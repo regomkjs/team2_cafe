@@ -17,6 +17,7 @@ public class BoardVO {
 	}
 
 
+
 	public BoardVO(int bo_num, String bo_name) {
 		this.bo_num = bo_num;
 		this.bo_name = bo_name;
@@ -27,5 +28,6 @@ public class BoardVO {
 		super();
 		this.bo_num = bo_num;
 	}
+
 
 }

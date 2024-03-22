@@ -7,20 +7,29 @@
 <meta charset="UTF-8">
 <title>게시글 작성</title>
 <!-- 부트스트렙5, 썸머노트, j query -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
+	
+	.container {
+    max-width: 1200px; /* 최대 너비 */
+    min-width: 1024px; /* 최소 너비 */
+    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+	
+	
 	.main-box{
 		 height: 1000px;
 	}
 	.main-img-box{
 		width: 100%;
-		height: 250px;
-		background-color: tomato;
+		height: 200px;
+		background-color: white;
+		text-align: center;
 	}
 	.main-content{
 		width: 100%;
@@ -32,27 +41,34 @@
 
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+<div class="container">
 <div class="main-img-box">
-	중앙에 이미지 배치, 클릭시 메인으로 이동
+	<img src="/team2_Shingyeongjae/images/error.png" alt="images">
 </div>
 <div class="main-box d-flex">
 	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 	<div class="container main-content flex-grow-1">
 		<div class="container mt-3 mb-3">
-			<c:url value="/post/list" var="url">
-				<c:param name="num" value="${board}"/>
-			</c:url>
-			<form action="${url}" method="post">
+			<form action='<c:url value="/post/list"/>' method="post">
 				<div class="mb-3 mt-3">
 					<label for="board">게시판:</label>
 					<select id="board" name="board" class="form-control">
-						<option class="select-board null-select" value="0">게시판을 선택해주세요</option>
 						<c:forEach items="${boList}" var="board">
 								<c:if test='${board.bo_ca_name == "공지" && user.me_gr_num == 0}'>
-									<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									<c:if test="${num == board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+									</c:if>
+									<c:if test="${num != board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									</c:if>
 								</c:if>
 								<c:if test='${board.bo_ca_name != "공지"}'>
-									<option class="select-board" value="${board.bo_num}">${board.bo_name}</option>
+									<c:if test="${num == board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+									</c:if>
+									<c:if test="${num != board.bo_num}">
+										<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+									</c:if>
 								</c:if>
 						</c:forEach>
 					</select>
@@ -60,7 +76,9 @@
 				<div class="mb-3 mt-3">
 					<label for="head">말머리:</label>
 					<select id="head" name="head" class="form-control headselect">
-						<option class="select-board null-select">게시판을 선택해주세요</option>
+						<c:forEach items="${heList}" var="he">
+							<option class="select-board null-select" value="${he.he_num}">${he.he_name}</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div class="mb-3 mt-3">
@@ -69,9 +87,7 @@
 				</div>
 				<div class="mb-3">
 			  		<label for="content">내용:</label>
-			  		<div class="mb-3">
-			  			<textarea rows="10" name="content" id="content" class="form-control"></textarea>
-			  		</div>
+		  			<textarea rows="10" name="content" id="content" class="form-control"></textarea>
 				</div>
 				<div class="mb-3 mt-3">
 					<label class="form-label">첨부파일:</label>
@@ -130,7 +146,7 @@
 				
 			}
 		});
-	})
+	});
 </script>
 
 <script type="text/javascript">

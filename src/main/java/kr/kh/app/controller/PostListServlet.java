@@ -15,6 +15,8 @@ import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.PageMaker;
 import kr.kh.app.pagination.PostCriteria;
+import kr.kh.app.service.MemberService;
+import kr.kh.app.service.MemberServiceImp;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 
@@ -22,24 +24,34 @@ import kr.kh.app.service.PostServiceImp;
 public class PostListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
-
+	private MemberService memberService = new MemberServiceImp();
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
+	
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
+		
+		//전체 게시판 수를 가져옴
+		int allPostNum = postService.getAllpostNum();
+		request.setAttribute("allPostNum", allPostNum);
+		//전체 멤버 수를 가져옴
+		int allMemberNum = memberService.getAllmemberNum();
+		request.setAttribute("allMemberNum", allMemberNum);
+
 		
 		int bo_num;
 		try {
 			bo_num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
-			e.printStackTrace();
 			bo_num = 0;
 		}
 		request.setAttribute("bo_num", bo_num);
 		ArrayList<HeadVO> heList = postService.getHeadListByBoNum(bo_num);
 		request.setAttribute("heList", heList);
-		
+
 		int page;
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -58,10 +70,17 @@ public class PostListServlet extends HttpServlet {
 		PageMaker pm = new PageMaker(5, cri, totalCount);
 		//생성한 객체를 화면에 전달
 		request.setAttribute("pm", pm);
-		ArrayList<PostVO> postList = postService.getPostByBoNum(cri);
+		ArrayList<PostVO> postList = postService.getPostList(cri);
 		request.setAttribute("postList", postList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/post/list.jsp").forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int num = Integer.parseInt(request.getParameter("board"));
+		request.setAttribute("msg", "");
+		request.setAttribute("url", "post/list?num="+num);
+		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 }
 
