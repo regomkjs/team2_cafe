@@ -34,7 +34,24 @@ public class CategoryServiceImp implements CategoryService{
 		public ArrayList<CategoryVO> selectCategory() {
 			return categoryDao.selectCategory();
 		}
-		
+
+		@Override
+		public boolean deleteCategory(String ca_name) {
+			
+			return categoryDao.deleteCategory(ca_name);
+		}
+
+		@Override
+		public boolean updateCategory(String caOriName, String caNewName) {
+			return categoryDao.updateCategory(caOriName,caNewName);
+		}
+
+		@Override
+		public boolean insertCategory(String ca_name) {
+			return categoryDao.insertCategory(ca_name);			
+		}
+
+	
 		/*
 		//카테고리 삭제
 		@Override

@@ -12,7 +12,11 @@ public interface CategoryDAO {
 	
 	boolean deleteCategory(@Param("ca")int num);
 
-	boolean insertCategory(@Param("ca") ArrayList<CategoryVO> categoryList);
+	boolean deleteCategory(@Param("ca_name") String ca_name);
+
+	boolean updateCategory(@Param("ca_ori") String caOriName, @Param("ca_new") String caNewName);
+
+	boolean insertCategory(@Param("ca") String ca_name);
 
 	
 }

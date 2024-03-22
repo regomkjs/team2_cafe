@@ -6,16 +6,18 @@
 	<select id="selectCategory" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
-	
-	<!-- 
 	<delete id="deleteCategory">
 		delete from category where ca_name = #{ca_name}
 	</delete>
-	<update id="insertCategory">
-		update category set
-		ca_name = #{category.ca_name}
+	<update id="updateCategory">
+		update category
+			set ca_name = #{ca_new}
+		 	where ca_name = #{ca_ori}
 	</update>
-	 -->
+	<insert id="insertCategory">
+		insert into category(ca_name)
+		values (#{ca})
+	</insert>
 </mapper>
 
 	
