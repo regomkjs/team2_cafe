@@ -33,7 +33,6 @@ public class UserCheckServlet extends HttpServlet {
 		
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/check.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 		
 	}
 	
