@@ -16,15 +16,27 @@
 <style type="text/css">
 
 	.side_menu{
-		width: 250px; height: auto;
-		background-color: yellow;
+		width: 200px; height: auto;
+		background-color: Blanchedalmond;
+		border: 2px solid Dimgray;
+		border-radius: 15px;
+		
+		
 	}
 	.nav-box{
 		height: 300px;
-		max-width: 250px; /* 최대 너비 */
-   		min-width: 250px; /* 최소 너비 */
-		border: 1px solid black;
-		background-color: white;
+		max-width: 200px; /* 최대 너비 */
+   		min-width: 200px; /* 최소 너비 */
+		background-color: Blanchedalmond;
+		border: 2px solid Dimgray;
+		border-radius: 15px;
+		
+	}
+	
+	.nav-link .nav-item .nav-tabs{
+		background-color: Blanchedalmond;
+		border: 2px solid Dimgray;
+		border-radius: 15px;
 	}
 	
 	
@@ -67,7 +79,8 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
-		    	<p>카페정보</p>
+				
+		    	<h6><b>카페정보</b></h6>
 
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
@@ -80,7 +93,7 @@
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
 				<c:if test="${user != null && user.me_gr_num == 0}">
-		    		<a class="btn btn-outline-primary mt-3"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
+		    		<a class="btn btn-outline-primary mt-6"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 				</c:if>
 
 		    </div>
