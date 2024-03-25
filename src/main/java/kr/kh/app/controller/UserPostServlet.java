@@ -45,6 +45,9 @@ public class UserPostServlet extends HttpServlet {
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
 		
+		
+		
+		
 		request.getRequestDispatcher("/WEB-INF/views/user/post.jsp").forward(request, response);
 	}
 	

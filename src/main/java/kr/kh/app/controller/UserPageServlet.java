@@ -32,9 +32,25 @@ public class UserPageServlet extends HttpServlet {
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
 		
+		//------ 내 게시글 수 & 내 댓글 수
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+		request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
+
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/page.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 		
 	}
 	

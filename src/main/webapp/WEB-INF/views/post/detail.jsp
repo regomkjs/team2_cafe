@@ -70,13 +70,13 @@
 						  				<c:url var="updateUrl" value="/post/update">
 											<c:param name="num" value="${post.po_num}"/>
 										</c:url>
-						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
+						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px; color: white;">수정</a></div>
 					  				</c:if>
 					  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
 					  					<c:url var="deleteUrl" value="/post/delete">
 											<c:param name="num" value="${post.po_num}"/>
 										</c:url>
-					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
+					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px; color: white;">삭제</a></div>
 					  				</c:if>
 					  			</div>
 					  		</div>

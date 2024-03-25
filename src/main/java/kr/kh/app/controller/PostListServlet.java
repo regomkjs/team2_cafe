@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
+import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.pagination.PageMaker;
 import kr.kh.app.pagination.PostCriteria;
@@ -41,6 +43,23 @@ public class PostListServlet extends HttpServlet {
 		int allMemberNum = memberService.getAllmemberNum();
 		request.setAttribute("allMemberNum", allMemberNum);
 
+		//------ 내 게시글 수 & 내 댓글 수
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+		request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
+		
 		
 		int bo_num;
 		try {

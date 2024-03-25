@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
+import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
@@ -30,13 +31,30 @@ public class PostDetailServelt extends HttpServlet {
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
-
+		
 		//전체 게시판 수를 가져옴
 		int allPostNum = postService.getAllpostNum();
 		request.setAttribute("allPostNum", allPostNum);
 		//전체 멤버 수를 가져옴
 		int allMemberNum = memberService.getAllmemberNum();
 		request.setAttribute("allMemberNum", allMemberNum);
+		
+		//------ 내 게시글 수 & 내 댓글 수
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+		request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
 		
 		int num = 0;
 		try {

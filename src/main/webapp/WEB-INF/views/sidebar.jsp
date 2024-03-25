@@ -96,11 +96,16 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
+				<c:if test="${user != null && user.me_gr_num == 0}">
+		    		<a class="mt-3 mb-1 float-end"  href ='<c:url value="/category/insert" />' style="color: gray; font-size: small;">관리자 페이지</a>
+				</c:if>
 				<br>
-		    	<h6 ><b>카페명 : With My Pet</b></h6>
+				<br>
+		    	<h6 >카페명 : <b>With My Pet</b></h6>
 				<br>
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
+					<c:param name="num" value="0"/>
 				</c:url>
 		    	<a href='${allPostUrl}' style="text-decoration: none; color: black;">전체 게시글 수 :  
 		    		<span class="">${allPostNum}</span>
@@ -110,9 +115,7 @@
 		    		<span>${allMemberNum}</span>
 				</a>
 				<br><br>
-				<c:if test="${user != null && user.me_gr_num == 0}">
-		    		<a class="btn btn-primary mt-6"  href ='<c:url value="/category/insert" />' style="color: white;">관리자 페이지</a>
-				</c:if>
+				
 
 		    </div>
 		    <div id="menu1" class="container tab-pane">

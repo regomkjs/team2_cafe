@@ -39,7 +39,25 @@ public class PostUpdateServlet extends HttpServlet {
 		//전체 멤버 수를 가져옴
 		int allMemberNum = memberService.getAllmemberNum();
 		request.setAttribute("allMemberNum", allMemberNum);
-
+		
+		
+		//------ 내 게시글 수 & 내 댓글 수
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+		request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
+				
 		
 		int num = 0;
 		try {
@@ -48,7 +66,6 @@ public class PostUpdateServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		PostVO post = postService.getPostbyPoNum(num);
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		if(!post.getPo_me_id().equals(user.getMe_id())) {
 			request.setAttribute("msg", "게시글 작성자만 이용할 수 있는 서비스 입니다.");
 			request.setAttribute("url", "post/detail?num="+num);
