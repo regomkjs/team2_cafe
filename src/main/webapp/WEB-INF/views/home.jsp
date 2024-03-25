@@ -76,6 +76,7 @@
 	  	padding: 3px;
 	}
 	
+
 	a:link {
   		color : black;
 	}
@@ -88,6 +89,7 @@
 		text-decoration: none;
 	}
 	
+
 		
 	.img-thumbnail{
 
@@ -105,7 +107,6 @@
 	
 	
 
-	
 </style>
 </head>
 
@@ -165,6 +166,7 @@
             <div class="smallPicPost-list d-flex justify-content-around">
             
 	            <a href="#" class="smallPicPost mt-3">
+
 				  <img src="/team2_cafe/images/ad1.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				<span class="smallPicPostName mt-3">
 				  <h6><동물병원>봄철 애견 예방접종</h6>
@@ -172,6 +174,7 @@
 				</a>
 				
 	            <a href="#" class="smallPicPost mt-3">
+
 				  <img src="/team2_cafe/images/ad2.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				<span class="smallPicPostName mt-3">
 				  <h6> <이벤트> 공식 인스타그램 팔로우</h6>
@@ -179,6 +182,7 @@
 				</a>
 				
 	            <a href="#" class="smallPicPost mt-3">
+
 				  <img src="/team2_cafe/images/ad3.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				<span class="smallPicPostName mt-3">
 				  <h6> <봄신상>강아지 산책 용품</h6>
@@ -186,6 +190,7 @@
 				</a>
 
 	            <a href="#" class="smallPicPost mt-3">
+
 				  <img src="/team2_cafe/images/ad4.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 			 	<span class="smallPicPostName mt-3">
 				  <h6> <특가>고양이 용품점 할인! </h6>
@@ -256,7 +261,6 @@
 			 	<span class="smallPicPostName mt-3">
 				  <h6> <특가>고양이 용품점 할인! </h6>
 				</span>
-
 				</a>
 			</div>
 			
@@ -265,6 +269,7 @@
 	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 
+<jsp:include page="/WEB-INF/views/footer.jsp"/>
 
 </body>
 </html>

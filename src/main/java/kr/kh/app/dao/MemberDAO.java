@@ -26,7 +26,7 @@ public interface MemberDAO {
 
 	String selectGrade(@Param("me_id")String me_id);
 
-	
+	void updateNickname(@Param("me_id")String me_id, @Param("name")String name);
 
 }
 

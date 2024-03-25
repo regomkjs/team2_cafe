@@ -3,6 +3,8 @@ package kr.kh.app.service;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -125,6 +127,13 @@ public class MemberServiceImp implements MemberService {
 
 	
 
+
+	@Override
+	public void updateNickname(String me_id, String name) {
+		if(checking(me_id) && checking(name)) {
+			memberDao.updateNickname(me_id, name);
+		}
+	}
 
 	
 }

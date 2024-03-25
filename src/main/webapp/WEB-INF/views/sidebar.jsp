@@ -118,6 +118,7 @@
 				<br><br>
 
 
+
 				<a style="text-decoration: none; color: black;">가입한 회원 수 
 		    		<span>${allMemberNum}</span>
 				</a>
@@ -136,6 +137,7 @@
 			    	<p><b>회원 : </b>${user.me_nick}(${user.me_id})</p>
 		    	</c:if>
 		    	<p><b>등급 : </b>${grade}</p>
+
 
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
 
@@ -183,11 +185,10 @@
 
 				<span style="font-weight: bolder;">${category.ca_name} 
 					<c:if test="${user != null && user.me_gr_num == 0}">
-						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
+						<a href="<c:url value='/admin/page'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
 					</c:if>
 	
 				</span>
-
 	
 					<ul>
 						<c:forEach items="${boList}" var="board">
@@ -198,18 +199,20 @@
 									</c:url>
 									<a href="${boardUrl}">${board.bo_name}</a>
 									<c:if test="${user != null && user.me_gr_num == 0}">
-										<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
-										<span class="badge bg-success float-end me-1"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
+										<span class="badge bg-danger float-end"><a href="<c:url value="/admin/page?caSelect=${category.ca_name}"/>" style="color: white; text-decoration: none;">삭제</a></span>
+										<span class="badge bg-success float-end me-1"><a href="<c:url value="/admin/page?caSelect=${category.ca_name}"/>" style="color: white; text-decoration: none;">수정</a></span>
 									</c:if>
 	
 								</li>
 							</c:if>
 						</c:forEach>				
 					</ul>
+
 				</c:if>
 			</div>
 		</c:forEach>
 	</div>
+
 
 </div>
 </body>

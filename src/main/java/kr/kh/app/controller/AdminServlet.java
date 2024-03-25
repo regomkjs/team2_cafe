@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.JSONObject;
+
+import kr.kh.app.controller.category.CategoryInsertServlet;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.MemberVO;
@@ -27,9 +29,10 @@ public class AdminServlet extends HttpServlet {
 	private PostService postService = new PostServiceImp();
     private MemberService memberService = new MemberServiceImp();
     private BoardService boardService = new BoardServiceImp();
+    private CategoryInsertServlet categoryInsertServlet = new CategoryInsertServlet();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		categoryInsertServlet.init();
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
 		ArrayList<BoardVO> boList = postService.getBoList();
@@ -43,12 +46,14 @@ public class AdminServlet extends HttpServlet {
 		int myCommentNum = 0;
 		String grade = null;
 		MemberVO userInfo = null;
+		
 		if(user!=null) {
 			userInfo = memberService.getMember(user.getMe_id());
 			myPostNum = memberService.getMyPostNum(user.getMe_id());
 			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
 			grade = memberService.getMyGrade(user.getMe_id());
 		}
+		
 		request.setAttribute("userInfo", userInfo);
 		request.setAttribute("myPostNum", myPostNum);
 		request.setAttribute("myCommentNum", myCommentNum);
@@ -61,6 +66,7 @@ public class AdminServlet extends HttpServlet {
 		//전체 멤버 수를 가져옴
 		int allMemberNum = memberService.getAllmemberNum();
 		request.setAttribute("allMemberNum", allMemberNum);
+		
 		
 		
 		String caSelect = request.getParameter("caSelect"); 

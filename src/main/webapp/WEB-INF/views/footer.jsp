@@ -13,11 +13,15 @@
     min-width: 1024px; /* 최소 너비 */
     margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
 	}
+
 	.footer-container{
 		height: 100px;
 		background-color: rgba(0, 0, 0, 0.05);
 		line-height: 100px;
 	}
+
+	
+
 </style>
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -32,6 +36,7 @@
 
 <footer class="bg-body-tertiary text-center">
   
+
   <div class="container footer-container">
 	  <div class="text-center">
 	    © 2024 Copyright:

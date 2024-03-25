@@ -44,7 +44,9 @@ public class PostListServlet extends HttpServlet {
 		request.setAttribute("allMemberNum", allMemberNum);
 
 		//------ 내 게시글 수 & 내 댓글 수
+
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+
 		
 		int myPostNum = 0;
 		int myCommentNum = 0;
@@ -57,9 +59,11 @@ public class PostListServlet extends HttpServlet {
 		
 		request.setAttribute("myPostNum", myPostNum);
 		request.setAttribute("myCommentNum", myCommentNum);
+
 		request.setAttribute("grade", grade);
 		//------ 내 게시글 수 & 내 댓글 수
 		
+
 		
 		int bo_num;
 		try {

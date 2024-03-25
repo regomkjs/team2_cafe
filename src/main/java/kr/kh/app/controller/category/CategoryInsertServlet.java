@@ -3,6 +3,7 @@ package kr.kh.app.controller.category;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import kr.kh.app.model.vo.BoardVO;
+
+import org.apache.catalina.connector.Response;
+
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.CategoryService;
@@ -25,10 +30,11 @@ import kr.kh.app.service.PostServiceImp;
 public class CategoryInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	private CategoryService categoryService = new CategoryServiceImp();
+
 	private PostService postService = new PostServiceImp();
 	private MemberService memberService = new MemberServiceImp();
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> caList = postService.getCaList();
 		request.setAttribute("caList", caList);
@@ -67,7 +73,7 @@ public class CategoryInsertServlet extends HttpServlet {
 		ArrayList<CategoryVO> categoryList = categoryService.selectCategory();
 		
 		request.setAttribute("categoryList", categoryList);
-		request.getRequestDispatcher("/WEB-INF/views/admin/categoryinsert.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/admin/page.jsp").forward(request, response);
       
 		
 }
@@ -87,10 +93,10 @@ public class CategoryInsertServlet extends HttpServlet {
 		
 		if (res) {
 			request.setAttribute("msg", "카테고리를 추가했습니다.");
-			request.setAttribute("url", "category/insert");
+			request.setAttribute("url", "admin/page");
 		} else {
 			request.setAttribute("msg", "카테고리를 삭제하지못했습니다.");
-			request.setAttribute("url", "category/insert?ca_name"+ ca_name);
+			request.setAttribute("url", "admin/page?ca_name"+ ca_name);
 		}
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 

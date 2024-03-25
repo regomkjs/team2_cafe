@@ -54,7 +54,6 @@
 </head>
 
 <body>
-
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 

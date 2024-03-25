@@ -22,6 +22,9 @@ public interface MemberService {
 
 	boolean idCheckDup(String id);
 
+	void updateNickname(String me_id, String name);
+
+
 
 
 }

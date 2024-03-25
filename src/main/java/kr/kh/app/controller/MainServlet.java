@@ -44,20 +44,16 @@ public class MainServlet extends HttpServlet {
 		int myPostNum = 0;
 		int myCommentNum = 0;
 		String grade = null;
-		MemberVO userInfo = null;
 		if(user!=null) {
-			userInfo = memberService.getMember(user.getMe_id());
 			myPostNum = memberService.getMyPostNum(user.getMe_id());
 			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
 			grade = memberService.getMyGrade(user.getMe_id());
 		}
-		request.setAttribute("userInfo", userInfo);
+		
 		request.setAttribute("myPostNum", myPostNum);
 		request.setAttribute("myCommentNum", myCommentNum);
 		request.setAttribute("grade", grade);
 		//------ 내 게시글 수 & 내 댓글 수
-		
-		
 		
 		String data = request.getParameter("");
 		String id = request.getParameter("id");

@@ -38,4 +38,7 @@
 		join member on me_gr_num = gr_num
 		where me_id = #{me_id}
 	</select>
+	<update id="updateNickname">
+		update member set me_nick = #{name} where me_id = #{me_id}
+	</update>
 </mapper>

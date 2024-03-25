@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
@@ -31,7 +32,7 @@ public class PostDetailServelt extends HttpServlet {
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
-		
+
 		//전체 게시판 수를 가져옴
 		int allPostNum = postService.getAllpostNum();
 		request.setAttribute("allPostNum", allPostNum);

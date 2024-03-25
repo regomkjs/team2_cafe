@@ -7,15 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Main</title>
-<!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- 부트스트랩5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
+
 	.master-container {
 	    max-width: 1200px; /* 최대 너비 */
 	    min-width: 1024px; /* 최소 너비 */
 	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
 	}
+
 	.main-box{
 		 height: 1000px;
 	}
@@ -26,6 +32,15 @@
 	.main-content{
 		height: 1000px;
 		background-color: white;
+	}
+	
+	/* 카테고리 등록 css */
+	.category-box{
+		padding:50px;
+	}
+	.board-box{
+		padding:50px;
+		
 	}
 </style>
 </head>
