@@ -21,9 +21,9 @@
 
 <style type="text/css">
 	.master-container {
-    max-width: 1200px; /* 최대 너비 */
-    min-width: 1024px; /* 최소 너비 */
-    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	    max-width: 1200px; /* 최대 너비 */
+	    min-width: 1024px; /* 최소 너비 */
+	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
 	}
 	
 	.main-box{
@@ -49,10 +49,7 @@
 		color: black;
 	}
 	
-	.text-center{
-		width: 100%;
-	}
-	
+
 </style>
 </head>
 
@@ -72,7 +69,7 @@
 			<div class="container ">
 				<form action="<c:url value="/post/list"/>" method="get" class="mt-3">
 					<input name="num" value="${bo_num}" type="hidden">
-					<div class="input-group">
+					<div class="input-group d-flex justify-content-end">
 						<select name="type">
 							<option value="title" <c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목+내용</option>
 							<option value="writer" <c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
