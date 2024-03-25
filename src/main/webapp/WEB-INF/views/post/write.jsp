@@ -38,67 +38,72 @@
 </head>
 
 <body>
-<div class="container master-container">
+<div class="master-container container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
-	<div class="main-img-box">
-		<img src="/team2_Shingyeongjae/images/error.png" alt="images">
-	</div>
-	<div class="main-box d-flex">
-		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-		<div class="container main-content flex-grow-1">
-			<div class="container mt-3 mb-3">
-				<form action='<c:url value="/post/list"/>' method="post">
-					<div class="mb-3 mt-3">
-						<label for="board">게시판:</label>
-						<select id="board" name="board" class="form-control">
-							<c:forEach items="${boList}" var="board">
-									<c:if test='${board.bo_ca_name == "공지" && user.me_gr_num == 0}'>
-										<c:if test="${num == board.bo_num}">
-											<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+	<div class="container">
+		<div class="main-img-box">
+			<a href="<c:url value='/'/>"> 
+				<img src="/team2_cafe/images/logo.jpg" alt="images">
+			</a>
+		</div>
+
+		<div class="main-box d-flex">
+			<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+			<div class="container main-content flex-grow-1">
+				<div class="container mt-3 mb-3">
+					<form action='<c:url value="/post/list"/>' method="post">
+						<div class="mb-3 mt-3">
+							<label for="board">게시판:</label>
+							<select id="board" name="board" class="form-control">
+								<c:forEach items="${boList}" var="board">
+										<c:if test='${board.bo_ca_name == "공지" && user.me_gr_num == 0}'>
+											<c:if test="${num == board.bo_num}">
+												<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+											</c:if>
+											<c:if test="${num != board.bo_num}">
+												<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+											</c:if>
 										</c:if>
-										<c:if test="${num != board.bo_num}">
-											<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+										<c:if test='${board.bo_ca_name != "공지"}'>
+											<c:if test="${num == board.bo_num}">
+												<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
+											</c:if>
+											<c:if test="${num != board.bo_num}">
+												<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
+											</c:if>
 										</c:if>
-									</c:if>
-									<c:if test='${board.bo_ca_name != "공지"}'>
-										<c:if test="${num == board.bo_num}">
-											<option class="select-board" value="${board.bo_num}" selected>${board.bo_name}</option>
-										</c:if>
-										<c:if test="${num != board.bo_num}">
-											<option class="select-board" value="${board.bo_num}" >${board.bo_name}</option>
-										</c:if>
-									</c:if>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="mb-3 mt-3">
-						<label for="head">말머리:</label>
-						<select id="head" name="head" class="form-control headselect">
-							<c:forEach items="${heList}" var="he">
-								<option class="select-board null-select" value="${he.he_num}">${he.he_name}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="mb-3 mt-3">
-						<label for="title">제목:</label>
-				  		<input type="text" class="form-control" id="title" placeholder="제목 입력" name="title">
-					</div>
-					<div class="mb-3">
-				  		<label for="content">내용:</label>
-			  			<textarea rows="10" name="content" id="content" class="form-control"></textarea>
-					</div>
-					<div class="mb-3 mt-3">
-						<label class="form-label">첨부파일:</label>
-				  		<input type="file" class="form-control" name="file">
-				  		<input type="file" class="form-control" name="file">
-				  		<input type="file" class="form-control" name="file">
-					</div>
-					<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
-				</form>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="mb-3 mt-3">
+							<label for="head">말머리:</label>
+							<select id="head" name="head" class="form-control headselect">
+								<c:forEach items="${heList}" var="he">
+									<option class="select-board null-select" value="${he.he_num}">${he.he_name}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="mb-3 mt-3">
+							<label for="title">제목:</label>
+							<input type="text" class="form-control" id="title" placeholder="제목 입력" name="title">
+						</div>
+						<div class="mb-3">
+							<label for="content">내용:</label>
+							<textarea rows="10" name="content" id="content" class="form-control"></textarea>
+						</div>
+						<div class="mb-3 mt-3">
+							<label class="form-label">첨부파일:</label>
+							<input type="file" class="form-control" name="file">
+							<input type="file" class="form-control" name="file">
+							<input type="file" class="form-control" name="file">
+						</div>
+						<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
+					</form>
+				</div>
 			</div>
 		</div>
+		<jsp:include page="/WEB-INF/views/footer.jsp"/>
 	</div>
-	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">

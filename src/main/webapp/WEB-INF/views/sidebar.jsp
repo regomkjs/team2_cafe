@@ -42,6 +42,7 @@
 		border: 2px solid Dimgray;
 		border-radius: 15px;
 	}
+
 	.category-box{
 		background-color: Blanchedalmond;
 		height: calc(100% - 296px);
@@ -57,6 +58,7 @@
 		border-right: 1px solid rgb(233, 236, 239);
 		border-bottom: 1px solid rgb(233, 236, 239);
 	}
+
 	
 </style>	
 	<script type="text/javascript">
@@ -114,6 +116,7 @@
 		    		<span class="">${allPostNum}</span>
 				</a>
 				<br><br>
+
 				<a style="text-decoration: none; color: black;">가입한 회원 수 
 		    		<span>${allMemberNum}</span>
 				</a>
@@ -133,7 +136,10 @@
 		    	</c:if>
 		    	<p><b>등급 : </b>${grade}</p>
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
+
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
+		    	<br><br>
+		    	<a class="mypage-btn mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a>
 			</div>
 		</div>
 	</div>

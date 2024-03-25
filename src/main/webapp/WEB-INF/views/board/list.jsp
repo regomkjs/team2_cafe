@@ -9,6 +9,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
+
+	.master-container {
+	    max-width: 1200px; /* 최대 너비 */
+	    min-width: 1024px; /* 최소 너비 */
+	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+
 	.main-box{
 		height: 1000px;
 	}
@@ -25,32 +32,36 @@
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-img-box">
-	중앙에 이미지 배치, 클릭시 메인으로 이동
-</div>
-<div class="main-box d-flex">
-<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-<div class="main-content flex-grow-1">
-		클릭한 게시판 관련 리스트
-		<div class="container">
-			<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>번호</th>
-						<th>게시판 이름</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${boardList}" var="board">		
+<div class="container master-container">
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
+	<div class="main-img-box">
+		<a href="<c:url value='/'/>"> 
+			<img src="/team2_cafe/images/logo.jpg" alt="images">
+		</a>
+	</div>
+	<div class="main-box d-flex">
+	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+	<div class="main-content flex-grow-1">
+			클릭한 게시판 관련 리스트
+			<div class="container">
+				<!-- 서버에서 보낸 데이터를 c:forEach를 이용하여 화면에 출력 -->
+				<table class="table table-hover">
+					<thead>
 						<tr>
-							<td>${board.bo_num}</td>
-							<td>${board.bo_name}</td>
+							<th>번호</th>
+							<th>게시판 이름</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach items="${boardList}" var="board">		
+							<tr>
+								<td>${board.bo_num}</td>
+								<td>${board.bo_name}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>
