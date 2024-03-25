@@ -89,6 +89,7 @@
 								</td>
 								<td class="text-center">
 									<c:url var="userUrl" value="/user/post">
+										<c:param name="type" value="id"/>
 										<c:param name="user" value="${post.po_me_id}"/>
 									</c:url>
 									<a href="${userUrl}">${post.po_writer}</a>

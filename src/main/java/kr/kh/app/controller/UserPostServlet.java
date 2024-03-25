@@ -14,6 +14,7 @@ import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
+import kr.kh.app.pagination.PostCriteria;
 import kr.kh.app.service.PostService;
 import kr.kh.app.service.PostServiceImp;
 

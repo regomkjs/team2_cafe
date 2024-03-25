@@ -32,6 +32,12 @@ public class UserPageServlet extends HttpServlet {
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
 		
+		//전체 게시글 수를 가져옴
+		int allPostNum = postService.getAllpostNum();
+		request.setAttribute("allPostNum", allPostNum);
+		//전체 멤버 수를 가져옴
+		int allMemberNum = memberService.getAllmemberNum();
+		request.setAttribute("allMemberNum", allMemberNum);
 		//------ 내 게시글 수 & 내 댓글 수
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		

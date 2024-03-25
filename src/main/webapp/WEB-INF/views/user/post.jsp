@@ -44,7 +44,7 @@
 			 		<thead class="text-center">
 						<tr>
 							<th class="col-1">번호</th>
-							<th class="col-2">말머리</th>
+							<th class="col-2">게시판</th>
 							<th class="col-5">제목</th>
 							<th class="col-2">작성자</th>
 							<th >조회수</th>
@@ -54,17 +54,15 @@
 						<c:forEach items="${postList}" var="post">
 							<tr>
 								<td class="text-center">${post.po_num}</td>
-								<c:forEach items="${headList}" var="head">
-								<c:if test="${post.po_he_num == head.he_num}"><td class="text-center">${head.he_name}</td></c:if>
-								</c:forEach>
+								<td class="text-center">${post.bo_name}</td>
 								<td class="text-center">
 									<c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}"/>
 									</c:url>
-									<a href="${url}">${post.po_title}</a>
+									<a href="${url}">[${post.he_name}] ${post.po_title}</a>
 								</td>
 						   		<td class="text-center">
-									<a href="#">${post.po_me_id}</a>
+									<a href="#">${post.po_writer}</a>
 								</td>
 								<td class="text-center">${post.po_view}</td>
 							</tr>

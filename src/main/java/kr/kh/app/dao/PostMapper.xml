@@ -133,7 +133,13 @@
 	</select>
 	
 	<select id="selectMyPost" resultType="kr.kh.app.model.vo.PostVO">
-		select * from post where po_me_id = #{me_id}
+		select * from post 
+				join 
+			head on he_num = po_he_num 
+				join 
+			board on bo_num = he_bo_num 
+		where po_me_id = #{me_id}
+		order by po_num desc
 	</select>
 	
 

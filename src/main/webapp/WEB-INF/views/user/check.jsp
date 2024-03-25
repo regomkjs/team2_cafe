@@ -37,9 +37,9 @@
         	<img src="/team2_cafe/images/logo.jpg" alt="images">
         </a>
 	</div>
-	<div class="main-box d-flex">
+	<div class="main-box d-flex ">
 		<jsp:include page="/WEB-INF/views/sidebar.jsp" flush="false"/>
-		<div class="input-group mt-3 w-50">
+		<div class="input-group container flex-grow-1 justify-content-center" style="margin-top: 200px">
 			<form action="<c:url value="/user/check"/>" method="post">
 				<b>본인 확인을 위해 비밀번호를 입력해주세요.</b>
 				<div class="input-group mb-3">
