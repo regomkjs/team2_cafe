@@ -46,7 +46,9 @@
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<div class="main-img-box">
-	    <img src="/team2_Shingyeongjae/images/error.png" alt="images">
+	    <a href="<c:url value='/'/>"> 
+        	<img src="/team2_cafe/images/logo.jpg" alt="images">
+        </a>
 	</div>
 	<div class="main-box d-flex">
 		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>

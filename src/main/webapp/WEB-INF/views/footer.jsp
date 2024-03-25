@@ -13,7 +13,11 @@
     min-width: 1024px; /* 최소 너비 */
     margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
 	}
-	
+	.footer-container{
+		height: 100px;
+		background-color: rgba(0, 0, 0, 0.05);
+		line-height: 100px;
+	}
 </style>
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,14 +32,12 @@
 
 <footer class="bg-body-tertiary text-center">
   
-  <div class="container footer-container p-4"></div>
-
-  
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2024 Copyright:
-    <a class="text-body" href="https://kh-academy.co.kr/main/main.kh"> KH정보교육원.com / 2차 조별 과제 / 2조</a>
+  <div class="container footer-container">
+	  <div class="text-center">
+	    © 2024 Copyright:
+	    <a class="text-body" href="https://kh-academy.co.kr/main/main.kh"> KH정보교육원.com / 2차 조별 과제 / 2조</a>
+	  </div>
   </div>
-  
 </footer>
 
 </body>
