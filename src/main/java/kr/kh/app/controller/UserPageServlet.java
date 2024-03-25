@@ -31,9 +31,25 @@ public class UserPageServlet extends HttpServlet {
 		
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
+		//------ 내 게시글 수 & 내 댓글 수
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+				request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/page.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 		
 	}
 	
@@ -41,7 +57,21 @@ public class UserPageServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		request.setAttribute("user", user);
 		
+		if(!request.getParameter("name").equals(null)) {
+			String name = request.getParameter("name");
+			memberService.updateNickname(user.getMe_id(), name);
+			request.setAttribute("msg", "닉네임이 등록/수정되었습니다.");
+			request.setAttribute("url", "/user/page");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}
+		
+		if(!(request.getParameter("passwordInfo").equals(user.getMe_pw()))) {
+			request.setAttribute("msg", "비밀번호가 맞지 않습니다.");
+			request.setAttribute("url", "/");
+			return;
+		}
 		
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");

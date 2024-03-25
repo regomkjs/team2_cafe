@@ -7,7 +7,12 @@
 <meta charset="UTF-8">
 <title>Main</title>
 <!-- 부트스트렙5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//code.jquery.com/jquery-3.6.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	.main-box{
@@ -56,6 +61,12 @@
    			<input value="${user.me_phone}" type="text" class="form-control" id="phone" placeholder="핸드폰 입력" name="phone">
    		</div>
    		<button type="submit" class="btn btn-outline-success col-12">회원정보수정</button>
+	</form>
+	<form action="<c:url value="/user/page"/>" method="post">
+		<div class="input-group mb-3 name mt-3">
+  			<input value="${user.me_nick}" type="text" class="name form-control" placeholder="닉네임 등록/수정" aria-describedby="btn1" name="name">
+  			<button class="btn btn-outline-secondary">등록/수정</button>
+		</div>
 	</form>
 </div>
 </div>

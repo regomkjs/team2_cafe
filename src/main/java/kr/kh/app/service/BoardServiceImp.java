@@ -15,11 +15,6 @@ import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.model.vo.BoardVO;
 import kr.kh.app.model.vo.CategoryVO;
 
-import kr.kh.app.model.vo.HeadVO;
-
-import kr.kh.app.model.vo.MemberVO;
-
-
 public class BoardServiceImp implements BoardService {
 
 	private BoardDAO boardDao;
@@ -42,6 +37,14 @@ public class BoardServiceImp implements BoardService {
 	public ArrayList<BoardVO> getBoardList() {
 		
 		return boardDao.selectBoardList();
+	}
+
+	@Override
+	public boolean insertBoard(BoardVO board) {
+	    if (board == null || !checkString(board.getBo_name())) {
+	        return false;
+	    }
+	    return boardDao.insertBoard(board);
 	}
 		
 	public boolean checkString(String str) {
@@ -71,7 +74,7 @@ public class BoardServiceImp implements BoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public ArrayList<BoardVO> getCaBoardList(String caSelect) {
 		return boardDao.selectCaBoardList(caSelect);
@@ -86,7 +89,7 @@ public class BoardServiceImp implements BoardService {
 		
 		if(checkString(inputBoard)) {
 			BoardVO inputBoarder = new BoardVO(caSelect, inputBoard);
-			boardDao.insertBoard(inputBoarder);
+			boardDao.insertBoard2(inputBoarder);
 			return true;
 		}
 		
@@ -109,7 +112,5 @@ public class BoardServiceImp implements BoardService {
 		}
 		return false;
 	}
-
-
 
 }

@@ -20,6 +20,8 @@ public interface MemberService {
 
 	String getMyGrade(String me_id);
 
+	void updateNickname(String me_id, String name);
+
 
 
 }

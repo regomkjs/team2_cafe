@@ -31,10 +31,10 @@ public class CategoryDeleteServlet extends HttpServlet {
 		boolean res = categoaryservice.deleteCategory(ca_name);
 		if (res) {
 			request.setAttribute("msg", "카테고리를 삭제했습니다.");
-			request.setAttribute("url", "category/insert");
+			request.setAttribute("url", "admin/page");
 		} else {
 			request.setAttribute("msg", "카테고리를 삭제하지못했습니다.");
-			request.setAttribute("url", "category/insert?ca_name"+ca_name);
+			request.setAttribute("url", "admin/page?ca_name"+ca_name);
 		}
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 
