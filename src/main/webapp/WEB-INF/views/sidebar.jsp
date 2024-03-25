@@ -14,7 +14,14 @@
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
-
+	a:link{
+		color : black;
+		text-decoration: none;
+	}
+	a:visited{
+		color : black;
+		text-decoration: none;
+	}
 	.side_menu{
 		height: auto;
 		border-radius: 15px;
@@ -41,7 +48,15 @@
 		border: 2px solid Dimgray;
 		border-radius: 15px;
 	}
-	
+	.tab-pane.active{
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		height: 237px ;
+		background-color: white;
+		border-left: 1px solid rgb(233, 236, 239);
+		border-right: 1px solid rgb(233, 236, 239);
+		border-bottom: 1px solid rgb(233, 236, 239);
+	}
 	
 </style>	
 	<script type="text/javascript">
@@ -68,7 +83,7 @@
 <div class="side_menu">
 	<div class="container nav-box mb-6">
 		<!-- Nav tabs -->
-		<ul class="nav nav-tabs" role="tablist">
+		<ul class="nav nav-tabs mt-2" role="tablist">
 				<li class="nav-item col-6">
 		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
 					</li>
@@ -81,28 +96,36 @@
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
-				
-		    	<h6><b>카페정보</b></h6>
-
+				<br>
+		    	<h6 ><b>카페명 : With My Pet</b></h6>
+				<br>
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
 				</c:url>
-		    	<a href='${allPostUrl}' class="btn btn-secondary">전체 게시글 수 
-		    		<span class="badge badge-light">${allPostNum}</span>
+		    	<a href='${allPostUrl}' style="text-decoration: none; color: black;">전체 게시글 수 :  
+		    		<span class="">${allPostNum}</span>
 				</a>
 				<br><br>
-				<button type="button" class="btn btn-primary">가입한 회원 수 
-		    	<span class="badge badge badge-light">${allMemberNum}</span>
-				</button>
+				<a style="text-decoration: none; color: black;">가입한 회원 수 
+		    		<span>${allMemberNum}</span>
+				</a>
+				<br><br>
 				<c:if test="${user != null && user.me_gr_num == 0}">
-		    		<a class="btn btn-outline-primary mt-6"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
+		    		<a class="btn btn-primary mt-6"  href ='<c:url value="/category/insert" />' style="color: white;">관리자 페이지</a>
 				</c:if>
 
 		    </div>
-		    <div id="menu1" class="container tab-pane"><br>
-		    	<p>로그인 했을 때만 표시</p>
-		    	<b>등급 : ${grade}</b><br>
-		    	<a class="btn btn-danger mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a><br>
+		    <div id="menu1" class="container tab-pane">
+		    	<a class="mt-3 mb-1 float-end" id="memberInfo" href="<c:url value="/user/check"/>" style="color: gray; font-size: small;">마이페이지</a>
+		    	<br>
+		    	<br>
+		    	<c:if test="${user.me_nick == null}">
+		    		<p><b>회원 : </b>${user.me_id}</p>
+		    	</c:if>
+		    	<c:if test="${user.me_nick != null}">
+			    	<p><b>회원 : </b>${user.me_nick}(${user.me_id})</p>
+		    	</c:if>
+		    	<p><b>등급 : </b>${grade}</p>
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
 			</div>
