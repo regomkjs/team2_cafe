@@ -131,8 +131,8 @@
 </head>
 
 <body>
-<div class="master-container">
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+<div class="master-container">
 <div class="login-box">
 	<form action="<c:url value="/login"/>" method="post">
 
