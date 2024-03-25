@@ -19,8 +19,6 @@ public class NickCheckDupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nick = request.getParameter("nick");
 		boolean res = memberService.nickCheckDup(nick);
-		System.out.println(nick);
-		System.out.println(res);
 		JSONObject jobj = new JSONObject();	
 		jobj.put("result", res);
 		response.setContentType("application/json; charset=utf-8");

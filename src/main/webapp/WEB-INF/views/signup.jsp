@@ -308,7 +308,6 @@ function idCheckDup() {
 		success : function (data){
 			result = data.result;
 			if(!result){
-				console.log(result);
 				$("#id-error2").text("이미 사용중인 아이디 입니다.");
 				$("#id-error2").show();
 			}

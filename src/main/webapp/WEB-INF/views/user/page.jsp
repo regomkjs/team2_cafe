@@ -178,7 +178,6 @@ function nickCheckDup() {
 		success : function (data){
 			result = data.result;
 			if(!result){
-				console.log(result);
 				$("#name-error2").text("사용할 수 없는 닉네임 입니다.");
 				$("#name-error2").show();
 			}
