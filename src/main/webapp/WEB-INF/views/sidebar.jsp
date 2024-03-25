@@ -17,8 +17,6 @@
 
 	.side_menu{
 		width: 200px; height: auto;
-		background-color: Blanchedalmond;
-		border: 2px solid Dimgray;
 		border-radius: 15px;
 		
 		
@@ -38,7 +36,12 @@
 		border: 2px solid Dimgray;
 		border-radius: 15px;
 	}
-	
+	.category-box{
+		background-color: Blanchedalmond;
+		height: calc(100% - 296px);
+		border: 2px solid Dimgray;
+		border-radius: 15px;
+	}
 	
 	
 </style>	
@@ -107,67 +110,68 @@
 		</div>
 	</div>
 	
+	<div class="category-box">
+		<c:forEach items="${caList}" var="category">
+			<div class="container mt-3">
+				<c:if test='${category.ca_name == "공지"}'>
+					<span style="font-weight: bolder;">${category.ca_name} 
+						<c:if test="${user != null && user.me_gr_num == 0}">
+							<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
+						</c:if>
+					</span>
+					<ul>
+						<c:forEach items="${boList}" var="board">
+							<c:if test='${board.bo_ca_name == "공지"}'>
+								<li>
+									<c:url value="/post/list" var="boardUrl">
+										<c:param name="num" value="${board.bo_num}" />
+									</c:url>
+									<a href="${boardUrl}">${board.bo_name}</a>
 	
-	<c:forEach items="${caList}" var="category">
-		<div class="container mt-3">
-			<c:if test='${category.ca_name == "공지"}'>
+									<c:if test="${user != null && user.me_gr_num == 0}">
+										<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
+										<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
+									</c:if>
+	
+								</li>
+							</c:if>
+						</c:forEach>				
+					</ul>
+				</c:if>
+			</div>
+		</c:forEach>
+		<c:forEach items="${caList}" var="category">
+			<div class="container mt-3">
+				<c:if test='${category.ca_name != "공지"}'>
+	
 				<span style="font-weight: bolder;">${category.ca_name} 
 					<c:if test="${user != null && user.me_gr_num == 0}">
-						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
+						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a>
 					</c:if>
+	
 				</span>
-				<ul>
-					<c:forEach items="${boList}" var="board">
-						<c:if test='${board.bo_ca_name == "공지"}'>
-							<li>
-								<c:url value="/post/list" var="boardUrl">
-									<c:param name="num" value="${board.bo_num}" />
-								</c:url>
-								<a href="${boardUrl}">${board.bo_name}</a>
-
-								<c:if test="${user != null && user.me_gr_num == 0}">
-									<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
-									<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
-								</c:if>
-
-							</li>
-						</c:if>
-					</c:forEach>				
-				</ul>
-			</c:if>
-		</div>
-	</c:forEach>
-	<c:forEach items="${caList}" var="category">
-		<div class="container mt-3">
-			<c:if test='${category.ca_name != "공지"}'>
-
-			<span style="font-weight: bolder;">${category.ca_name} 
-				<c:if test="${user != null && user.me_gr_num == 0}">
-					<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a>
+	
+					<ul>
+						<c:forEach items="${boList}" var="board">
+							<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
+								<li>
+									<c:url value="/post/list" var="boardUrl">
+										<c:param name="num" value="${board.bo_num}" />
+									</c:url>
+									<a href="${boardUrl}">${board.bo_name}</a>
+									<c:if test="${user != null && user.me_gr_num == 0}">
+										<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
+										<span class="badge bg-success float-end me-2"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
+									</c:if>
+	
+								</li>
+							</c:if>
+						</c:forEach>				
+					</ul>
 				</c:if>
-
-			</span>
-
-				<ul>
-					<c:forEach items="${boList}" var="board">
-						<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
-							<li>
-								<c:url value="/post/list" var="boardUrl">
-									<c:param name="num" value="${board.bo_num}" />
-								</c:url>
-								<a href="${boardUrl}">${board.bo_name}</a>
-								<c:if test="${user != null && user.me_gr_num == 0}">
-									<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
-									<span class="badge bg-success float-end me-2"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
-								</c:if>
-
-							</li>
-						</c:if>
-					</c:forEach>				
-				</ul>
-			</c:if>
-		</div>
-	</c:forEach>
+			</div>
+		</c:forEach>
+	</div>
 </div>
 
 

@@ -16,7 +16,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
 
+<style>
+	.container{
+		height: calc(100% - 300px);
+	}
 
+</style>
 
 </head>
 <body>
@@ -54,6 +59,7 @@
    		</div>
    		<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
 	</form>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 
 

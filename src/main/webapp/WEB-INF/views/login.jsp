@@ -26,6 +26,7 @@
    		</div>
    		<button type="submit" class="btn btn-outline-success col-12">로그인</button>
 	</form>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 </body>
 </html>

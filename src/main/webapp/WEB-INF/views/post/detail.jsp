@@ -133,6 +133,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 <!-- 댓글 리스트 출력 스크립트 -->
 <script type="text/javascript">

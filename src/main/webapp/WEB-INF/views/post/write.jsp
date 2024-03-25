@@ -100,6 +100,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 <!-- 썸머노트 스크립트 -->
 <script type="text/javascript">
