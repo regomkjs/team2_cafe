@@ -11,7 +11,6 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <style type="text/css">
 	a:link{
@@ -100,7 +99,7 @@
 			<div id="home" class="container tab-pane active">
 
 				<c:if test="${user != null && user.me_gr_num == 0}">
-		    		<a class="mt-3 mb-1 float-end"  href ='<c:url value="/category/insert" />' style="color: gray; font-size: small;">관리자 페이지</a>
+		    		<a class="mt-3 mb-1 float-end"  href ='<c:url value="/admin/page" />' style="color: gray; font-size: small;">관리자 페이지</a>
 				</c:if>
 				<br>
 				<br>
@@ -142,8 +141,6 @@
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
 
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
-		    	<br><br>
-		    	<a class="mypage-btn mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a>
 			</div>
 		</div>
 	</div>

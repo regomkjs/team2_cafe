@@ -41,6 +41,14 @@ public class UserPostServlet extends HttpServlet {
 			MemberVO user = (MemberVO)session.getAttribute("user");
 			userID = user.getMe_id();
 		}
+
+		//전체 게시글 수를 가져옴
+		int allPostNum = postService.getAllpostNum();
+		request.setAttribute("allPostNum", allPostNum);
+		//전체 멤버 수를 가져옴
+		int allMemberNum = memberService.getAllmemberNum();
+		request.setAttribute("allMemberNum", allMemberNum);
+		
 		//------ 내 게시글 수 & 내 댓글 수
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");

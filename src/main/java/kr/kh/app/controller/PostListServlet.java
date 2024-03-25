@@ -36,7 +36,7 @@ public class PostListServlet extends HttpServlet {
 		ArrayList<BoardVO> boList = postService.getBoList();
 		request.setAttribute("boList", boList);
 		
-		//전체 게시판 수를 가져옴
+		//전체 게시글 수를 가져옴
 		int allPostNum = postService.getAllpostNum();
 		request.setAttribute("allPostNum", allPostNum);
 		//전체 멤버 수를 가져옴

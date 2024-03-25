@@ -34,14 +34,7 @@
 		background-color: white;
 	}
 	
-	/* 카테고리 등록 css */
-	.category-box{
-		padding:50px;
-	}
-	.board-box{
-		padding:50px;
-		
-	}
+	
 </style>
 </head>
 <body>

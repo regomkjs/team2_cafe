@@ -19,8 +19,6 @@
 	}
 	.main-img-box{
 		width: 100%;
-		height: 250px;
-		background-color: tomato;
 	}
 	.main-content{
 		width: 100%;
@@ -29,7 +27,7 @@
 	}
 	
 	/* 카테고리 등록 css */
-	.category-box{
+	.category-box1{
 		padding:50px;
 	}
 	.board-box{
@@ -40,91 +38,97 @@
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-img-box">
-	중앙에 이미지 배치, 클릭시 메인으로 이동
-</div>
-
-<div class="main-box d-flex">
-	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+<div class="master-container container">
 	
-	<div class="sub-content flex-grow-1">
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
+	<div class="main-img-box">
+		<a href="<c:url value='/'/>"> 
+        	<img src="/team2_cafe/images/logo.jpg" alt="images">
+        </a>
+	</div>
 	
-	<!-- 카테고리 등록 -->
-	
-	<div class="category-box">
-			<h2 class="mb-4">관리자 페이지</h2>
-			<h3>기존 카테고리 리스트</h3>
-			<ul>
-				<c:forEach items="${caList}" var="category" >
-					<li class="ca-box"><span class="ca-text">${category.ca_name}</span>
-						<div class="btn-group">
-						   <button class="btn btn-outline-danger btn-category-update" type="button">수정</button>
-							<c:url value="/category/delete" var="delUrl">
-						       <c:param name="category" value="${category.ca_name}"/>
-						   </c:url>
-						   <a class="btn btn-outline-warning btn-comment-delete" href="${delUrl}">삭제</a>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-			<!-- 카테고리 입력 박스 -->
-			<form action="<c:url value="/category/insert"/>" method="post">
-				<div class="mb-3 mt-3 input-group">
-					<label for="category"> 추가할 카테고리명 :</label>
-			  		<input type="text" class="form-control" placeholder="새로운 카테고리명을 입력하세요." name = "category"/>
-				</div>
-				<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
-			</form>
-		</div>
+	<div class="main-box d-flex">
+		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 		
-	<!-- 게시판 등록 -->
-		<h3 class="mb-4">게시판 등록</h3>
-		<div class="container justify-content-center min-vh-100">
-			<form name="caForm" action="<c:url value="/admin/page"/>" enctype="multipart/form-data">
-				<select id="selectCa" class="form-select bg-info" name="selectCategory" onchange="chageSelect()">
-					<option value="-1">카테고리 선택</option>
-					<c:forEach items="${caList}" var="caList">
-						<option value="${caList.ca_name}" <c:if test="${caList.ca_name == caSelect}">selected</c:if> >${caList.ca_name}</option>
+		<div class="sub-content flex-grow-1">
+		
+		<!-- 카테고리 등록 -->
+		
+		<div class="category-box1">
+				<h2 class="mb-4">관리자 페이지</h2>
+				<h3>기존 카테고리 리스트</h3>
+				<ul>
+					<c:forEach items="${caList}" var="category" >
+						<li class="ca-box"><span class="ca-text">${category.ca_name}</span>
+							<div class="btn-group">
+							   <button class="btn btn-outline-danger btn-category-update" type="button">수정</button>
+								<c:url value="/category/delete" var="delUrl">
+							       <c:param name="category" value="${category.ca_name}"/>
+							   </c:url>
+							   <a class="btn btn-outline-warning btn-comment-delete" href="${delUrl}">삭제</a>
+							</div>
+						</li>
 					</c:forEach>
-				</select>
-			</form>
-			
-			<div class="<c:if test="${caSelect == null || caSelect == '-1'}">d-none</c:if> input-group mb-3 w-50 boardBtn">
-				<button type="button" class="btn btn-primary mb-1 boardAddBtn ms-1 mt-1">게시판 등록</button>
-				<button type="button" class="btn btn-primary mb-1 boardSetBtn ms-1 mt-1">게시판 수정</button>
-				<button type="button" class="btn btn-primary mb-1 boardDelBtn ms-1 mt-1">게시판 삭제</button>
+				</ul>
+				<!-- 카테고리 입력 박스 -->
+				<form action="<c:url value="/category/insert"/>" method="post">
+					<div class="mb-3 mt-3 input-group">
+						<label for="category"> 추가할 카테고리명 :</label>
+				  		<input type="text" class="form-control" placeholder="새로운 카테고리명을 입력하세요." name = "category"/>
+					</div>
+					<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
+				</form>
 			</div>
-			<form action="<c:url value="/admin/page"/>" enctype="multipart/form-data" class="">
-				<input type="hidden" name="caSelect" value="${caSelect}">
-				<div class="input-group mb-3 w-50 inputBoard d-none">
-		  			<input type="text" class="head-input form-control" placeholder="추가할 게시판명 입력" aria-describedby="btn1" name="inputBoard">
-		  			<button class="btn btn-outline-secondary">등록</button>
+			
+		<!-- 게시판 등록 -->
+			<div class="board-box">
+				<h3 class="mb-4">게시판 등록</h3>
+				<div class="container justify-content-center min-vh-100">
+					<form name="caForm" action="<c:url value="/admin/page"/>" enctype="multipart/form-data">
+						<select id="selectCa" class="form-select bg-info" name="selectCategory" onchange="chageSelect()">
+							<option value="-1">카테고리 선택</option>
+							<c:forEach items="${caList}" var="caList">
+								<option value="${caList.ca_name}" <c:if test="${caList.ca_name == caSelect}">selected</c:if> >${caList.ca_name}</option>
+							</c:forEach>
+						</select>
+					</form>
+					
+					<div class="<c:if test="${caSelect == null || caSelect == '-1'}">d-none</c:if> input-group mb-3 w-50 boardBtn">
+						<button type="button" class="btn btn-primary mb-1 boardAddBtn ms-1 mt-1">게시판 등록</button>
+						<button type="button" class="btn btn-primary mb-1 boardSetBtn ms-1 mt-1">게시판 수정</button>
+						<button type="button" class="btn btn-primary mb-1 boardDelBtn ms-1 mt-1">게시판 삭제</button>
+					</div>
+					<form action="<c:url value="/admin/page"/>" enctype="multipart/form-data" class="">
+						<input type="hidden" name="caSelect" value="${caSelect}">
+						<div class="input-group mb-3 w-50 inputBoard d-none">
+				  			<input type="text" class="head-input form-control" placeholder="추가할 게시판명 입력" aria-describedby="btn1" name="inputBoard">
+				  			<button class="btn btn-outline-secondary">등록</button>
+						</div>
+						
+						<div class="input-group mb-3 w-50 updateBoard d-none">
+							<select name="selectBoard" class="form-select selectBoard">
+								<option value="-1">수정할 게시판 선택</option>
+								<c:forEach items="${caBoardList}" var="boList">
+									<option value="${boList.bo_num}">${boList.bo_name}</option>
+								</c:forEach>
+							</select>
+							<input type="text" class="form-control" placeholder="수정할 게시판 이름 입력" name="updateboard">
+							<button class="btn btn-outline-warning">수정</button>
+						</div>
+						
+						<div class="input-group mb-3 w-50 deleteBoard d-none">
+							<select name="deleteBoard" class="form-select deleteBoard ">
+								<option value="-2">삭제할 게시판 선택</option>
+								<c:forEach items="${caBoardList}" var="boList">
+									<option value="${boList.bo_num}">${boList.bo_name}</option>
+								</c:forEach>
+							</select>
+							<button class="btn btn-outline-warning">삭제</button>
+						</div>
+					</form>
 				</div>
-				
-				<div class="input-group mb-3 w-50 updateBoard d-none">
-					<select name="selectBoard" class="form-select selectBoard">
-						<option value="-1">수정할 게시판 선택</option>
-						<c:forEach items="${caBoardList}" var="boList">
-							<option value="${boList.bo_num}">${boList.bo_name}</option>
-						</c:forEach>
-					</select>
-					<input type="text" class="form-control" placeholder="수정할 게시판 이름 입력" name="updateboard">
-					<button class="btn btn-outline-warning">수정</button>
-				</div>
-				
-				<div class="input-group mb-3 w-50 deleteBoard d-none">
-					<select name="deleteBoard" class="form-select deleteBoard ">
-						<option value="-2">삭제할 게시판 선택</option>
-						<c:forEach items="${caBoardList}" var="boList">
-							<option value="${boList.bo_num}">${boList.bo_name}</option>
-						</c:forEach>
-					</select>
-					<button class="btn btn-outline-warning">삭제</button>
-				</div>
-			</form>
+			</div>
 		</div>
-		
 	</div>
 </div>
 <script src="//code.jquery.com/jquery-3.4.1.js"></script>
