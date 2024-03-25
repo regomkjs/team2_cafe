@@ -46,7 +46,6 @@
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<div class="main-img-box">
-		중앙에 이미지 배치, 클릭시 메인으로 이동
 	    <img src="/team2_Shingyeongjae/images/error.png" alt="images">
 	</div>
 	<div class="main-box d-flex">

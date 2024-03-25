@@ -23,10 +23,10 @@ public class SignupServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
+		String id = request.getParameter("me_id");
+		String pw = request.getParameter("me_pw");
+		String email = request.getParameter("me_email");
+		String phone = request.getParameter("me_phone");
 		MemberVO member = new MemberVO(id, pw, email, phone);
 		boolean res = memberService.signupMember(member);
 		

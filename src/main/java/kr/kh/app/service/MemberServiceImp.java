@@ -111,6 +111,18 @@ public class MemberServiceImp implements MemberService {
 		return null;
 	}
 
+	@Override
+	public boolean idCheckDup(String id) {
+		if(checking(id)) {
+			return false;
+		}
+		MemberVO member = memberDao.selectUser(id);
+		if(member == null || !member.getMe_id().equals(id)) {
+			return true;
+		}
+		return false;
+	}
+
 	
 
 
