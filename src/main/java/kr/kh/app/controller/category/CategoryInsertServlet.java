@@ -3,7 +3,6 @@ package kr.kh.app.controller.category;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import kr.kh.app.model.vo.BoardVO;
 
-import org.apache.catalina.connector.Response;
 
 import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.MemberVO;

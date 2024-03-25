@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
+import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
 
@@ -18,7 +19,8 @@ public class NickCheckDupServlet extends HttpServlet {
     private MemberService memberService = new MemberServiceImp();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nick = request.getParameter("nick");
-		boolean res = memberService.nickCheckDup(nick);
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		boolean res = memberService.nickCheckDup(user,nick);
 		JSONObject jobj = new JSONObject();	
 		jobj.put("result", res);
 		response.setContentType("application/json; charset=utf-8");

@@ -24,7 +24,7 @@ public interface MemberService {
 
 	boolean updateNickname(String me_id, String name);
 
-	boolean nickCheckDup(String nick);
+	boolean nickCheckDup(MemberVO user, String nick);
 
 
 

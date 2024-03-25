@@ -137,19 +137,23 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean nickCheckDup(String nick) {
+	public boolean nickCheckDup(MemberVO user, String nick) {
 		if(!checking(nick)) {
 			return false;
 		}
-		MemberVO member = memberDao.selectUser(nick);
-		if(member != null) {
+		if(!checking(user.getMe_nick())) {
+			return true;
+		}else {
+			MemberVO member = memberDao.selectUser(nick);
+			if(member != null) {
+				return false;
+			}
+			UsedNickVO usedNick = memberDao.selectNick(nick);
+			if(usedNick == null || !usedNick.getUn_nick().equals(nick)) {
+				return true;
+			}
 			return false;
 		}
-		UsedNickVO usedNick = memberDao.selectNick(nick);
-		if(usedNick == null || !usedNick.getUn_nick().equals(nick)) {
-			return true;
-		}
-		return false;
 	}
 
 	

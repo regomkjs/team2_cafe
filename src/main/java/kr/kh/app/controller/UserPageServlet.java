@@ -75,7 +75,7 @@ public class UserPageServlet extends HttpServlet {
 		if(phone != null && !user.getMe_nick().equals(phone)) {
 			user.setMe_phone(phone);
 		}
-		if(nick != null && !user.getMe_nick().equals(nick)) {
+		if(nick != null) {
 			user.setMe_nick(name);
 		}
 		request.getSession().setAttribute("user", user);
