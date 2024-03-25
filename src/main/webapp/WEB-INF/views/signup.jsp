@@ -16,7 +16,7 @@
 	<form action="<c:url value="/signup"/>" method="post">
 		<br>		
 		<h5><b>환영합니다.</b></h5>
-		<h4><b>Cat cafe입니다.</b></h4>
+		<h4>반려동물카페 <b>WITH MY PET 입니다.</b></h4>
    		<div class="mb-3 mt-3">
    			<label for="id">아이디:</label>
    			<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="id">

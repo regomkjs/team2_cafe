@@ -14,14 +14,15 @@
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="container">
 	<form action="<c:url value="/login"/>" method="post">
-		<h1>로그인</h1>
+		<br>
+		<h4><b>로그인</b></h4>
    		<div class="mb-3 mt-3">
    			<label for="id">아이디:</label>
-   			<input type="text" class="form-control" id="id" placeholder="아이디 입력" name="id">
+   			<input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요." name="id">
 		</div>
    		<div class="mb-3">
   			<label for="pw">비밀번호:</label>
-  			<input type="password" class="form-control" id="pw" placeholder="비밀번호 입력" name="pw">
+  			<input type="password" class="form-control" id="pw" placeholder="비밀번호를 입력하세요." name="pw">
    		</div>
    		<button type="submit" class="btn btn-outline-success col-12">로그인</button>
 	</form>
