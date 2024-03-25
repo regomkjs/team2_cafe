@@ -31,7 +31,7 @@ public class UserPostServlet extends HttpServlet {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		ArrayList<HeadVO> headList = postService.getHeList();
-		String userID=null;
+		String userID = null;
 		if(request.getParameter("user")!=null) {
 			userID = request.getParameter("user");
 		} else {

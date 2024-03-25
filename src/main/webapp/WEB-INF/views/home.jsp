@@ -61,16 +61,17 @@
     	min-width: 200px; 
 	}
 	
+	
 </style>
 </head>
 
 <body>
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
-    <div class="main-img-box">
-        <a href="<c:url value='/'/>"> 
+    	<div class="main-img-box">
+        <a href="<c:url value='/'/>">
         	<img src="/team2_Shingyeongjae/images/error.png" alt="images">
-        </a>
+  	 </a>
     </div>
     <div class="main-box d-flex align-content-stretch">
         <jsp:include page="/WEB-INF/views/sidebar.jsp"/>
@@ -108,25 +109,29 @@
             <!-- 사진이 게시글의 사진으로 나오도록 할 수 있을지 -->
             <!-- 씨:포이치 items="${poList}" var="post -->
             <div class="smallPicPost-list d-flex justify-content-around">
-	            <a href="#" class="smallPicPost mt-3">
+	            <a href="#" class="smallPicPost mt-3" style="text-decoration: none;
+	color: black;">
 				  <img src="/team2_Shingyeongjae/images/cat_img_11.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				  <h5>게시글 이름 나오도록</h5>
 				  <p>게시글 상세 내용 한줄</p>            
 				</a>
 				
-	            <a href="#" class="smallPicPost mt-3">
+	            <a href="#" class="smallPicPost mt-3" style="text-decoration: none;
+	color: black;">
 				  <img src="/team2_Shingyeongjae/images/cat_img_7.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				  <h5>게시글 이름 나오도록</h5>
 				  <p>게시글 상세 내용 한줄</p>            
 				</a>
 				
-	            <a href="#" class="smallPicPost mt-3">
+	            <a href="#" class="smallPicPost mt-3" style="text-decoration: none;
+	color: black;">
 				  <img src="/team2_Shingyeongjae/images/cat_img_6.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				  <h5>게시글 이름 나오도록</h5>
 				  <p>게시글 상세 내용 한줄</p>            
 				</a>
 
-	            <a href="#" class="smallPicPost mt-3">
+	            <a href="#" class="smallPicPost mt-3" style="text-decoration: none;
+	color: black;">
 				  <img src="/team2_Shingyeongjae/images/cat_img_3.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
 				  <h5>게시글 이름 나오도록</h5>
 				  <p>게시글 상세 내용 한줄</p>            

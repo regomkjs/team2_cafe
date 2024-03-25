@@ -14,12 +14,13 @@
 .body{
   text-align: center;
   margin: 0;
-  justify-content: center;
+  justify-content: left;
   transform:translate;
   align-items: center;
   display: flex;
   height: 100vh;
 }
+
 .master-container {
     max-width: 1200px; /* 최대 너비 */
     min-width: 1024px; /* 최소 너비 */
@@ -37,7 +38,7 @@
 }
 .login-box h2{
 	text-align: center;
-	color: #03c75a;
+	color: rgb(255, 127, 80);
 	font-size: 30px;
 	font-weight:bold;
 	margin-bottom: 20px;
@@ -53,7 +54,7 @@
 	background-repeat: no-repeat;
 	background-size: 20px;
 	background-position: 15px center;
-	outline-color: #03c75a;
+	outline-color: rgb(255, 127, 80);
 }
 #user::placeholder{
 	color:#ccc;
@@ -68,7 +69,7 @@
 	background-repeat:no-repeat;
 	background-size: 20px;
 	background-position:15px center;
-	outline-color:#03c75a;
+	outline-color: rgb(255, 127, 80);
 	margin-bottom: 20px;
 }
 #pass::placeholder{
@@ -83,28 +84,29 @@
     padding: 13px 0 13px;
     border-radius: 6px;
     border: solid 1px rgba(0, 0, 0, .15);
-    background-color: #03c75a;
+    background-color: rgb(255, 127, 80);
     box-sizing: border-box; 
      color:white;
      margin-bottom: 30px;
     
  }
+ 
  .login-box ul{
- list-style: none;
- padding:0;
- margin:0;
- display: flex;
- justify-content: center;
+	 list-style: none;
+	 padding:0;
+	 margin:0;
+	 display: flex;
+	 justify-content: center;
  }
 .login-box li{
- margin: 0 10px;
+	 margin: 0 10px;
 } 
 .login-box li:first-child::after{
-content: '|'; 
-font-size: 14px;
-color: #03c75a;
-position: relative;
-top: -2px; left: 10px;
+	content: '|'; 
+	font-size: 14px;
+	color:  rgb(255, 127, 80);
+	position: relative;
+	top: -2px; left: 10px;
 }  
  .login{
  	 margin: 0 auto;
@@ -113,17 +115,17 @@ top: -2px; left: 10px;
  
  }
  .pass{
-  margin: 0 auto;
-  position: relative;
+	  margin: 0 auto;
+	  position: relative;
  }
  
  .foot-txt{
- color: #03c75a;
-text-decoration: none;
+	 color: rgb(255, 127, 80);
+	text-decoration: none;
  }
  
  .foot-txt:hover{
-  text-decoration: underline;
+ 	 text-decoration: underline;
  }
 </style>
 </head>
@@ -141,7 +143,7 @@ text-decoration: none;
 	  		 <button type="submit" class="btn-block">로그인</button>
     </form>
 	   		<ul>
-	   			<li><a class="foot-txt" href="<c:url value="/signup"/>">아이디를 잊었나요?</a></li>
+	   			<li><a class="foot-txt" href="<c:url value="/signup"/>">아이디 찾기</a></li>
 	   			<li><a class="foot-txt" href="<c:url value="/signup"/>">회원가입</a></li>
 	   		</ul>
 		</div>

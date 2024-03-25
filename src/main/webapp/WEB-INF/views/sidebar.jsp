@@ -56,45 +56,41 @@
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item col-6">
-		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
-					</li>
-				<c:if test="${user != null}">
+					<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
+				</li>
+			<c:if test="${user != null}">
 	 			<li class="nav-item col-6">
 	 				<a class="nav-link" data-bs-toggle="tab" href="#menu1">유저</a>
 	 			</li>
-				</c:if>
+			</c:if>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
 		    	<p>카페정보</p>
-
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
 				</c:url>
-		    	<a href='${allPostUrl}' class="btn btn-secondary">전체 게시글 수 
+		    <a href='${allPostUrl}' class="btn btn-secondary">전체 게시글 수 
 		    		<span class="badge badge-light">${allPostNum}</span>
-				</a>
+			</a>
 				<br><br>
-				<button type="button" class="btn btn-primary">가입한 회원 수 
+			<button type="button" class="btn btn-primary">가입한 회원 수 
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
-				</button>
+			</button>
 				<c:if test="${user != null && user.me_gr_num == 0}">
 		    		<a class="btn btn-outline-primary mt-3"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 				</c:if>
-
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
 		    	<p>로그인 했을 때만 표시</p>
-		    	<b>등급 : ${grade}</b><br>
+		    		<b>등급 : ${grade}</b><br>
 		    	<a class="btn btn-danger mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a><br>
-		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
-		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
+		    		<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
+		    		<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
 			</div>
 		</div>
 	</div>
-	
-	
 	<c:forEach items="${caList}" var="category">
 		<div class="container mt-3">
 			<c:if test='${category.ca_name == "공지"}'>
@@ -116,25 +112,21 @@
 									<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
 									<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
 								</c:if>
-
 							</li>
 						</c:if>
 					</c:forEach>				
 				</ul>
 			</c:if>
 		</div>
-	</c:forEach>
+</c:forEach>
 	<c:forEach items="${caList}" var="category">
 		<div class="container mt-3">
 			<c:if test='${category.ca_name != "공지"}'>
-
 			<span style="font-weight: bolder;">${category.ca_name} 
 				<c:if test="${user != null && user.me_gr_num == 0}">
 					<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a>
 				</c:if>
-
 			</span>
-
 				<ul>
 					<c:forEach items="${boList}" var="board">
 						<c:if test='${category.ca_name == board.bo_ca_name && board.bo_ca_name !="공지"}'>
@@ -147,7 +139,6 @@
 									<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
 									<span class="badge bg-success float-end me-2"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
 								</c:if>
-
 							</li>
 						</c:if>
 					</c:forEach>				
@@ -156,7 +147,5 @@
 		</div>
 	</c:forEach>
 </div>
-
-
 </body>
 </html>
