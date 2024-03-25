@@ -46,7 +46,6 @@ public class UserCommentServlet extends HttpServlet {
 		request.setAttribute("boList", boardList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/comment.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

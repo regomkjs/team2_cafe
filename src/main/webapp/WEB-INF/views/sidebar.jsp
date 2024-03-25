@@ -16,15 +16,14 @@
 <style type="text/css">
 
 	.side_menu{
-		width: 200px; height: auto;
+		height: auto;
 		border-radius: 15px;
-		
-		
+		min-width: 250px;
+		max-width: 250px;
 	}
 	.nav-box{
 		height: 300px;
-		max-width: 200px; /* 최대 너비 */
-   		min-width: 200px; /* 최소 너비 */
+		
 		background-color: Blanchedalmond;
 		border: 2px solid Dimgray;
 		border-radius: 15px;
@@ -130,7 +129,7 @@
 	
 									<c:if test="${user != null && user.me_gr_num == 0}">
 										<span class="badge bg-danger float-end"><a href="#" style="color: white; text-decoration: none;">삭제</a></span>
-										<span class="badge bg-success float-end me-2"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
+										<span class="badge bg-success float-end me-1"><a href="#" style="color: white; text-decoration: none;">수정</a></span>
 									</c:if>
 	
 								</li>
@@ -146,7 +145,7 @@
 	
 				<span style="font-weight: bolder;">${category.ca_name} 
 					<c:if test="${user != null && user.me_gr_num == 0}">
-						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end me-3" style="color: white; text-decoration: none;">게시판추가</a>
+						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
 					</c:if>
 	
 				</span>
@@ -161,7 +160,7 @@
 									<a href="${boardUrl}">${board.bo_name}</a>
 									<c:if test="${user != null && user.me_gr_num == 0}">
 										<span class="badge bg-danger float-end"><a href="<c:url value="/board/delete"/>" style="color: white; text-decoration: none;">삭제</a></span>
-										<span class="badge bg-success float-end me-2"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
+										<span class="badge bg-success float-end me-1"><a href="<c:url value="/board/update"/>" style="color: white; text-decoration: none;">수정</a></span>
 									</c:if>
 	
 								</li>

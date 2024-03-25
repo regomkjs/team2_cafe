@@ -28,7 +28,6 @@
 		background-color: tomato;
 	}
 	.main-content{
-		width: 100%;
 		height: 1000px;
 	}
 </style>

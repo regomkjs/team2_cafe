@@ -22,7 +22,7 @@
 	}
 	
 	.main-box{
-		height: 1000px;	
+		height: 1000px;
 	}
 	.main-img-box{
 		width: 100%;
@@ -31,7 +31,6 @@
 		text-align: center;
 	}
 	.main-content{
-		width: 100%;
 		height: 1000px;
 	}
 	.carousel.slide img.d-block{

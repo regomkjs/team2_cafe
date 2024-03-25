@@ -32,9 +32,7 @@
 		text-align: center;
 	}
 	.main-content{
-		width: 100%;
 		height: 1000px;
-		
 	}
 </style>
 </head>

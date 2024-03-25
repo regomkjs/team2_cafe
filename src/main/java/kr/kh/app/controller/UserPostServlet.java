@@ -46,7 +46,6 @@ public class UserPostServlet extends HttpServlet {
 		request.setAttribute("boList", boardList);
 		
 		request.getRequestDispatcher("/WEB-INF/views/user/post.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -30,10 +30,7 @@
 		width: 100%;
 	}
 	.main-content{
-		width: 100%;
-
 		margin-bottom: 300px;
-		
 	}
 	.side_menu{
 		width: 300px; min-height: 100%; max-height: 3000px;
