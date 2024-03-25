@@ -44,7 +44,6 @@
 	.line{
 		margin-top: 3px;
 		margin-bottom: 2px;
-		margin-right: 13px;
 		margin-left: 30px;
 	}
 	
@@ -157,8 +156,75 @@
             
             <!-- 사진이 게시글의 사진으로 나오도록 할 수 있을지 -->
             <!-- 씨:포이치 items="${poList}" var="post -->
-            <h5 class="line margin-right-3 mb-3 mt-3">광고 게시판</h5>
-			<hr class="line" size="5" width="990px" align="center">
+            
+			<h5 class="line margin-right-3 mb-3 mt-3"><b>소개 게시판<b></h5>
+			<hr class="line" size="5" width="1050px" align="right">
+            <div class="smallPicPost-list d-flex justify-content-around">
+            
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad1.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6><동물병원>봄철 애견 예방접종</h6>
+				</span>
+				</a>
+				
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad2.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6> <이벤트> 공식 인스타그램 팔로우</h6>
+				</span>
+				</a>
+				
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad3.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6> <봄신상>강아지 산책 용품</h6>
+				</span>
+				</a>
+
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad4.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+			 	<span class="smallPicPostName mt-3">
+				  <h6> <특가>고양이 용품점 할인! </h6>
+				</span>
+				</a>
+			</div>
+            
+			<h5 class="line margin-right-3 mb-3 mt-3"><b>광고 게시판<b></h5>
+			<hr class="line" size="5" width="1050px" align="right">
+            <div class="smallPicPost-list d-flex justify-content-around">
+            
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad1.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6><동물병원>봄철 애견 예방접종</h6>
+				</span>
+				</a>
+				
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad2.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6> <이벤트> 공식 인스타그램 팔로우</h6>
+				</span>
+				</a>
+				
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad3.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+				<span class="smallPicPostName mt-3">
+				  <h6> <봄신상>강아지 산책 용품</h6>
+				</span>
+				</a>
+
+	            <a href="#" class="smallPicPost mt-3">
+				  <img src="/team2_cafe/images/ad4.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+			 	<span class="smallPicPostName mt-3">
+				  <h6> <특가>고양이 용품점 할인! </h6>
+				</span>
+				</a>
+			</div>
+            
+            <h5 class="line margin-right-3 mb-3 mt-3"><b>광고 게시판<b></h5>
+			<hr class="line" size="5" width="1050px" align="right">
             <div class="smallPicPost-list d-flex justify-content-around">
             
 	            <a href="#" class="smallPicPost mt-3">

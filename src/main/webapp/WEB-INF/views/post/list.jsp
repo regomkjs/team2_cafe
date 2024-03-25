@@ -39,16 +39,32 @@
 		width: 100%;
 		height: 1000px;
 	}
+	
+	.input-group{
+		 display: block;
+ 		 text-align: center;
+	}
+	
+	.search-btn{
+		background-color: Blanchedalmond;
+		color: black;
+	}
+	
+	.text-center{
+		width: 100%;
+	}
+	
 </style>
 </head>
 
 <body>
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
-	<div class="main-img-box">
-		중앙에 이미지 배치, 클릭시 메인으로 이동
-	    <img src="/team2_Shingyeongjae/images/error.png" alt="images">
-	</div>
+<div class="main-img-box">
+	<a href="<c:url value='/'/>"> 
+		<img src="/team2_cafe/images/logo.jpg" alt="images">
+	</a>
+</div>
 	<div class="main-box d-flex">
 		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 		<div class="main-content flex-grow-1">
@@ -60,8 +76,8 @@
 							<option value="title" <c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목+내용</option>
 							<option value="writer" <c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
 						</select>
-						<input type="text" name="search" value="${pm.cri.search}">
-						<button class="btn btn-outline-primary">검색</button>		
+						<input type="text" name="search" value="${pm.cri.search}" >
+						<button class="search-btn btn-outline-black">검색</button>		
 					</div>
 				</form>
 				<table class="table table-hover mt-3">

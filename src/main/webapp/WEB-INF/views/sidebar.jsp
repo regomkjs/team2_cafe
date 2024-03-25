@@ -39,6 +39,13 @@
 		border-radius: 15px;
 	}
 	
+	.mypage-btn{
+		width: 100px;
+   		margin: auto;
+    	display: block;
+    	
+		}
+	
 	
 	
 </style>	
@@ -93,16 +100,19 @@
 		    	<span class="badge badge badge-light">${allMemberNum}</span>
 				</button>
 				<c:if test="${user != null && user.me_gr_num == 0}">
-		    		<a class="btn btn-outline-primary mt-6"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
+		    		<a class="btn btn-outline-black mt-6"  href ='<c:url value="/category/insert" />'>관리자 페이지</a>
 				</c:if>
 
 		    </div>
 		    <div id="menu1" class="container tab-pane"><br>
-		    	<p>로그인 했을 때만 표시</p>
-		    	<b>등급 : ${grade}</b><br>
-		    	<a class="btn btn-danger mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a><br>
-		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
+		    	<h6><b>회원정보</b></h6>
+		    	<b>등급 : ${grade}</b>
+		    	<br>
+		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a>
+		    	<br><br>
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
+		    	<br><br>
+		    	<a class="mypage-btn mb-1" id="memberInfo" href="<c:url value="/user/check"/>">마이페이지</a>
 			</div>
 		</div>
 	</div>
