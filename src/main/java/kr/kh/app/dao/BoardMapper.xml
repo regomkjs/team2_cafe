@@ -6,15 +6,23 @@
 	<select id="selectBoardList" resultType="kr.kh.app.model.vo.BoardVO">
 		select * from board
 	</select>
-	<insert id="insertBoard">
-		insert into board(bo_name,bo_ca_name)
-		values(#{board.bo_name}, "")
-	</insert>
 	<select id="selectCategoryList" resultType="kr.kh.app.model.vo.CategoryVO">
 		select * from category
 	</select>
 	<delete id="deleteBoard">
 		delete from board
 		where bo_num = #{bo_num} and bo_name = #{bo_name}
+	</delete>
+	<select id="selectCaBoardList" resultType="kr.kh.app.model.vo.BoardVO">
+		select * from board where bo_ca_name = #{caSelect}
+	</select>
+	<insert id="insertBoard">
+		insert into board(bo_name, bo_ca_name) values(#{insertboarder.bo_name},#{insertboarder.bo_ca_name})
+	</insert>
+	<update id="updateBoard">
+		update board set bo_name = #{updateboarder.bo_name} where bo_num = #{updateboarder.bo_num}
+	</update>
+	<delete id="deleteboard">
+		delete from board where bo_num = #{deleteBoarder.bo_num}
 	</delete>
 </mapper>

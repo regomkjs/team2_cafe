@@ -24,7 +24,7 @@ public class UserPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
 	private MemberService memberService = new MemberServiceImp();
-    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
@@ -32,13 +32,14 @@ public class UserPageServlet extends HttpServlet {
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
 		
+
 		//전체 게시글 수를 가져옴
 		int allPostNum = postService.getAllpostNum();
 		request.setAttribute("allPostNum", allPostNum);
 		//전체 멤버 수를 가져옴
 		int allMemberNum = memberService.getAllmemberNum();
 		request.setAttribute("allMemberNum", allMemberNum);
-		//------ 내 게시글 수 & 내 댓글 수
+		// 내 게시글 수 & 내 댓글 수
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		
 		int myPostNum = 0;
@@ -53,9 +54,10 @@ public class UserPageServlet extends HttpServlet {
 		request.setAttribute("myPostNum", myPostNum);
 		request.setAttribute("myCommentNum", myCommentNum);
 		request.setAttribute("grade", grade);
-		//------ 내 게시글 수 & 내 댓글 수
+		// 내 게시글 수 & 내 댓글 수
 
 		
+
 		request.getRequestDispatcher("/WEB-INF/views/user/page.jsp").forward(request, response);
 		
 	}
@@ -64,13 +66,7 @@ public class UserPageServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		request.setAttribute("user", user);
 		
-		if(!(request.getParameter("passwordInfo").equals(user.getMe_pw()))) {
-			request.setAttribute("msg", "비밀번호가 맞지 않습니다.");
-			request.setAttribute("url", "/");
-			return;
-		}
 		
 		String pw = request.getParameter("pw");
 		String pw2 = request.getParameter("pw2");

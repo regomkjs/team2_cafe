@@ -117,6 +117,7 @@
 				</a>
 				<br><br>
 
+
 				<a style="text-decoration: none; color: black;">가입한 회원 수 
 		    		<span>${allMemberNum}</span>
 				</a>
@@ -135,6 +136,7 @@
 			    	<p><b>회원 : </b>${user.me_nick}(${user.me_id})</p>
 		    	</c:if>
 		    	<p><b>등급 : </b>${grade}</p>
+
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
 
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
