@@ -3,8 +3,6 @@ package kr.kh.app.service;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.UsedNickVO;
 
 public class MemberServiceImp implements MemberService {
 	private MemberDAO memberDao;
@@ -129,10 +128,28 @@ public class MemberServiceImp implements MemberService {
 
 
 	@Override
-	public void updateNickname(String me_id, String name) {
+	public boolean updateNickname(String me_id, String name) {
 		if(checking(me_id) && checking(name)) {
-			memberDao.updateNickname(me_id, name);
+			memberDao.insertUsedNickname(name,me_id);
+			return memberDao.updateNickname(me_id, name);
 		}
+		return false;
+	}
+
+	@Override
+	public boolean nickCheckDup(String nick) {
+		if(!checking(nick)) {
+			return false;
+		}
+		MemberVO member = memberDao.selectUser(nick);
+		if(member != null) {
+			return false;
+		}
+		UsedNickVO usedNick = memberDao.selectNick(nick);
+		if(usedNick == null || !usedNick.getUn_nick().equals(nick)) {
+			return true;
+		}
+		return false;
 	}
 
 	

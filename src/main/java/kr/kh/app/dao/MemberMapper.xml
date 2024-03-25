@@ -41,4 +41,13 @@
 	<update id="updateNickname">
 		update member set me_nick = #{name} where me_id = #{me_id}
 	</update>
+	
+	<insert id="insertUsedNickname">
+		insert into used_nick(un_nick, un_me_id)
+		values(#{name}, #{me_id})
+	</insert>
+	
+	<select id="selectNick" resultType="kr.kh.app.model.vo.UsedNickVO">
+		select * from used_nick where un_nick = #{nick}
+	</select>
 </mapper>

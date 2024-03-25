@@ -62,45 +62,26 @@ public class UserPageServlet extends HttpServlet {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		String nick = request.getParameter("name");
 		
-		if(nick != null && !user.getMe_nick().equals(nick)) {
-			String name = request.getParameter("name");
-			user.setMe_nick(name);
-			request.getSession().setAttribute("user", user);
-			memberService.updateNickname(user.getMe_id(), name);
-			request.setAttribute("msg", "닉네임이 등록/수정되었습니다.");
-			request.setAttribute("url", "/user/page");
-			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-		}
-		
-		if(!(request.getParameter("passwordInfo").equals(user.getMe_pw()))) {
-			request.setAttribute("msg", "비밀번호가 맞지 않습니다.");
-			request.setAttribute("url", "/");
-			return;
-		}
-		
 		String pw = request.getParameter("pw");
-		String pw2 = request.getParameter("pw2");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
-		
-		if(pw == null || pw.length() == 0) {
+		String name = request.getParameter("name");
+		if(pw != null && !user.getMe_pw().equals(pw)) {
 			user.setMe_pw(pw);
 		}
-		if(email == null || email.length() == 0) {
+		if(email != null && !user.getMe_email().equals(email)) {
 			user.setMe_email(email);
 		}
-		if(phone == null || phone.length() == 0) {
+		if(phone != null && !user.getMe_nick().equals(phone)) {
 			user.setMe_phone(phone);
 		}
-		request.getSession().setAttribute("user", user);
-		if(!pw.equals(pw2)) {
-			request.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
-			request.setAttribute("url", "/user/page");
-			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		if(nick != null && !user.getMe_nick().equals(nick)) {
+			user.setMe_nick(name);
 		}
-		
+		request.getSession().setAttribute("user", user);
+		boolean res = memberService.updateNickname(user.getMe_id(), name);
 		MemberVO member = new MemberVO(user.getMe_id(), pw, email, phone);
-		if(memberService.updateMember(member)) {
+		if(memberService.updateMember(member) || res) {
 			request.setAttribute("msg", "회원정보가 수정되었습니다.");
 			request.setAttribute("url", "/user/page");
 			

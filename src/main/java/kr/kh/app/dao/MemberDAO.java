@@ -3,6 +3,7 @@ package kr.kh.app.dao;
 import org.apache.ibatis.annotations.Param;
 
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.UsedNickVO;
 
 public interface MemberDAO {
 
@@ -26,7 +27,11 @@ public interface MemberDAO {
 
 	String selectGrade(@Param("me_id")String me_id);
 
-	void updateNickname(@Param("me_id")String me_id, @Param("name")String name);
+	boolean updateNickname(@Param("me_id")String me_id, @Param("name")String name);
+
+	void insertUsedNickname(@Param("name")String name,@Param("me_id") String me_id);
+
+	UsedNickVO selectNick(@Param("nick")String nick);
 
 }
 
