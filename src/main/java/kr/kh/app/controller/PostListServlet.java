@@ -86,7 +86,7 @@ public class PostListServlet extends HttpServlet {
 		String type = request.getParameter("type");
 		String search = request.getParameter("search");
 		//type과 search와 page를 이용해서 Criteria 객체를 생성
-		PostCriteria cri = new PostCriteria(bo_num,page, 10,  type, search);
+		PostCriteria cri = new PostCriteria(bo_num,page, 10, type, search);
 		//서비스에게 현재 페이지 정보를 주면서 현재 페이지 정보에 맞는 게시글 수를 가져오라고 시킴: getTotalCount
 		int totalCount = postService.getTotalCount(cri);
 		//현재 페이지 정보, 게시글수, 한 페이지네이션에서 페이지 갯수를 이용하여 PageMaker 객체를 생성

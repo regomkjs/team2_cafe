@@ -60,10 +60,12 @@ public class UserPageServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		request.setAttribute("user", user);
+		String nick = request.getParameter("name");
 		
-		if(!request.getParameter("name").equals(null)) {
+		if(nick != null && !user.getMe_nick().equals(nick)) {
 			String name = request.getParameter("name");
+			user.setMe_nick(name);
+			request.getSession().setAttribute("user", user);
 			memberService.updateNickname(user.getMe_id(), name);
 			request.setAttribute("msg", "닉네임이 등록/수정되었습니다.");
 			request.setAttribute("url", "/user/page");
@@ -81,6 +83,16 @@ public class UserPageServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		
+		if(pw == null || pw.length() == 0) {
+			user.setMe_pw(pw);
+		}
+		if(email == null || email.length() == 0) {
+			user.setMe_email(email);
+		}
+		if(phone == null || phone.length() == 0) {
+			user.setMe_phone(phone);
+		}
+		request.getSession().setAttribute("user", user);
 		if(!pw.equals(pw2)) {
 			request.setAttribute("msg", "비밀번호가 일치하지 않습니다.");
 			request.setAttribute("url", "/user/page");
@@ -88,10 +100,10 @@ public class UserPageServlet extends HttpServlet {
 		}
 		
 		MemberVO member = new MemberVO(user.getMe_id(), pw, email, phone);
-		
 		if(memberService.updateMember(member)) {
 			request.setAttribute("msg", "회원정보가 수정되었습니다.");
 			request.setAttribute("url", "/user/page");
+			
 		} else {
 			request.setAttribute("msg", "회원정보 수정에 실패했습니다.");
 			request.setAttribute("url", "/user/page");

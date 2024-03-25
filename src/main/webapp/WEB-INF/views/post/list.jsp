@@ -104,13 +104,13 @@
 								<td class="text-center">
 									<c:url var="userUrl" value="/user/post">
 										<c:param name="type" value="id"/>
-										<c:param name="user" value="${post.po_me_id}"/>
+										<c:param name="search" value="${post.po_me_id}"/>
 									</c:url>
 									<a href="${userUrl}">${post.po_writer}</a>
 								</td>
 								<td class="text-center">${post.po_view}</td>
-								<td class="text-center">${post.po_totalLike}</td>
-								<td class="text-center time-text">
+								<td class="text-center" style="font-size: medium;">${post.po_totalLike}</td>
+								<td class="text-center time-text" style="font-size: small;">
 									<c:set var="now" value="<%=new java.util.Date()%>" />
 									<c:set var="today">
 										<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />

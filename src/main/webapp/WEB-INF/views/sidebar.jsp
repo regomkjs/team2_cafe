@@ -139,7 +139,7 @@
 
 
 		    	<b>내가 쓴 게시글 :</b> <a class="mb-1" href="<c:url value="/user/post"/>">${myPostNum}</a><br>
-
+				<br>
 		    	<b>내가 쓴 댓글 :</b> <a class="mb-1" href="<c:url value="/user/comment"/>">${myCommentNum}</a>
 			</div>
 		</div>

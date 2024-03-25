@@ -183,6 +183,9 @@
 			<if test='cri.type=="writer"'>
 				where po_writer like concat('%', #{cri.search},'%')
 			</if>
+			<if test='cri.type=="id"'>
+				where po_me_id = #{cri.search}
+			</if>
 		</if>
 		<!-- 보드를 특정후 검색 -->
 		<if test="cri.boNum != 0">
@@ -223,6 +226,9 @@
 			<if test='cri.type=="writer"'>
 				where po_writer like concat('%', #{cri.search},'%')
 			</if>
+			<if test='cri.type=="id"'>
+				where po_me_id = #{cri.search}
+			</if>
 		</if>
 		<!-- 보드를 특정후 검색 -->
 		<if test="cri.boNum != 0">
@@ -245,6 +251,7 @@
 	
 	<select id="selectMyComment" resultType="kr.kh.app.model.vo.CommentVO">
 		select * from comment where co_me_id = #{me_id}
+		order by co_num desc
 	</select>
 
 	<select id="selectLike" resultType="kr.kh.app.model.vo.LikeVO">

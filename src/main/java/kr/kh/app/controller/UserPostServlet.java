@@ -14,7 +14,8 @@ import kr.kh.app.model.vo.CategoryVO;
 import kr.kh.app.model.vo.HeadVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.PostVO;
-
+import kr.kh.app.pagination.Criteria;
+import kr.kh.app.pagination.PageMaker;
 import kr.kh.app.pagination.PostCriteria;
 
 import kr.kh.app.service.MemberService;
@@ -33,15 +34,18 @@ public class UserPostServlet extends HttpServlet {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		ArrayList<HeadVO> headList = postService.getHeList();
-		String userID = null;
-		if(request.getParameter("user")!=null) {
-			userID = request.getParameter("user");
-		} else {
-			HttpSession session = request.getSession();
-			MemberVO user = (MemberVO)session.getAttribute("user");
-			userID = user.getMe_id();
+		String search = request.getParameter("search");
+		String type = request.getParameter("type");
+		int page = 1;
+		try {
+			page = Integer.parseInt(request.getParameter("page"));  
+		}catch (Exception e) {
+			page = 1;
 		}
-
+		
+		
+		
+		
 		//전체 게시글 수를 가져옴
 		int allPostNum = postService.getAllpostNum();
 		request.setAttribute("allPostNum", allPostNum);
@@ -66,9 +70,15 @@ public class UserPostServlet extends HttpServlet {
 		request.setAttribute("myCommentNum", myCommentNum);
 				request.setAttribute("grade", grade);
 		//------ 내 게시글 수 & 내 댓글 수
-		ArrayList<PostVO> myPostList = postService.getMyPostList(userID);
+		System.out.println(page);
+		PostCriteria cri = new PostCriteria(0,page, 10, type, search);
+		int totalCount = postService.getTotalCount(cri);
+		PageMaker pm = new PageMaker(5, cri, totalCount);
+		request.setAttribute("pm", pm);
+		ArrayList<PostVO> postList = postService.getPostList(cri);
+		request.setAttribute("postList", postList);
+		
 		request.setAttribute("headList", headList);
-		request.setAttribute("postList", myPostList);
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
 		
