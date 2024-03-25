@@ -20,6 +20,8 @@ public interface MemberService {
 
 	String getMyGrade(String me_id);
 
+	boolean idCheckDup(String id);
+
 
 
 }
