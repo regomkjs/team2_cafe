@@ -43,7 +43,7 @@
 	font-weight:bold;
 	margin-bottom: 20px;
 }
-#user{
+#id{
 	width:100%;
 	height:50px;
 	border-radius: 5px 5px 0 0;
@@ -56,10 +56,10 @@
 	background-position: 15px center;
 	outline-color: rgb(255, 127, 80);
 }
-#user::placeholder{
+#id::placeholder{
 	color:#ccc;
 }
-#pass{
+#pw{
 	width:100%;
 	height:50px;
 	border:1px solid #ededed;
@@ -72,7 +72,7 @@
 	outline-color: rgb(255, 127, 80);
 	margin-bottom: 20px;
 }
-#pass::placeholder{
+#pw::placeholder{
 	color:#ccc;
 
 }
@@ -114,7 +114,7 @@
  	 color: charcoal;
  
  }
- .pass{
+ .pw{
 	  margin: 0 auto;
 	  position: relative;
  }
@@ -137,9 +137,9 @@
 	<form action="<c:url value="/login"/>" method="post">
 
 		 <h2>로그인</h2>
-		 	<input name="user" id="user" type="text" placeholder="아이디를 입력하세요">
+		 	<input name="id" id="id" type="text" placeholder="아이디를 입력하세요">
 			 <br>
-	 		<input name="pass" id="pass" type="password" placeholder="비밀번호를 입력하세요">
+	 		<input name="pw" id="pw" type="password" placeholder="비밀번호를 입력하세요">
 	  		<br>
 	  		 <button type="submit" class="btn-block">로그인</button>
     </form>

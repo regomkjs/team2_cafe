@@ -113,7 +113,7 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public boolean idCheckDup(String id) {
-		if(checking(id)) {
+		if(!checking(id)) {
 			return false;
 		}
 		MemberVO member = memberDao.selectUser(id);

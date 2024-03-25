@@ -188,19 +188,26 @@
 			<br>		
 			<h5><b>환영합니다.</b></h5>
 			<h5><b>'with my pet'cafe입니다.</b></h5>
-			<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="id">
-
-			<div class="mb-3">
-				<input type="password" class="form-control" id="pw" placeholder="사용할 비밀번호를 입력하세요." name="pw">
+			<div class=" mb-3">
+				<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="me_id">
+				<label id="id-error" class="error text-danger" for="id"></label>
+				<label id="id-error2" class="error text-danger"></label>
 			</div>
-			<div class="mb-3">
-				<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="pw2">
+			<div class=" mb-3">
+				<input type="password" class="form-control" id="pw" placeholder="사용할 비밀번호를 입력하세요." name="me_pw">
+				<label id="pw-error" class="error text-danger" for="pw"></label>				
 			</div>
-			<div class="mb-3">
-				<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요." name="email">
+			<div class=" mb-3">
+				<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="me_pw2">
+				<label id="pw2-error" class="error text-dange" for="pw2"></label>
 			</div>
-			<div class="mb-3">
-				<input type="text" class="form-control" id="phone" placeholder="핸드폰 번호를 입력하세요." name="phone">
+			<div class=" mb-3">
+				<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요." name="me_email">
+				<label id="email-error" class="error text-danger" for="email"></label>
+			</div>
+			<div class=" mb-3">
+				<input type="text" class="form-control" id="phone" placeholder="핸드폰 번호를 입력하세요." name="me_phone">
+				<label id="phone-error" class="error text-danger" for="phone"></label>
 			</div>
 			</form>
 			<button type="submit" class="btn-block">회원가입</button>

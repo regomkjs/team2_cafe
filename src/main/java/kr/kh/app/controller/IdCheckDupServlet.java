@@ -19,6 +19,7 @@ public class IdCheckDupServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		boolean res = memberService.idCheckDup(id);
+		System.out.println(id);
 		System.out.println(res);
 		JSONObject jobj = new JSONObject();	
 		jobj.put("result", res);
