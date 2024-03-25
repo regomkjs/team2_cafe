@@ -24,5 +24,8 @@ public interface MemberDAO {
 
 	String selectId(@Param("email")String me_email, @Param("phone")String me_phone);
 
+	void updateNickname(String me_id, String name);
+
+
 
 }

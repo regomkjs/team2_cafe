@@ -20,7 +20,13 @@ public interface MemberService {
 
 	String getMyGrade(String me_id);
 
+
 	String refindMember(String email, String phone);
+
+	boolean idCheckDup(String id);
+
+	void updateNickname(String me_id, String name);
+
 
 
 

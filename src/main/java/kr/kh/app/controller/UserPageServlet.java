@@ -24,17 +24,58 @@ public class UserPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PostService postService = new PostServiceImp();
 	private MemberService memberService = new MemberServiceImp();
-    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<CategoryVO> categoryList = postService.getCaList();
 		ArrayList<BoardVO> boardList = postService.getBoList();
 		
 		request.setAttribute("caList", categoryList);
 		request.setAttribute("boList", boardList);
+		//------ 내 게시글 수 & 내 댓글 수
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
 		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
 		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+				request.setAttribute("grade", grade);
+		//------ 내 게시글 수 & 내 댓글 수
+		
+
+		//전체 게시글 수를 가져옴
+		int allPostNum = postService.getAllpostNum();
+		request.setAttribute("allPostNum", allPostNum);
+		//전체 멤버 수를 가져옴
+		int allMemberNum = memberService.getAllmemberNum();
+		request.setAttribute("allMemberNum", allMemberNum);
+		// 내 게시글 수 & 내 댓글 수
+		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
+		
+		int myPostNum = 0;
+		int myCommentNum = 0;
+		String grade = null;
+		if(user!=null) {
+			myPostNum = memberService.getMyPostNum(user.getMe_id());
+			myCommentNum = memberService.getMyCommentNum(user.getMe_id());
+			grade = memberService.getMyGrade(user.getMe_id());
+		}
+		
+		request.setAttribute("myPostNum", myPostNum);
+		request.setAttribute("myCommentNum", myCommentNum);
+		request.setAttribute("grade", grade);
+		// 내 게시글 수 & 내 댓글 수
+
+		
+
 		request.getRequestDispatcher("/WEB-INF/views/user/page.jsp").forward(request, response);
-		request.getRequestDispatcher("/WEB-INF/views/sidebar.jsp").forward(request, response);
 		
 	}
 	
@@ -43,6 +84,14 @@ public class UserPageServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		request.setAttribute("user", user);
+		
+		if(!request.getParameter("name").equals(null)) {
+			String name = request.getParameter("name");
+			memberService.updateNickname(user.getMe_id(), name);
+			request.setAttribute("msg", "닉네임이 등록/수정되었습니다.");
+			request.setAttribute("url", "/user/page");
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}
 		
 		if(!(request.getParameter("passwordInfo").equals(user.getMe_pw()))) {
 			request.setAttribute("msg", "비밀번호가 맞지 않습니다.");

@@ -47,10 +47,15 @@
 		join member on me_gr_num = gr_num
 		where me_id = #{me_id}
 	</select>
+
 	<select id="selectId" resultType="String">
 		select me_id from member
 		where 
 			me_phone = #{phone} and me_email = #{email}
 	</select>
 
+
+	<update id="updateNickname">
+		update member set me_nick = #{name} where me_id = #{me_id}
+	</update>
 </mapper>

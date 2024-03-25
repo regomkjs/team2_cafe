@@ -21,9 +21,9 @@
 
 <style type="text/css">
 	.master-container {
-    max-width: 1200px; /* 최대 너비 */
-    min-width: 1024px; /* 최소 너비 */
-    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	    max-width: 1200px; /* 최대 너비 */
+	    min-width: 1024px; /* 최소 너비 */
+	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
 	}
 	
 	.main-box{
@@ -36,32 +36,46 @@
 		text-align: center;
 	}
 	.main-content{
-		width: 100%;
 		height: 1000px;
 	}
+	
+	.input-group{
+		 display: block;
+ 		 text-align: center;
+	}
+	
+	.search-btn{
+		background-color: Blanchedalmond;
+		color: black;
+	}
+	
+
 </style>
 </head>
 
 <body>
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
+
 	<div class="main-img-box">
-		중앙에 이미지 배치, 클릭시 메인으로 이동
-	    <img src="/team2_Shingyeongjae/images/error.png" alt="images">
+	    <a href="<c:url value='/'/>"> 
+        	<img src="/team2_cafe/images/logo.jpg" alt="images">
+        </a>
 	</div>
+
 	<div class="main-box d-flex">
 		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 		<div class="main-content flex-grow-1">
 			<div class="container ">
 				<form action="<c:url value="/post/list"/>" method="get" class="mt-3">
 					<input name="num" value="${bo_num}" type="hidden">
-					<div class="input-group">
+					<div class="input-group d-flex justify-content-end">
 						<select name="type">
 							<option value="title" <c:if test='${pm.cri.type == "title"}'>selected</c:if>>제목+내용</option>
 							<option value="writer" <c:if test='${pm.cri.type == "writer"}'>selected</c:if>>작성자</option>
 						</select>
-						<input type="text" name="search" value="${pm.cri.search}">
-						<button class="btn btn-outline-primary">검색</button>		
+						<input type="text" name="search" value="${pm.cri.search}" >
+						<button class="search-btn btn-outline-black">검색</button>		
 					</div>
 				</form>
 				<table class="table table-hover mt-3">
@@ -89,6 +103,7 @@
 								</td>
 								<td class="text-center">
 									<c:url var="userUrl" value="/user/post">
+										<c:param name="type" value="id"/>
 										<c:param name="user" value="${post.po_me_id}"/>
 									</c:url>
 									<a href="${userUrl}">${post.po_writer}</a>
@@ -212,6 +227,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 
 

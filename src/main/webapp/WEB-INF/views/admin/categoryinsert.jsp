@@ -11,65 +11,69 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 	/* 공통 레이아웃 css */
+	.master-container {
+	    max-width: 1200px; /* 최대 너비 */
+	    min-width: 1024px; /* 최소 너비 */
+	    margin: 0 auto; /* 가운데 정렬을 위해 margin을 auto로 설정 */
+	}
+	
+	
 	.main-box{
-		 height: 1000px;
+		height: 1000px;	
 	}
 	.main-img-box{
 		width: 100%;
-		height: 250px;
-		background-color: tomato;
+		height: 200px;
+		background-color: white;
+		text-align: center;
 	}
 	.main-content{
-		width: 100%;
 		height: 1000px;
-		background-color: white;
 	}
 	
 	/* 카테고리 등록 css */
-	.category-box{
-		padding:50px;
-	}
-	.board-box{
-		padding:50px;
-		
-	}
+	
 
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/header.jsp"/>
-<div class="main-img-box">
+<div class="container master-container">
 	
-</div>
-
-<div class="main-box d-flex">
-	<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
-	<div class="main-content flex-grow-1">
-		
-		<div class="category-box">
-			<h2 class="mb-4">카테고리 등록 화면</h2>
-			<h3>기존 카테고리 리스트</h3>
-			<ul>
-				<c:forEach items="${categoryList}" var="category" >
-					<li class="ca-box"><span class="ca-text">${category.ca_name}</span>
-						<div class="btn-group">
-						   <button class="btn btn-outline-danger btn-category-update" type="button">수정</button>
-							<c:url value="/category/delete" var="delUrl">
-						       <c:param name="category" value="${category.ca_name}"/>
-						   </c:url>
-						   <a class="btn btn-outline-warning btn-comment-delete" href="${delUrl}">삭제</a>
-						</div>
-					</li>
-				</c:forEach>
-			</ul>
-			<!-- 카테고리 입력 박스 -->
-			<form action="<c:url value="/category/insert"/>" method="post">
-				<div class="mb-3 mt-3 input-group">
-					<label for="category"> 추가할 카테고리명 :</label>
-			  		<input type="text" class="form-control" placeholder="새로운 카테고리명을 입력하세요." name = "category"/>
-				</div>
-				<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
-			</form>
+	<jsp:include page="/WEB-INF/views/header.jsp"/>
+	<div class="main-img-box">
+		<a href="<c:url value='/'/>"> 
+        	<img src="/team2_cafe/images/logo.jpg" alt="images">
+        </a>
+	</div>
+	<div class="main-box d-flex">
+		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
+		<div class="main-content flex-grow-1">
+			
+			<div class="container">
+				<h2 class="mb-4">카테고리 등록 화면</h2>
+				<h3>기존 카테고리 리스트</h3>
+				<ul>
+					<c:forEach items="${categoryList}" var="category" >
+						<li class="ca-box"><span class="ca-text">${category.ca_name}</span>
+							<div class="btn-group">
+							   <button class="btn btn-outline-danger btn-category-update" type="button">수정</button>
+								<c:url value="/category/delete" var="delUrl">
+							       <c:param name="category" value="${category.ca_name}"/>
+							   </c:url>
+							   <a class="btn btn-outline-warning btn-comment-delete" href="${delUrl}">삭제</a>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
+				<!-- 카테고리 입력 박스 -->
+				<form action="<c:url value="/category/insert"/>" method="post">
+					<div class="mb-3 mt-3 input-group">
+						<label for="category"> 추가할 카테고리명 :</label>
+				  		<input type="text" class="form-control" placeholder="새로운 카테고리명을 입력하세요." name = "category"/>
+					</div>
+					<button type="submit" class="btn btn-primary col-12 insert-btn">등록</button>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

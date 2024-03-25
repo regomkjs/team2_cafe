@@ -22,4 +22,7 @@ public interface BoardService {
 
 	List<Category> getAllCategory();
 
+	ArrayList<BoardVO> getCaBoardList(String caSelect);
+	
+	boolean manageBoard(String inputBoard, String selectBoard, String updateboard, String deleteBoard, String caSelect);
 }

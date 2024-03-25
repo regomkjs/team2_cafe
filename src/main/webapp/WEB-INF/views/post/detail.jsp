@@ -28,18 +28,12 @@
 	}
 	.main-img-box{
 		width: 100%;
-		height: 250px;
-		background-color: tomato;
 	}
 	.main-content{
-		width: 100%;
-
 		margin-bottom: 300px;
-		
 	}
 	.side_menu{
 		width: 300px; min-height: 100%; max-height: 3000px;
-		background-color: yellow;
 	}
 	.nav-box{
 		width: 300px;
@@ -57,8 +51,12 @@
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<div class="main-img-box">
-		중앙에 이미지 배치, 클릭시 메인으로 이동
+
+		<a href="<c:url value='/'/>"> 
+        	<img src="/team2_cafe/images/logo.jpg" alt="images">
+        </a>
 	</div>
+
 	<div class="main-box d-flex">
 		<jsp:include page="/WEB-INF/views/sidebar.jsp"/>
 		<div class="main-content flex-grow-1">
@@ -74,13 +72,13 @@
 						  				<c:url var="updateUrl" value="/post/update">
 											<c:param name="num" value="${post.po_num}"/>
 										</c:url>
-						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px">수정</a></div>
+						  				<div><a href='${updateUrl}' class="btn btn-success" style="margin-right: 10px; color: white;">수정</a></div>
 					  				</c:if>
 					  				<c:if test="${post.po_me_id == user.me_id || user.me_gr_num == 0}">
 					  					<c:url var="deleteUrl" value="/post/delete">
 											<c:param name="num" value="${post.po_num}"/>
 										</c:url>
-					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px">삭제</a></div>
+					  					<div><a href='${deleteUrl}' class="btn btn-danger" style="margin-right: 10px; color: white;">삭제</a></div>
 					  				</c:if>
 					  			</div>
 					  		</div>
@@ -133,6 +131,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 <!-- 댓글 리스트 출력 스크립트 -->
 <script type="text/javascript">
