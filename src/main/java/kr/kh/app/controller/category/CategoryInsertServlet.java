@@ -79,13 +79,11 @@ public class CategoryInsertServlet extends HttpServlet {
 		//카테고리 리스트를 추가
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 		
-		if (!"admin".equals(user.getMe_id())) {
+		if (user.getMe_gr_num() != 0) {
 			return;
 		}
 		//화면에서 보낸 카테고리를 가져옴
 		String ca_name = request.getParameter("category");
-		
-		CategoryVO category = new CategoryVO(ca_name);
 		
 		boolean res = categoryService.insertCategory(ca_name);
 		
@@ -94,7 +92,7 @@ public class CategoryInsertServlet extends HttpServlet {
 			request.setAttribute("url", "admin/page");
 		} else {
 			request.setAttribute("msg", "카테고리를 삭제하지못했습니다.");
-			request.setAttribute("url", "admin/page?ca_name"+ ca_name);
+			request.setAttribute("url", "admin/page");
 		}
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 

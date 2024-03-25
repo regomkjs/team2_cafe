@@ -23,7 +23,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 		// 폼에서 전송된 카테고리 목록을 읽어옴
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 
-		if (!"admin".equals(user.getMe_id())) {
+		if (user.getMe_gr_num() != 0) {
 			return;
 		}
 		// 화면에서 보낸 카테고리 번호를 가져옴
@@ -34,7 +34,7 @@ public class CategoryDeleteServlet extends HttpServlet {
 			request.setAttribute("url", "admin/page");
 		} else {
 			request.setAttribute("msg", "카테고리를 삭제하지못했습니다.");
-			request.setAttribute("url", "admin/page?ca_name"+ca_name);
+			request.setAttribute("url", "admin/page?ca_name");
 		}
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 

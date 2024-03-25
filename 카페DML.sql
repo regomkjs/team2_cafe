@@ -1,0 +1,196 @@
+
+
+/* 회원 등급 */
+INSERT INTO `cafe`.`grade` (`gr_name`) VALUES ('운영자');
+UPDATE `cafe`.`grade` SET `gr_num` = '0' WHERE (`gr_num` = '1');
+INSERT INTO `cafe`.`grade` (`gr_num`, `gr_name`) VALUES ('1', '유저');
+
+/* 카테고리 */
+INSERT INTO `cafe`.`category` (`ca_name`) VALUES ('공지');
+INSERT INTO `cafe`.`category` (`ca_name`) VALUES ('회원 게시판');
+INSERT INTO `cafe`.`category` (`ca_name`) VALUES ('자유 게시판');
+INSERT INTO `cafe`.`category` (`ca_name`) VALUES ('정보 & 지식');
+
+/* 게시판 */
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('공지사항', '공지');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('협찬사', '공지');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('인사', '회원 게시판');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('공동구매', '회원 게시판');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('강아지', '자유 게시판');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('고양이', '자유 게시판');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('이 외 동물', '자유 게시판');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('강아지', '정보 & 지식');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('고양이', '정보 & 지식');
+INSERT INTO `cafe`.`board` (`bo_name`, `bo_ca_name`) VALUES ('이 외 동물', '정보 & 지식');
+
+/* 말머리 */
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('필독', '1');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('전체', '1');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('일반', '1');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('공식', '2');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('광고', '2');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('신규가입', '3');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('복귀', '3');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('진행중', '4');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('마감', '4');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('이야기', '5');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('자랑', '5');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질문', '5');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('이야기', '6');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('자랑', '6');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질문', '6');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('이야기', '7');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('자랑', '7');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질문', '7');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('꿀팁', '8');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질병 정보', '8');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('제품 추천', '8');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('꿀팁', '9');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질병 정보', '9');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('제품 추천', '9');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('꿀팁', '10');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('질병 정보', '10');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('제품 추천', '10');
+INSERT INTO `cafe`.`head` (`he_name`, `he_bo_num`) VALUES ('정보 공유', '10');
+
+/* 회원 */
+INSERT INTO `cafe`.`member` (`me_id`, `me_pw`, `me_email`, `me_phone`, `me_date`, `me_gr_num`) VALUES ('admin123', 'admin123', 'admin123@naver.com', '010-1234-1234', '2024-03-25', '0');
+INSERT INTO `cafe`.`member` (`me_id`, `me_pw`, `me_email`, `me_phone`, `me_date`, `me_gr_num`) VALUES ('kim123', 'kim123', 'kim123@naver.com', '010-1234-5678', '2024-03-25', '1');
+INSERT INTO `cafe`.`member` (`me_id`, `me_pw`, `me_email`, `me_phone`, `me_date`, `me_gr_num`) VALUES ('shin123', 'shin123', 'shin123@gmail.com', '010-1111-2222', '2024-03-25', '1');
+INSERT INTO `cafe`.`member` (`me_id`, `me_pw`, `me_email`, `me_phone`, `me_date`, `me_gr_num`) VALUES ('lee123', 'lee123', 'lee123@kh.com', '010-1234-4321', '2024-03-25', '1');
+INSERT INTO `cafe`.`member` (`me_id`, `me_pw`, `me_email`, `me_phone`, `me_date`, `me_gr_num`) VALUES ('park123', 'park123', 'park123@kh.com', '010-2222-1111', '2024-03-25', '1');
+
+/* 닉네임 변경 */
+UPDATE `cafe`.`member` SET `me_nick` = '김준수' WHERE (`me_id` = 'kim123');
+UPDATE `cafe`.`member` SET `me_nick` = '이수진' WHERE (`me_id` = 'lee123');
+UPDATE `cafe`.`member` SET `me_nick` = '박진현' WHERE (`me_id` = 'park123');
+UPDATE `cafe`.`member` SET `me_nick` = '신경재' WHERE (`me_id` = 'shin123');
+UPDATE `cafe`.`member` SET `me_nick` = '운영자' WHERE (`me_id` = 'admin123');
+/* 닉네임 변경 기록 */
+INSERT INTO `cafe`.`used_nick` (`un_nick`, `un_me_id`) VALUES ('운영자', 'admin123');
+INSERT INTO `cafe`.`used_nick` (`un_nick`, `un_me_id`) VALUES ('김준수', 'kim123');
+INSERT INTO `cafe`.`used_nick` (`un_nick`, `un_me_id`) VALUES ('신경재', 'shin123');
+INSERT INTO `cafe`.`used_nick` (`un_nick`, `un_me_id`) VALUES ('이수진', 'lee123');
+INSERT INTO `cafe`.`used_nick` (`un_nick`, `un_me_id`) VALUES ('박진현', 'park123');
+
+/* 게시글 약간 */
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('whit my pet 카페 개설', '애완동물 카페 whit my pet을 개설 했습니다. 애완동물을 사랑하는 분들간 소식, 정보를 나누고자 합니다.', 'admin123', '2024-03-26 00:00:00', 2, 'admin123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('카페 규칙', '카페 whit my pet의 세부 규칙입니다.', 'admin123', '2024-03-26 00:00:02', '1', 'admin123');
+/*게시글 페이지네이션 확인용 더미 */
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('페이지네이션 확인용 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '5', 'kim123');
+/*댓글 페이지네이션 확인용 더미 */
+INSERT INTO `cafe`.`post` (`po_title`, `po_content`, `po_writer`, `po_datetime`, `po_he_num`, `po_me_id`) VALUES ('댓글 페이지네이션 더미', '더미입니다.', 'kim123', '2024-03-26 00:00:04', '4', 'kim123');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');
+INSERT INTO `cafe`.`comment` (`co_ori_num`, `co_writer`, `co_content`, `co_datetime`, `co_me_id`, `co_po_num`) VALUES ('1', '김준수', '페이지네이션 확인용', '2024-03-26 00:01:04', 'kim123', '107');

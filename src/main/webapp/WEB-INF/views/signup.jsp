@@ -209,9 +209,9 @@
 				<input type="text" class="form-control" id="phone" placeholder="핸드폰 번호를 입력하세요." name="me_phone">
 				<label id="phone-error" class="error text-danger" for="phone"></label>
 			</div>
-			</form>
 			<button type="submit" class="btn-block">회원가입</button>
-		</div>
+		</form>
+	</div>
 	<div>
 		<a class="foot-txt" href="<c:url value="/login"/>">이미 가입한 회원이신가요?</a>
 	</div>

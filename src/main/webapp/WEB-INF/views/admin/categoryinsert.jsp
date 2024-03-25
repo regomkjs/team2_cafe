@@ -81,7 +81,7 @@
 <script type="text/javascript">
 //입력받은 카테고리를 가져옴
 
-let content = $(".form-control").val();
+let content = $(".com-input").val();
 
 $.ajax({
 	url : '<c:url value="/category/insert"/>',

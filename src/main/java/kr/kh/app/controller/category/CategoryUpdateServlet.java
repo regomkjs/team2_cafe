@@ -23,7 +23,7 @@ public class CategoryUpdateServlet extends HttpServlet {
 		HttpServletResponse response) throws ServletException, IOException {
 		MemberVO user = (MemberVO) request.getSession().getAttribute("user");
 		
-		if(!"admin".equals(user.getMe_id())) {
+		if(user.getMe_gr_num() != 0) {
 			return;
 		}
 		//화면에서 보낸 카테고리 번호를 가져옴
