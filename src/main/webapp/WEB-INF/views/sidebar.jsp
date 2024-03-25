@@ -85,17 +85,18 @@
 		<!-- Nav tabs -->
 		<ul class="nav nav-tabs mt-2" role="tablist">
 				<li class="nav-item col-6">
-		<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
-					</li>
-				<c:if test="${user != null}">
+					<a class="nav-link active" data-bs-toggle="tab" href="#home">카페</a>
+				</li>
+			<c:if test="${user != null}">
 	 			<li class="nav-item col-6">
 	 				<a class="nav-link" data-bs-toggle="tab" href="#menu1">유저</a>
 	 			</li>
-				</c:if>
+			</c:if>
 		</ul>
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<div id="home" class="container tab-pane active">
+
 				<c:if test="${user != null && user.me_gr_num == 0}">
 		    		<a class="mt-3 mb-1 float-end"  href ='<c:url value="/category/insert" />' style="color: gray; font-size: small;">관리자 페이지</a>
 				</c:if>
@@ -103,10 +104,12 @@
 				<br>
 		    	<h6 >카페명 : <b>With My Pet</b></h6>
 				<br>
+
 				<c:url value="/post/list" var="allPostUrl">
 					<c:param name="page" value="1"/>
 					<c:param name="num" value="0"/>
 				</c:url>
+
 		    	<a href='${allPostUrl}' style="text-decoration: none; color: black;">전체 게시글 수 :  
 		    		<span class="">${allPostNum}</span>
 				</a>
@@ -169,12 +172,14 @@
 			<div class="container mt-3">
 				<c:if test='${category.ca_name != "공지"}'>
 	
+
 				<span style="font-weight: bolder;">${category.ca_name} 
 					<c:if test="${user != null && user.me_gr_num == 0}">
 						<a href="<c:url value='/board/add'/>" class="badge bg-primary float-end" style="color: white; text-decoration: none;">게시판추가</a>
 					</c:if>
 	
 				</span>
+
 	
 					<ul>
 						<c:forEach items="${boList}" var="board">
@@ -197,8 +202,7 @@
 			</div>
 		</c:forEach>
 	</div>
+
 </div>
-
-
 </body>
 </html>

@@ -172,7 +172,6 @@ $(document).on("click",".btn-complete", function(){
 		}, 
 		error : function(xhr, status, error){
 				alert("카테고리를 수정하지 못했습니다.");
-			
 		}
 	});
 });

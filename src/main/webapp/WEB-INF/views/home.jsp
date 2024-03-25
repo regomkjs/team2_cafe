@@ -62,6 +62,7 @@
 		margin-right: 5px;
 	}
 	
+
 	.smallPicPost .img-thumbnail{
 		
 		flex-basis: 0px; flex-basis: 0%;
@@ -104,6 +105,7 @@
 	}
 	
 	
+
 	
 </style>
 </head>
@@ -111,10 +113,12 @@
 <body>
 <div class="container master-container">
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
+
     <div class="main-img-box">
         <a href="<c:url value='/'/>"> 
         	<img src="/team2_cafe/images/logo.jpg" alt="images">
         </a>
+
     </div>
     <div class="main-box d-flex align-content-stretch">
         <jsp:include page="/WEB-INF/views/sidebar.jsp"/>
@@ -186,6 +190,7 @@
 			 	<span class="smallPicPostName mt-3">
 				  <h6> <특가>고양이 용품점 할인! </h6>
 				</span>
+
 				</a>
 			</div>
 			

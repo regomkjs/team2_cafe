@@ -19,6 +19,7 @@ public class PostCountLikeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private PostService postService = new PostServiceImp();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int po_num;
 		try {
 			po_num = Integer.parseInt(request.getParameter("po_num"));
@@ -28,8 +29,6 @@ public class PostCountLikeServlet extends HttpServlet {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		int totalCountLike = postService.getTotalCountLike(po_num);
 		boolean res = postService.getUserLike(user, po_num);
-		
-		
 		
 		JSONObject jobj = new JSONObject();
 		// ObjectMapper om = new ObjectMapper();

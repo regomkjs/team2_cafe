@@ -40,8 +40,8 @@ public class SignupServlet extends HttpServlet {
 			request.setAttribute("msg", "회원가입에 실패했습니다.");
 			request.setAttribute("url", "");
 		}
-		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
-		doGet(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+			doGet(request, response);
 	}
 
 }
