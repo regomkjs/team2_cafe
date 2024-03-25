@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
@@ -51,11 +50,9 @@
 						<tr>
 							<th class="col-1">번호</th>
 							<th class="col-2">게시판</th>
-							<th class="col-4">제목</th>
+							<th class="col-5">제목</th>
 							<th class="col-2">작성자</th>
-							<th>조회수</th>
-							<th>좋아요</th>
-							<th class="col-1">작성일</th>
+							<th >조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -63,37 +60,25 @@
 							<tr>
 								<td class="text-center">${post.po_num}</td>
 								<td class="text-center">${post.bo_name}</td>
-								<td>
+								<td class="text-center">
 									<c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}"/>
 									</c:url>
-									<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> ${post.po_title} <span class="ms-2">(${post.po_co_count})</span></a>
-								</td>
-								<td class="text-center">
-									<c:url var="userUrl" value="/user/post">
-										<c:param name="type" value="id"/>
-										<c:param name="search" value="${post.po_me_id}"/>
-									</c:url>
-									<a href="${userUrl}">${post.po_writer}</a>
-								</td>
-								<td class="text-center">${post.po_view}</td>
-								<td class="text-center">${post.po_totalLike}</td>
-								<td class="text-center time-text">
-									<c:set var="now" value="<%=new java.util.Date()%>" />
-									<c:set var="today">
-										<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
-									</c:set>
-									<c:set var="postdate" value="${post.po_datetime}"/>
+									<a href="${url}">[${post.he_name}]
 									<c:choose>
-										<c:when test="${fn:substring(postdate,0,10) == today}">
-											${fn:substring(postdate,11,16)}
+										<c:when test="${fn:length(post.po_title)>20}">
+											${fn:substring(post.po_title,0,19)}...
 										</c:when>
 										<c:otherwise>
-											${fn:substring(postdate,0,10)}
+											${post.po_title}
 										</c:otherwise>
 									</c:choose>
-									
+									</a>
 								</td>
+						   		<td class="text-center">
+									<a href="#">${post.po_writer}</a>
+								</td>
+								<td class="text-center">${post.po_view}</td>
 							</tr>
 						</c:forEach>
 						<c:if test="${postList.size() == 0}">
@@ -105,38 +90,6 @@
 						</c:if>
 					</tbody>
 				</table>
-				<ul class="pagination justify-content-center">
-			    	<c:if test="${pm.prev}">
-						<li class="page-item">
-							<c:url var="prevUrl" value="/user/post">
-								<c:param name="type" value="${pm.cri.type}"/>
-								<c:param name="search" value="${pm.cri.search}"/>
-								<c:param name="page" value="${pm.startPage-1}"/>
-							</c:url>
-							<a class="page-link" href="${prevUrl}">이전</a>
-						</li>
-					</c:if>
-					<c:forEach begin="${pm.startPage}" end="${pm.endPage}" var="i">
-						<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
-							<c:url var="pageUrl" value="/user/post">
-								<c:param name="type" value="${pm.cri.type}"/>
-								<c:param name="search" value="${pm.cri.search}"/>
-								<c:param name="page" value="${i}"/>
-							</c:url>
-							<a class="page-link" href="${pageUrl}">${i}</a>
-						</li>
-					</c:forEach>
-					<c:if test="${pm.next}">
-						<li class="page-item">
-							<c:url var="nextUrl" value="/user/post">
-								<c:param name="type" value="${pm.cri.type}"/>
-								<c:param name="search" value="${pm.cri.search}"/>
-								<c:param name="page" value="${pm.endPage+1}"/>
-							</c:url>
-							<a class="page-link" href="${nextUrl}">다음</a>
-						</li>
-					</c:if>
-			  	</ul>
 			</div>
 		</div>
 	</div>

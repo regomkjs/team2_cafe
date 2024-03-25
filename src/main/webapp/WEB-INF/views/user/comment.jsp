@@ -69,8 +69,8 @@
 									</c:if>
 								</c:forEach>
 								<c:choose>
-									<c:when test="${fn:length(comment.co_content)>40}">
-										<td class="text-center">${fn:substring(comment.co_content,0,39)}...</td>
+									<c:when test="${fn:length(comment.co_content)>30}">
+										<td class="text-center">${fn:substring(comment.co_content,0,29)}...</td>
 									</c:when>
 									<c:otherwise>
 										<td class="text-center">${comment.co_content}</td>
