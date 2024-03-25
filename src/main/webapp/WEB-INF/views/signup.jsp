@@ -59,7 +59,6 @@
    		</div>
    		<button type="submit" class="btn btn-outline-success col-12">회원가입</button>
 	</form>
-	<jsp:include page="/WEB-INF/views/footer.jsp"/>
 </div>
 
 
