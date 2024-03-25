@@ -259,9 +259,9 @@
 		select count(*) from `like`
 		where li_po_num = #{po_num}
 	</select>
-	
 	<select id="selectUserLike" resultType="kr.kh.app.model.vo.LikeVO" >
 		select * from `like`
 		where li_me_id = #{me_id} and li_po_num = #{po_num}
 	</select>
+	
 </mapper>

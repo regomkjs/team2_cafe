@@ -19,7 +19,10 @@
   align-items: center;
   display: flex;
   height: 100vh;
+  color:salmon;
+
 }
+
 
 .master-container {
     max-width: 1200px; /* 최대 너비 */
@@ -105,7 +108,7 @@
 	background-repeat:no-repeat;
 	background-size: 20px;
 	background-position:15px center;
-	outline-color:#03c75a;
+	outline-color:rgb(255, 127, 80);
 	margin-bottom: 20px;
 
 }
@@ -169,7 +172,6 @@
  }
 </style>
 </head>
-
 <body>
 <div class="master-container">
 <jsp:include page="/WEB-INF/views/header.jsp"/>
@@ -178,26 +180,26 @@
 			<br>		
 			<h5><b>환영합니다.</b></h5>
 			<h5><b>'with my pet'cafe입니다.</b></h5>
-	 		<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="id">
-	
-	 		<div class="mb-3">
-				<input type="password" class="form-control" id="pw" placeholder="사용할 비밀번호를 입력하세요." name="pw">
-	 		</div>
-	 		<div class="mb-3">
-	 			<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="pw2">
-	 		</div>
-	 		<div class="mb-3">
-	 			<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요." name="email">
-	 		</div>
-	 		<div class="mb-3">
-	 			<input type="text" class="form-control" id="phone" placeholder="핸드폰 번호를 입력하세요." name="phone">
-			</div>
-   			</form>
-   			<button type="submit" class="btn-block">회원가입</button>
+		 		<input type="text" class="form-control" id="id" placeholder="사용할 아이디를 입력하세요." name="id">
+		
+		 		<div class="mb-3">
+					<input type="password" class="form-control" id="pw" placeholder="사용할 비밀번호를 입력하세요." name="pw">
+		 		</div>
+		 		<div class="mb-3">
+		 			<input type="password" class="form-control" id="pw2" placeholder="비밀번호를 한번 더 입력하세요." name="pw2">
+		 		</div>
+		 		<div class="mb-3">
+		 			<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요." name="email">
+		 		</div>
+		 		<div class="mb-3">
+		 			<input type="text" class="form-control" id="phone" placeholder="핸드폰 번호를 입력하세요." name="phone">
+				</div>
+		  			</form>
+		  		<button type="submit" class="btn-block">회원가입</button>
 		</div>
-	<div>
-		<a class="foot-txt" href="<c:url value="/login"/>">이미 가입한 회원이신가요?</a>
-	</div>
+		<div>
+			<a class="foot-txt" href="<c:url value="/login"/>">이미 가입한 회원이신가요?</a>
+		</div>
 </div>
 <script src="//code.jquery.com/jquery-3.6.1.js"></script>
 <script type="text/javascript">

@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>아이디 찾기</title>
 <!-- 부트스트렙5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
+
 
 .body{
   text-align: center;
@@ -70,7 +71,7 @@
 	background-size: 20px;
 	background-position:15px center;
 	outline-color: rgb(255, 127, 80);
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 #pass::placeholder{
 	color:#ccc;
@@ -78,7 +79,7 @@
 }
 
 .btn-block{
-   
+
     display: block;
     width: 100%;
     padding: 13px 0 13px;
@@ -86,8 +87,9 @@
     border: solid 1px rgba(0, 0, 0, .15);
     background-color: rgb(255, 127, 80);
     box-sizing: border-box; 
-     color:white;
-     margin-bottom: 30px;
+    color:white;
+    margin-bottom: 50px;
+    margin-top:30px;
     
  }
  
@@ -108,25 +110,41 @@
 	position: relative;
 	top: -2px; left: 10px;
 }  
- .login{
+ .email{
  	 margin: 0 auto;
  	 position: relative;
  	 color: charcoal;
  
  }
- .pass{
-	  margin: 0 auto;
-	  position: relative;
- }
- 
- .foot-txt{
-	 color: rgb(255, 127, 80);
-	text-decoration: none;
- }
- 
- .foot-txt:hover{
- 	 text-decoration: underline;
- }
+#me_email{
+	width:100%;
+	height:50px;
+	border-radius: 5px 5px 0 0;
+	border:1px solid #ededed;
+	border-bottom:none;
+	padding-left: 50px;
+	background-image: url("/team2_cafe/images/email.svg");
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: 15px center;
+	outline-color: rgb(255, 127, 80);
+
+}
+#me_phone{
+	width:100%;
+	height:50px;
+	border-radius: 5px 5px 0 0;
+	border:1px solid #ededed;
+	padding-left: 50px;
+	background-image: url("/team2_cafe/images/phone.svg");
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position: 15px center;
+	outline-color: rgb(255, 127, 80);
+
+}
+
+
 </style>
 </head>
 
@@ -134,18 +152,14 @@
 <div class="master-container">
 <jsp:include page="/WEB-INF/views/header.jsp"/>
 <div class="login-box">
-	<form action="<c:url value="/login"/>" method="post">
-		 <h2>로그인</h2>
-		 	<input name="user" id="user" type="text" placeholder="아이디를 입력하세요">
-			 <br>
-	 		<input name="pass" id="pass" type="password" placeholder="비밀번호를 입력하세요">
+	<form action="<c:url value="/user/findId"/>" method="post">
+		 <h2>아이디 찾기</h2>
+		 	<input name="me_email" id="me_email" type="text" placeholder="가입 시 등록한 이메일을 입력하세요">
 	  		<br>
-	  		 <button type="submit" class="btn-block">로그인</button>
-    	</form>
-	   		<ul>
-	   			<li><a class="foot-txt" href="<c:url value="/user/findId"/>">아이디 찾기</a></li>
-	   			<li><a class="foot-txt" href="<c:url value="/signup"/>">회원가입</a></li>
-	   		</ul>
+	  		<input name="me_phone" id="me_phone" type="text" placeholder="가입 시 등록한 전화번호를 입력하세요">
+	  		<br>
+  			 <button type="submit" class="btn-block">찾기</button>
+    		</form>
 		</div>
 	</div>
 </body>
