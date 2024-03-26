@@ -99,18 +99,27 @@
 									<c:url var="url" value="/post/detail">
 										<c:param name="num" value="${post.po_num}"/>
 									</c:url>
-									<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> ${post.po_title} <span class="ms-2">(${post.po_co_count})</span></a>
+									<a href="${url}" style="text-decoration: none;"><span class="me-2">[${post.he_name}]</span> 
+									<c:choose>
+											<c:when test="${fn:length(post.po_title)>20}">
+												${fn:substring(post.po_title,0,19)}...
+											</c:when>
+											<c:otherwise>
+												${post.po_title}
+											</c:otherwise>
+										</c:choose>
+									<span class="ms-2">(${post.po_co_count})</span></a>
 								</td>
 								<td class="text-center">
 									<c:url var="userUrl" value="/user/post">
 										<c:param name="type" value="id"/>
-										<c:param name="search" value="${post.po_me_id}"/>
+										<c:param name="user" value="${post.po_me_id}"/>
 									</c:url>
 									<a href="${userUrl}">${post.po_writer}</a>
 								</td>
 								<td class="text-center">${post.po_view}</td>
-								<td class="text-center" style="font-size: medium;">${post.po_totalLike}</td>
-								<td class="text-center time-text" style="font-size: small;">
+								<td class="text-center">${post.po_totalLike}</td>
+								<td class="text-center time-text">
 									<c:set var="now" value="<%=new java.util.Date()%>" />
 									<c:set var="today">
 										<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
