@@ -109,20 +109,14 @@ public class MemberServiceImp implements MemberService {
 
 	@Override
 	public String refindMember(String email, String phone) {
-		
 		if(!checking(email)|| !checking(phone)) {
 			return null;
 		}
-		
 		String user = memberDao.selectId(email,phone);
-			
 		if(user == null) {
 			return null;
-			
 		}
-			return user;
-		
-		}	
+		return user;
 	}	
 
 	public boolean idCheckDup(String id) {
@@ -167,5 +161,5 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 	}
-
+}
 	

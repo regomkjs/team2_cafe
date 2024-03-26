@@ -25,8 +25,6 @@ public interface MemberDAO {
 
 	String selectId(@Param("email")String me_email, @Param("phone")String me_phone);
 
-	void updateNickname(String me_id, String name);
-
 	boolean updateNickname(@Param("me_id")String me_id, @Param("name")String name);
 
 	void insertUsedNickname(@Param("name")String name,@Param("me_id") String me_id);
