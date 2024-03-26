@@ -4,33 +4,42 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.MemberDAO">
 	<insert id="insertMember">
-		insert into member(me_id, me_pw, me_email, me_phone, me_date)
-		values(#{member.me_id}, #{member.me_pw}, #{member.me_email}, #{member.me_phone}, now())
+		insert into member(me_id, me_pw, me_email, me_phone,
+		me_date)
+		values(#{member.me_id}, #{member.me_pw}, #{member.me_email},
+		#{member.me_phone}, now())
 	</insert>
 	<select id="selectUser" resultType="kr.kh.app.model.vo.MemberVO">
-		select * from member where me_id = #{id}
+		select * from member where
+		me_id = #{id}
 	</select>
 
 	<update id="updateMember">
-		update member 
-			set
-				me_pw = #{member.me_pw},
-				me_email = #{member.me_email},
-				me_phone = #{member.me_phone}
-		where me_id = #{member.me_id}
+		update member
+		set
+		me_pw = #{member.me_pw},
+		me_email =
+		#{member.me_email},
+		me_phone = #{member.me_phone}
+		where me_id =
+		#{member.me_id}
 	</update>
 
 	<select id="selectAllmemberNum" resultType="int">
-		select count(*) from member
+		select count(*) from
+		member
 	</select>
 	<select id="selectMemberNum" resultType="int">
-		select count(*) from member
+		select count(*) from
+		member
 	</select>
 	<select id="selectMyPostNum" resultType="int">
-		select count(*) from post where po_me_id = #{me_id}
-	</select>	
+		select count(*) from
+		post where po_me_id = #{me_id}
+	</select>
 	<select id="selectMyCommentNum" resultType="int">
-		select count(*) from comment where co_me_id = #{me_id}
+		select count(*) from
+		comment where co_me_id = #{me_id}
 	</select>
 	<select id="selectGrade" resultType="string">
 		select gr_name
@@ -38,6 +47,14 @@
 		join member on me_gr_num = gr_num
 		where me_id = #{me_id}
 	</select>
+
+	<select id="selectId" resultType="String">
+		select me_id from member
+		where 
+			me_phone = #{phone} and me_email = #{email}
+	</select>
+
+
 	<update id="updateNickname">
 		update member set me_nick = #{name} where me_id = #{me_id}
 	</update>
