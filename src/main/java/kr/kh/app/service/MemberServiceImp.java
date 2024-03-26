@@ -141,10 +141,14 @@ public class MemberServiceImp implements MemberService {
 		if(!checking(nick)) {
 			return false;
 		}
+		MemberVO member = memberDao.selectUser(nick);
 		if(!checking(user.getMe_nick())) {
+			if(member != null) {
+				return false;
+			}
 			return true;
 		}else {
-			MemberVO member = memberDao.selectUser(nick);
+			
 			if(member != null) {
 				return false;
 			}
